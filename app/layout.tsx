@@ -6,6 +6,9 @@ import { Footer } from '@/components/footer';
 export const metadata: Metadata = {
   title: 'OpenChainBench',
   description: 'Open, reproducible benchmarks for crypto infrastructure.',
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
