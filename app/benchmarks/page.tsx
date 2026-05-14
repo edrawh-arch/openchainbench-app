@@ -162,9 +162,16 @@ export default function BenchmarksIndex() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative">
             {filteredBenchmarks.map((item) => (
               <Link key={item.id} href={`/benchmarks/${item.id}`} className="bg-white/80 border border-[#E5E5E5] backdrop-blur-sm rounded-sm p-5 hover:border-[#FF5C00]/50 hover:shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all block group flex flex-col relative z-10">
-               <div className="flex items-center gap-2 mb-4">
+               <div className="flex items-center gap-4 mb-4">
                   <div className="px-2 py-0.5 rounded-sm bg-[#F5F5F5] border border-[#E5E5E5] font-mono text-[9px] uppercase tracking-widest text-[#666]">
                     {item.category}
+                  </div>
+                  <div className="flex -space-x-1.5">
+                    {item.lines.slice(0, 4).map((line) => (
+                      <div key={line.name} className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]">
+                        {line.name.charAt(0)}
+                      </div>
+                    ))}
                   </div>
                </div>
                

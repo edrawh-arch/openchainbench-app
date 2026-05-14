@@ -149,9 +149,18 @@ export default function Home() {
               >
                 {/* Col 1: Info */}
                 <div className="flex-[1.5] md:mr-8 mb-4 md:mb-0">
-                   <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-2">
-                    {item.category}
-                 </div>
+                   <div className="flex items-center gap-4 mb-2">
+                     <span className="font-mono text-[10px] uppercase tracking-widest text-[#888]">
+                      {item.category}
+                     </span>
+                     <div className="flex -space-x-1.5">
+                       {item.lines.slice(0, 4).map((line) => (
+                         <div key={line.name} className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]">
+                           {line.name.charAt(0)}
+                         </div>
+                       ))}
+                     </div>
+                  </div>
                  <h3 className="text-[17px] font-semibold text-[#111] font-sans group-hover:text-[#FF5C00] tracking-tight mb-1 leading-tight transition-colors">
                     {item.title}
                  </h3>
@@ -183,7 +192,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end mb-24">
            <Link href="/benchmarks" className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#666] hover:text-black transition-colors">
               See all benchmarks <ArrowRight className="w-3.5 h-3.5" />
            </Link>

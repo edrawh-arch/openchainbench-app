@@ -5,6 +5,7 @@ import dynamicImport from 'next/dynamic';
 import { ChartPlaceholder } from '@/components/chart-placeholder';
 import { ShareableCards } from '@/components/shareable-cards';
 import { BENCHMARKS_LIST } from '@/lib/mock-data';
+import { BenchmarkActions } from './actions';
 
 const BenchmarkChart = dynamicImport(() => import('@/components/benchmark-chart').then(mod => mod.BenchmarkChart), { ssr: false });
 
@@ -76,50 +77,73 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-6 py-12">
       {/* Top Navigation */}
-      <div className="mb-12">
+      <div className="flex items-center justify-between mb-8 md:mb-12">
         <Link href="/" className="inline-flex items-center text-[13px] text-[#888] hover:text-[#111] transition-colors font-medium">
           <ArrowLeft className="w-3.5 h-3.5 mr-2" />
           All benchmarks
         </Link>
+        <BenchmarkActions data={data} />
       </div>
 
-      {/* Header Area */}
-      <div className="mb-4 flex py-2 flex-col md:flex-row md:items-end justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-2">
-           {data.tags.map((tag: any) => (
-             <span key={tag.label} className="inline-flex items-center text-[10px] font-mono tracking-widest uppercase bg-[#F5F5F5] border border-[#E5E5E5] px-2 py-0.5 rounded-sm text-[#222]">
-               {tag.label}
-             </span>
-           ))}
-           {data.tags.some((t: any) => t.live) && (
-             <div className="flex items-center gap-3">
-               <span className="inline-flex items-center text-[10px] font-mono tracking-widest uppercase bg-[#FF5C00]/10 border border-[#FF5C00]/30 px-2.5 py-1 rounded-full text-[#FF5C00] gap-1.5">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[#FF5C00]"></div> Live data
-               </span>
-               <div className="flex -space-x-1.5">
-                 {data.results.slice(0, 4).map((row: any) => (
-                   <div 
-                     key={row.id} 
-                     className="w-[20px] h-[20px] rounded-full bg-[#D4D4D4] border border-[#111] relative"
-                     title={row.name}
-                   />
-                 ))}
-               </div>
-             </div>
-           )}
-        </div>
-        <div className="text-[10px] font-mono uppercase tracking-widest text-[#888]">
-          № {data.number} · Updated {data.updatedAt}
-        </div>
+      {/* Meta Area */}
+      <div className="flex justify-between items-center mb-6">
+         <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              {data.tags.map((tag: any) => (
+                <span key={tag.label} className="font-mono text-[10px] tracking-widest uppercase text-[#FF5C00]">
+                  {tag.label}
+                </span>
+              ))}
+            </div>
+            {(data.results || data.lines) && (data.results || data.lines).length > 0 && (
+              <div className="flex -space-x-1.5 mt-1">
+                {(data.results || data.lines).slice(0, 4).map((row: any) => (
+                  <div key={row.name} className="w-6 h-6 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[9px] font-bold overflow-hidden text-[#111] shadow-sm">
+                    {row.name.charAt(0)}                   
+                  </div>
+                ))}
+              </div>
+            )}
+         </div>
+         <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#888]">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#888]"></div> 
+            {data.tags.some((t: any) => t.live) ? 'Live' : 'Stale'} · Updated 6m ago
+         </div>
       </div>
 
-      <h1 className="text-3xl md:text-[32px] font-semibold tracking-tight text-[#111] mb-2 font-sans md:leading-tight">
+      <h1 className="text-3xl md:text-[40px] font-semibold tracking-tight text-[#111] mb-3 font-sans md:leading-[1.1]">
         {data.title}
       </h1>
       
-      <p className="text-[20px] text-[#777] font-sans leading-relaxed max-w-2xl mb-12 tracking-tight">
+      <p className="text-[18px] md:text-[20px] text-[#444] font-sans leading-relaxed max-w-3xl mb-8 tracking-tight">
         {data.description}
       </p>
+
+      {/* Methodology Section */}
+      <div className="border-t border-[#E5E5E5] mb-12">
+        <details className="group border-b border-[#E5E5E5]">
+          <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+             METHODOLOGY
+             <span className="transition group-open:rotate-180 text-[#888]">
+                <svg fill="none" height="16" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="16"><path d="M6 9l6 6 6-6"></path></svg>
+             </span>
+          </summary>
+          <div className="text-[#444] font-sans text-[13px] leading-relaxed max-w-4xl pb-6">
+            <p className="mb-6">
+              We measure the gap between a transaction settling on chain and the same transaction appearing on each aggregator&apos;s data feed. The harness watches reference pools across Base, BNB Chain and Solana from three regions (us-east, eu-west, sgp), records every new on-chain event with millisecond timestamps, and observes when each aggregator&apos;s WebSocket reflects the same event. Lower is better.
+            </p>
+            <ul className="space-y-2 list-none text-[#555]">
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Aggregators measured: Mobula, Codex, GeckoTerminal.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Chains: Base, BNB Chain, Solana.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Regions: us-east, eu-west, sgp. Cross-region median reported in the headline.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Reference: archive nodes per chain, validated against block hashes.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Metric: gauge <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">head_lag_seconds</code>, sampled every 15 seconds. Aggregated over the 24-hour window using <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">quantile_over_time</code>.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Success rate: presence ratio. share of expected sampling slots where a value was actually emitted (5,760 expected per provider per day at the 15s cadence). 100% means the aggregator&apos;s feed was reachable for the full window.</li>
+              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Cardinality: 3 aggregators × 3 chains × 3 regions = 27 active series.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
 
       {/* Aggregate Stats Bar */}
       <div className="bg-white p-4 md:px-6 md:py-4 mb-16 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-wrap items-center justify-between text-[10px] font-mono uppercase tracking-widest gap-2">
@@ -210,7 +234,8 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
                     {row.id}
                   </td>
                   <td className="py-4 px-0 align-top" colSpan={2}>
-                     <div className="font-bold text-[#111] font-sans text-[15px] leading-none mb-1.5 pt-0.5 flex items-center">
+                     <div className="font-bold text-[#111] font-sans text-[14px] leading-none mb-1.5 pt-0.5 flex items-center">
+                        <div className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2">{row.name.charAt(0)}</div>
                         {row.name} 
                         <span className="text-[8px] font-mono font-normal tracking-widest uppercase text-[#888] ml-2 align-middle">{row.type}</span>
                      </div>
@@ -266,7 +291,12 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
            <tbody className="divide-y divide-[#E5E5E5] text-[13px] font-mono tracking-tight text-[#444]">
              {data.regions.map((region: any) => (
                 <tr key={region.provider} className="hover:bg-black/5 transition-colors group">
-                  <td className="py-4 px-0 font-bold font-sans text-[15px] p-4" style={{ color: region.color === '#CCCCCC' ? '#111' : region.color }}>{region.provider}</td>
+                  <td className="py-4 px-0 p-4">
+                    <div className="flex items-center font-bold font-sans text-[14px]" style={{ color: region.color === '#CCCCCC' ? '#111' : region.color }}>
+                      <div className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2" style={{ color: '#111' }}>{region.provider.charAt(0)}</div>
+                      {region.provider}
+                    </div>
+                  </td>
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">
                        <div className="w-full max-w-[120px] h-1.5 bg-[#F0F0F0] rounded-full relative">
@@ -298,34 +328,11 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
         </div>
       </div>
 
-      {/* Accordions */}
+      {/* Share / Export */}
       <div className="bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] pb-12">
         <details className="group border-b border-[#E5E5E5]">
           <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-             About this benchmark
-             <span className="transition group-open:rotate-180">
-                <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-             </span>
-          </summary>
-          <div className="text-[#444] font-sans text-[13px] leading-relaxed max-w-4xl pb-6">
-            <p className="mb-6">
-              We measure the gap between a transaction settling on chain and the same transaction appearing on each aggregator&apos;s data feed. The harness watches reference pools across Base, BNB Chain and Solana from three regions (us-east, eu-west, sgp), records every new on-chain event with millisecond timestamps, and observes when each aggregator&apos;s WebSocket reflects the same event. Lower is better.
-            </p>
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3">Methodology</h4>
-            <ul className="space-y-2 list-none text-[#555] mb-6">
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Aggregators measured: Mobula, Codex, GeckoTerminal.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Chains: Base, BNB Chain, Solana.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Regions: us-east, eu-west, sgp. Cross-region median reported in the headline.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Reference: archive nodes per chain, validated against block hashes.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Metric: gauge <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">head_lag_seconds</code>, sampled every 15 seconds. Aggregated over the 24-hour window using <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">quantile_over_time</code>.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Success rate: presence ratio. share of expected sampling slots where a value was actually emitted (5,760 expected per provider per day at the 15s cadence). 100% means the aggregator&apos;s feed was reachable for the full window.</li>
-              <li className="flex gap-2 before:content-['·'] before:text-[#888]">Cardinality: 3 aggregators × 3 chains × 3 regions = 27 active series.</li>
-            </ul>
-          </div>
-        </details>
-        <details open className="group border-b border-[#E5E5E5]">
-          <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-             Share · Export · Embed
+             Share · Embed
              <span className="transition group-open:rotate-180">
                 <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
              </span>
@@ -345,46 +352,31 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
       </div>
       
       {/* More Benchmarks */}
-      <div className="pt-24 pb-12 w-full max-w-4xl relative">
-        
+      <div className="pt-24 pb-12 w-full relative">
         <div className="relative z-10">
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8">More Benchmarks</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-             {/* Card 1 */}
-             <Link href="/benchmarks/fastest-cross-chain-bridge" className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white">
-                <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
-                  <span className="bg-transparent border border-[#E5E5E5] px-2.5 py-1 rounded-sm text-[#888]">BRIDGES</span>
-                </div>
-                <h4 className="text-[17px] font-semibold text-[#111] font-sans mb-2 tracking-tight group-hover:text-[#FF5C00]">Fastest cross-chain bridge</h4>
-                <p className="text-[13px] text-[#777] font-sans leading-snug">Time to receive a usable cross-chain quote, in milliseconds. Identical route, identical notional, every bridge.</p>
-             </Link>
-             
-             {/* Card 2 */}
-             <Link href="/benchmarks/cheapest-cross-chain-bridge" className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white">
-                <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
-                  <span className="bg-transparent border border-[#E5E5E5] px-2.5 py-1 rounded-sm text-[#888]">BRIDGES</span>
-                </div>
-                <h4 className="text-[17px] font-semibold text-[#111] font-sans mb-2 tracking-tight group-hover:text-[#FF5C00]">Cheapest cross-chain bridge</h4>
-                <p className="text-[13px] text-[#777] font-sans leading-snug">Total cost as a percent of notional. Fees, slippage and destination gas combined, sampled at $300.</p>
-             </Link>
-
-             {/* Card 3 */}
-             <Link href="/benchmarks/best-provider-token-metadata" className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white">
-                <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
-                  <span className="bg-transparent border border-[#E5E5E5] px-2.5 py-1 rounded-sm text-[#888]">AGGREGATORS</span>
-                </div>
-                <h4 className="text-[17px] font-semibold text-[#111] font-sans mb-2 tracking-tight group-hover:text-[#FF5C00]">Best provider for token on-chain metadata</h4>
-                <p className="text-[13px] text-[#777] font-sans leading-snug">Share of metadata fields populated for fresh-launch tokens (logo, description, twitter, website). Higher is better.</p>
-             </Link>
-
-             {/* Card 4 */}
-             <Link href="/benchmarks/onchain-data-providers" className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white">
-                <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
-                  <span className="bg-transparent border border-[#E5E5E5] px-2.5 py-1 rounded-sm text-[#888]">DATA</span>
-                </div>
-                <h4 className="text-[17px] font-semibold text-[#111] font-sans mb-2 tracking-tight group-hover:text-[#FF5C00]">On-chain data providers</h4>
-                <p className="text-[13px] text-[#777] font-sans leading-snug">Number of blockchains each major on-chain data provider officially supports. Higher is better.</p>
-             </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             {BENCHMARKS_LIST.filter(b => b.id !== data.id).slice(0, 3).map((item) => (
+                <Link key={item.id} href={`/benchmarks/${item.id}`} className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white/80 backdrop-blur-sm hover:border-[#111]/20 group flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
+                      <span className="bg-[#F5F5F5] border border-[#E5E5E5] px-2 py-0.5 rounded-sm text-[#666]">{item.category}</span>
+                    </div>
+                    <h4 className="text-[15px] font-semibold text-[#111] font-sans mb-3 tracking-tight group-hover:text-[#FF5C00] transition-colors leading-snug">{item.title}</h4>
+                    <p className="text-[13px] text-[#777] font-sans leading-snug mb-8 line-clamp-3">{item.description}</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 mt-auto">
+                     <div className="flex -space-x-1.5">
+                       {item.lines?.slice(0, 4).map((line) => (
+                         <div key={line.name} className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]">
+                           {line.name.charAt(0)}
+                         </div>
+                       ))}
+                     </div>
+                  </div>
+                </Link>
+             ))}
           </div>
         </div>
       </div>

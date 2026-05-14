@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Footer() {
   return (
     <footer className="w-full bg-white text-[#111] font-sans border-t mt-32" style={{ borderColor: 'rgba(0, 0, 0, 0.05)' }}>
@@ -28,9 +30,9 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-24 gap-y-12 shrink-0">
             <div className="flex flex-col gap-4">
               <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">Read</h4>
-              <a href="#" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Overview</a>
-              <a href="/benchmarks" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Benchmarks</a>
-              <a href="/methodology" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Methodology</a>
+              <Link href="/" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Overview</Link>
+              <Link href="/benchmarks" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Benchmarks</Link>
+              <Link href="/methodology" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Methodology</Link>
               <a href="#" className="text-[14px] text-[#111] hover:text-[#555] underline decoration-1 underline-offset-4 decoration-[#E5E5E5] hover:decoration-[#111] transition-colors">Press kit</a>
             </div>
             
