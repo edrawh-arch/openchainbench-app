@@ -13,6 +13,7 @@ export function Header() {
   const navLinks = [
     { name: 'Benchmarks', href: '/benchmarks' },
     { name: 'Providers', href: '/providers' },
+    { name: 'Networks', href: '/ecosystem' },
     { name: 'Methodology', href: '/methodology' },
     { name: 'Contribute', href: '/contribute' },
   ];
