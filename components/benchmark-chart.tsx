@@ -1,5 +1,4 @@
 "use client";
-
 import {
   LineChart,
   Line,
@@ -9,14 +8,14 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-
 import { useTheme } from "next-themes";
-
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white dark:bg-[#0a0a0a] border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50 dark:bg-[#000000] dark:border-white/15">
-        <p className="text-[#888] mb-2 pb-2 border-b border-black/5 uppercase tracking-widest text-[9px] dark:text-[#888888] dark:border-white/10">
+      <div className="bg-white border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50 dark:bg-[#0A0A0A]">
+        
+        <p className="text-[#888] mb-2 pb-2 border-b border-black/5 uppercase tracking-widest text-[9px] dark:text-[#71717A]">
+          
           {label}
         </p>
         {payload.map((entry: any, index: number) => (
@@ -24,10 +23,14 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             key={index}
             className="flex items-center justify-between gap-4 mb-1.5 last:mb-0"
           >
-            <span className="font-sans font-medium text-black dark:text-white">
+            
+            <span className="font-sans font-medium text-black">
+              
               {entry.dataKey}
             </span>
-            <span className="text-[#555] dark:text-[#AAA] dark:text-[#BBBBBB]">{entry.value.toFixed(1)}s</span>
+            <span className="text-[#555] dark:text-[#A1A1AA]">
+              {entry.value.toFixed(1)}s
+            </span>
           </div>
         ))}
       </div>
@@ -35,26 +38,27 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   }
   return null;
 };
-
 export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
-
   if (!data || data.length === 0) return null;
-
   const renderCustomDot = (props: any) => {
     const { cx, cy, stroke, index, dataKey, payload } = props;
     if (index === data.length - 1) {
       const isCodex = dataKey === "Codex";
       const defaultTextColor = isDark ? "#fff" : "#000";
-      const textColor = dataKey === "GeckoTerminal" ? defaultTextColor : (isCodex ? defaultTextColor : stroke);
-
+      const textColor =
+        dataKey === "GeckoTerminal"
+          ? defaultTextColor
+          : isCodex
+            ? defaultTextColor
+            : stroke;
       let yOffset = 0;
       if (dataKey === "Codex") yOffset = -12;
       if (dataKey === "Mobula") yOffset = 12;
-
       return (
         <g key={`dot-${dataKey}`}>
+          
           <circle cx={cx} cy={cy} r={3} fill={stroke} />
           <text
             x={cx + 8}
@@ -64,6 +68,7 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
             fontFamily="sans-serif"
             fontWeight="600"
           >
+            
             {dataKey}
           </text>
           <text
@@ -73,6 +78,7 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
             fontSize={10}
             fontFamily="monospace"
           >
+            
             {(payload[dataKey] * 1000).toFixed(0)} ms
           </text>
         </g>
@@ -80,15 +86,17 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
     }
     return <g key={`dot-${dataKey}-${index}`}></g>;
   };
-
   return (
     <div className="w-full">
+      
       <div className="h-[280px] w-full relative mb-6 pl-4">
+        
         {/* Background Logo */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{ paddingRight: 90 }}
         >
+          
           <svg
             width="150"
             height="150"
@@ -97,7 +105,9 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
             xmlns="http://www.w3.org/2000/svg"
             style={{ opacity: 0.03 }}
           >
+            
             <mask id="c-mask-watermark">
+              
               <rect width="100" height="100" fill="white" />
               <ellipse cx="45" cy="50" rx="22" ry="40" fill="black" />
               <rect x="45" y="38" width="55" height="24" fill="black" />
@@ -113,25 +123,41 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
             <path d="M 65 100 L 100 100 L 100 65 Z" fill="black" />
           </svg>
         </div>
-
         {/* Chart */}
         <div className="absolute inset-0 z-10 w-full h-full">
+          
           <ResponsiveContainer width="100%" height="100%">
+            
             <LineChart
               data={data}
               margin={{ top: 10, right: 90, left: 0, bottom: 0 }}
             >
+              
               <defs>
+                
                 <linearGradient id="colorGecko" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#CCCCCC" stopOpacity={0.15} />
+                  
+                  <stop
+                    offset="5%"
+                    stopColor="#CCCCCC"
+                    stopOpacity={0.15}
+                  />
                   <stop offset="95%" stopColor="#CCCCCC" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis
                 dataKey="time"
-                axisLine={{ stroke: isDark ? "#fff" : "#000", strokeWidth: 1, opacity: 0.1 }}
+                axisLine={{
+                  stroke: isDark ? "#fff" : "#000",
+                  strokeWidth: 1,
+                  opacity: 0.1,
+                }}
                 tickLine={false}
-                tick={{ fontSize: 9, fill: isDark ? "#666" : "#888", fontFamily: "monospace" }}
+                tick={{
+                  fontSize: 9,
+                  fill: isDark ? "#666" : "#888",
+                  fontFamily: "monospace",
+                }}
                 dy={10}
               />
               <YAxis
@@ -139,11 +165,18 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
                 ticks={[0, 3.2, 6.4, 9.6, 15]}
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 9, fill: isDark ? "#666" : "#888", fontFamily: "monospace" }}
+                tick={{
+                  fontSize: 9,
+                  fill: isDark ? "#666" : "#888",
+                  fontFamily: "monospace",
+                }}
                 tickFormatter={(val) => (val === 0 ? "0" : `${val}s`)}
                 width={28}
               />
-              <CartesianGrid vertical={false} stroke={isDark ? "#333" : "#E5E5E5"} />
+              <CartesianGrid
+                vertical={false}
+                stroke={isDark ? "#333" : "#E5E5E5"}
+              />
               <Tooltip
                 content={<CustomTooltip />}
                 cursor={{
@@ -153,7 +186,6 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
                   strokeOpacity: 0.3,
                 }}
               />
-
               <Line
                 type="stepAfter"
                 dataKey="GeckoTerminal"
@@ -185,22 +217,29 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
           </ResponsiveContainer>
         </div>
       </div>
-      <div className="flex gap-6 text-[10px] font-sans font-semibold text-black dark:text-white items-center justify-start pt-4 border-t border-black/10 dark:border-white/15">
+      <div className="flex gap-6 text-[10px] font-sans font-semibold text-black items-center justify-start pt-4 border-t border-black/10">
+        
         <div className="flex gap-2 items-center">
-          <div className="w-4 h-[2px] bg-[#CCCCCC]"></div> GeckoTerminal{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
+          
+          <div className="w-4 h-[2px] bg-[#CCCCCC]"></div> GeckoTerminal
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#71717A]">
+            
             11.0 s
           </span>
         </div>
         <div className="flex gap-2 items-center">
-          <div className="w-4 h-[2px] bg-[#111111] dark:bg-white"></div> Codex{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
+          
+          <div className="w-4 h-[2px] bg-[#111111] dark:bg-white"></div> Codex
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#71717A]">
+            
             1.6 s
           </span>
         </div>
         <div className="flex gap-2 items-center">
-          <div className="w-4 h-[2px] bg-[#FF5C00]"></div> Mobula{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
+          
+          <div className="w-4 h-[2px] bg-[#FF5C00]"></div> Mobula
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#71717A]">
+            
             0.9 s
           </span>
         </div>

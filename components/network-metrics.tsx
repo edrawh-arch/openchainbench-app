@@ -1,8 +1,6 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-
 const PROTOCOLS_BY_CHAIN: Record<string, { name: string; volume: number }[]> = {
   all: [
     { name: "Uniswap", volume: 45.2 },
@@ -42,7 +40,6 @@ const PROTOCOLS_BY_CHAIN: Record<string, { name: string; volume: number }[]> = {
     { name: "Trader Joe", volume: 9.3 },
   ],
 };
-
 const BASE_METRICS: Record<
   string,
   { tps: number; gas: number; gasUnit: string }
@@ -54,7 +51,6 @@ const BASE_METRICS: Record<
   bnb: { tps: 65, gas: 3, gasUnit: "gwei" },
   arb: { tps: 35, gas: 0.01, gasUnit: "gwei" },
 };
-
 export function NetworkMetrics({
   globalFilter = "all",
 }: {
@@ -62,21 +58,17 @@ export function NetworkMetrics({
 }) {
   const [tps, setTps] = useState(BASE_METRICS[globalFilter].tps);
   const [gas, setGas] = useState(BASE_METRICS[globalFilter].gas);
-
   useEffect(() => {
     const baseTPS = BASE_METRICS[globalFilter].tps;
-    const baseGas = BASE_METRICS[globalFilter].gas;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    const baseGas = BASE_METRICS[globalFilter].gas; // eslint-disable-next-line react-hooks/set-state-in-effect
     setTps(baseTPS);
     setGas(baseGas);
-
     const interval = setInterval(() => {
       // Fluctuate TPS by ±5%
       setTps((prev) => {
         const diff = prev * 0.05;
         return Math.max(0, baseTPS + (Math.random() * diff * 2 - diff));
-      });
-      // Fluctuate Gas by ±10%
+      }); // Fluctuate Gas by ±10%
       if (baseGas > 0) {
         setGas((prev) => {
           const diff = prev * 0.1;
@@ -86,29 +78,35 @@ export function NetworkMetrics({
     }, 2000);
     return () => clearInterval(interval);
   }, [globalFilter]);
-
   const protocols = PROTOCOLS_BY_CHAIN[globalFilter] || PROTOCOLS_BY_CHAIN.all;
   const metrics = BASE_METRICS[globalFilter] || BASE_METRICS.all;
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
+      
       {/* Network Health */}
-      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#000000] dark:border-[#333333]">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#888888]">
+      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#0A0A0A] dark:border-[#222222]">
+        
+        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#71717A]">
+          
           Network Performance
         </h3>
-
         <div className="flex-1 flex flex-col justify-center gap-8">
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] dark:border-[#333] pb-4 dark:border-[#333333]">
+          
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4 dark:border-[#222222]">
+            
             <div>
-              <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] mb-1 dark:text-[#AAAAAA]">
+              
+              <div className="text-[10px] font-sans text-[#666] mb-1 dark:text-[#A1A1AA]">
+                
                 Current TPS (Transactions/sec)
               </div>
               <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
+                
                 {tps.toLocaleString("en-US", { maximumFractionDigits: 0 })}
               </div>
             </div>
             <div className="w-16 h-8 flex items-end gap-0.5 opacity-50">
+              
               {/* Fake mini bars for TPS */}
               {[...Array(12)].map((_, i) => (
                 <motion.div
@@ -128,21 +126,27 @@ export function NetworkMetrics({
               ))}
             </div>
           </div>
-
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] dark:border-[#333] pb-4 dark:border-[#333333]">
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4 dark:border-[#222222]">
+            
             <div>
-              <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] mb-1 dark:text-[#AAAAAA]">
+              
+              <div className="text-[10px] font-sans text-[#666] mb-1 dark:text-[#A1A1AA]">
+                
                 Avg Gas / Transact Fee
               </div>
               <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
+                
                 {globalFilter === "all" ? (
-                  <span className="text-xl text-[#888] italic dark:text-[#888888]">
+                  <span className="text-xl text-[#888] italic dark:text-[#71717A]">
+                    
                     Varies by chain
                   </span>
                 ) : (
                   <>
+                    
                     {gas < 0.01 ? gas.toFixed(6) : gas.toFixed(2)}
-                    <span className="text-sm text-[#888] ml-2 dark:text-[#888888]">
+                    <span className="text-sm text-[#888] ml-2 dark:text-[#71717A]">
+                      
                       {metrics.gasUnit}
                     </span>
                   </>
@@ -152,21 +156,29 @@ export function NetworkMetrics({
           </div>
         </div>
       </div>
-
       {/* Protocol Dominance */}
-      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#000000] dark:border-[#333333]">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#888888]">
+      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#0A0A0A] dark:border-[#222222]">
+        
+        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#71717A]">
+          
           Protocol Dominance (24h Vol)
         </h3>
-
         <div className="flex-1 flex flex-col justify-center gap-4">
+          
           {protocols.map((protocol, i) => (
             <div key={protocol.name} className="flex flex-col gap-1.5 group">
+              
               <div className="flex justify-between items-center text-xs font-mono">
-                <span className="text-[#111] dark:text-white">{protocol.name}</span>
-                <span className="text-[#888] dark:text-[#888888]">{protocol.volume}%</span>
+                
+                <span className="text-[#111] dark:text-white">
+                  {protocol.name}
+                </span>
+                <span className="text-[#888] dark:text-[#71717A]">
+                  {protocol.volume}%
+                </span>
               </div>
-              <div className="w-full h-1.5 bg-[#F0F0F0] rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-[#F0F0F0] rounded-full overflow-hidden dark:bg-[#1A1A1A]">
+                
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${protocol.volume}%` }}

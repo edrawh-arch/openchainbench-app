@@ -20,8 +20,20 @@ export function Footer() {
               >
                 <mask id="c-mask-footer">
                   <rect width="100" height="100" fill="white" />
-                  <ellipse cx="45" cy="50" rx="22" ry="40" fill="currentColor" />
-                  <rect x="45" y="38" width="55" height="24" fill="currentColor" />
+                  <ellipse
+                    cx="45"
+                    cy="50"
+                    rx="22"
+                    ry="40"
+                    fill="currentColor"
+                  />
+                  <rect
+                    x="45"
+                    y="38"
+                    width="55"
+                    height="24"
+                    fill="currentColor"
+                  />
                 </mask>
                 <circle
                   cx="45"
@@ -131,13 +143,15 @@ export function Footer() {
 
         <div className="mb-8 flex items-start">
           <p className="text-[12px] text-[#666] dark:text-[#999] leading-relaxed max-w-[600px]">
-            Every benchmark is a YAML spec plus a public harness exposing{" "}
+            Every benchmark is a YAML spec plus a public harness exposing
             <code className="bg-[#F5F5F5] dark:bg-[#222] px-1.5 py-0.5 rounded text-[11px] font-mono text-[#111] dark:text-white">
               /metrics
             </code>
             . The site queries one shared Prometheus and re-renders every
-            minute. Anyone can submit a benchmark — the{" "}
-            <span className="font-semibold text-black dark:text-white">contribution guide</span>{" "}
+            minute. Anyone can submit a benchmark — the
+            <span className="font-semibold text-black dark:text-white">
+              contribution guide
+            </span>
             walks through it.
           </p>
         </div>
