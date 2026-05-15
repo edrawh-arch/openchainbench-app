@@ -61,7 +61,6 @@ export function NetworkMetrics({ globalFilter = 'all' }: { globalFilter?: string
     const baseGas = BASE_METRICS[globalFilter].gas;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTps(baseTPS);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setGas(baseGas);
 
     const interval = setInterval(() => {

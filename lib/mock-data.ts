@@ -210,3 +210,15 @@ export const BENCHMARKS_LIST = [
     ]
   }
 ];
+
+export const PROVIDERS_LIST = [
+  { id: 'mobula', name: 'Mobula', category: 'INTENT', tags: ['Aggregators', 'Bridges'], benches: 6, firstPlaces: 3, logoBg: '#ffffff', logoFg: '#111' },
+  { id: 'codex', name: 'Codex', category: '', tags: ['Aggregators'], benches: 3, firstPlaces: 1, logoBg: '#CCFF00', logoFg: '#111' },
+  { id: 'geckoterminal', name: 'GeckoTerminal', category: '', tags: ['Aggregators'], benches: 2, firstPlaces: 1, logoBg: '#4736f8', logoFg: '#fff' },
+  { id: 'lighter', name: 'Lighter', category: '', tags: ['Trading'], benches: 1, firstPlaces: 1, logoBg: '#111', logoFg: '#fff' },
+  { id: 'ton', name: 'TON', category: '', tags: ['Blockchains'], benches: 1, firstPlaces: 1, logoBg: '#0098EA', logoFg: '#fff' },
+  { id: 'tonapi', name: 'TonAPI', category: '', tags: ['Aggregators'], benches: 1, firstPlaces: 1, logoBg: '#333333', logoFg: '#fff' },
+  { id: 'debridge', name: 'Debridge', category: 'PROTOCOL', tags: ['Bridges'], benches: 2, firstPlaces: 0, logoBg: '#ffffff', logoFg: '#FFCC00' },
+  { id: 'lifi', name: 'LiFi', category: 'AGGREGATOR', tags: ['Bridges'], benches: 2, firstPlaces: 0, logoBg: '#ffdaf1', logoFg: '#FF3399' },
+  { id: 'relay', name: 'Relay', category: 'RELAY', tags: ['Bridges'], benches: 2, firstPlaces: 0, logoBg: '#111', logoFg: '#fff' },
+];
