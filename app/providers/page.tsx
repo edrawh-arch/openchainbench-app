@@ -7,6 +7,7 @@ import { PROVIDERS_LIST } from "@/lib/mock-data";
 
 export default function ProvidersIndex() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("ALL");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -20,6 +21,12 @@ export default function ProvidersIndex() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const categories = useMemo(() => {
+    const cats = new Set<string>();
+    PROVIDERS_LIST.forEach((p) => p.tags.forEach((t) => cats.add(t)));
+    return ["ALL", ...Array.from(cats).sort()];
+  }, []);
+
   const filteredProviders = useMemo(() => {
     return PROVIDERS_LIST.filter((item) => {
       const matchesSearch =
@@ -28,9 +35,11 @@ export default function ProvidersIndex() {
         item.tags.some((tag) =>
           tag.toLowerCase().includes(searchQuery.toLowerCase()),
         );
-      return matchesSearch;
+      const matchesCategory =
+        selectedCategory === "ALL" || item.tags.includes(selectedCategory);
+      return matchesSearch && matchesCategory;
     });
-  }, [searchQuery]);
+  }, [searchQuery, selectedCategory]);
 
   return (
     <div className="w-full flex justify-center py-24 bg-transparent min-h-screen">
@@ -46,27 +55,43 @@ export default function ProvidersIndex() {
           </p>
         </div>
 
-        {/* Search */}
+        {/* Filters and Search */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div className="text-[10px] uppercase font-mono tracking-widest text-[#888]">
-            {PROVIDERS_LIST.length} PROVIDERS INDEXED
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${
+                  selectedCategory === cat
+                    ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]"
+                    : "bg-white text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
-          <div className="relative w-full md:w-[280px] h-[38px]">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-[38px] h-[38px]">
-              <Search className="h-4 w-4 text-[#888]" />
-            </div>
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="Search providers..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full h-[38px] pl-10 pr-12 bg-white border border-[#E5E5E5] rounded-sm font-sans tracking-tight text-[14px] text-[#111] focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] placeholder:text-[#888] shadow-sm transition-all"
-            />
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] px-1.5 py-0.5 rounded-sm bg-[#fafafa]">
-                ⌘K
-              </span>
+
+          <div className="flex items-center gap-3 w-full md:w-auto shrink-0 flex-col md:flex-row">
+            <div className="relative w-full md:w-[280px] h-[38px]">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-[38px] h-[38px]">
+                <Search className="h-4 w-4 text-[#888]" />
+              </div>
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Search providers..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="block w-full h-[38px] pl-10 pr-12 bg-white border border-[#E5E5E5] rounded-sm font-sans tracking-tight text-[14px] text-[#111] focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] placeholder:text-[#888] shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors"
+                spellCheck={false}
+              />
+              <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none h-full">
+                <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] bg-[#FAFAFA] px-1.5 py-0.5 rounded-[2px]">
+                  ⌘K
+                </span>
+              </div>
             </div>
           </div>
         </div>
