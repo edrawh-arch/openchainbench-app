@@ -52,11 +52,7 @@ export default function EcosystemPage() {
               <button
                 key={chain.id}
                 onClick={() => setSelectedChain(chain.id)}
-                className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${
-                  selectedChain === chain.id
-                    ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]"
-                    : "bg-white dark:bg-[#0a0a0a] text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
-                }`}
+                className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${ selectedChain === chain.id ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]" : "bg-white dark:bg-[#0a0a0a] text-[#666] border-[#E5E5E5] hover:border-[#111] hover:text-[#111]" } dark:text-[#AAAAAA] dark:border-[#333333] dark:hover:border-[#AAAAAA]`}
               >
                 {chain.name.toUpperCase()}
               </button>

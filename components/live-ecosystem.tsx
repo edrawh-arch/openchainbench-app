@@ -302,13 +302,13 @@ export function LiveEcosystem({
 
   if (!mounted)
     return (
-      <div className="mb-24 w-full h-[600px] bg-[#fafafa] rounded-sm animate-pulse border border-[#E5E5E5] dark:border-[#333]"></div>
+      <div className="mb-24 w-full h-[600px] bg-[#fafafa] rounded-sm animate-pulse border border-[#E5E5E5] dark:border-[#333] dark:border-[#333333]"></div>
     );
 
   return (
     <div className="mb-24 w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 font-mono text-[10px] uppercase tracking-widest text-[#888]">
+      <div className="flex items-center justify-between mb-4 font-mono text-[10px] uppercase tracking-widest text-[#888] dark:text-[#888888]">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-[#FF5C00] animate-pulse"></div>
           <span className="text-[#111] dark:text-white font-semibold">STREAMING</span>
@@ -319,76 +319,76 @@ export function LiveEcosystem({
       </div>
 
       {/* Top Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm mb-4">
-        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
+      <div className="grid grid-cols-2 lg:grid-cols-4 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm mb-4 dark:bg-[#000000] dark:border-[#333333]">
+        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between dark:border-[#333333] dark:hover:bg-[#151515]">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1 dark:text-[#888888]">
               VOL 24H
             </div>
             <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
-              <span className="text-[14px] text-[#888]">$</span>
+              <span className="text-[14px] text-[#888] dark:text-[#888888]">$</span>
               {(25.01 * statsMultiplier).toFixed(2)}
-              <span className="text-[14px] text-[#888]">B</span>
+              <span className="text-[14px] text-[#888] dark:text-[#888888]">B</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] dark:text-[#AAAAAA]">
             {globalFilter === "all"
               ? "All chains"
               : CHAINS.find((c) => c.id === globalFilter)?.name}{" "}
             &middot; DEX trades
           </div>
         </div>
-        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
+        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between dark:border-[#333333] dark:hover:bg-[#151515]">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1 dark:text-[#888888]">
               TXS 24H
             </div>
             <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
               {(50.98 * statsMultiplier).toFixed(2)}
-              <span className="text-[14px] text-[#888]">M</span>
+              <span className="text-[14px] text-[#888] dark:text-[#888888]">M</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] dark:text-[#AAAAAA]">
             {(26.2 * statsMultiplier).toFixed(1)}M buys &middot;{" "}
             {(24.6 * statsMultiplier).toFixed(1)}M sells
           </div>
         </div>
-        <div className="p-4 md:p-5 border-b md:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
+        <div className="p-4 md:p-5 border-b md:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between dark:border-[#333333] dark:hover:bg-[#151515]">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1 dark:text-[#888888]">
               MARKET CAP
             </div>
             <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
-              <span className="text-[14px] text-[#888]">$</span>
+              <span className="text-[14px] text-[#888] dark:text-[#888888]">$</span>
               {(7.4 * statsMultiplier).toFixed(2)}
-              <span className="text-[14px] text-[#888]">T</span>
+              <span className="text-[14px] text-[#888] dark:text-[#888888]">T</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] dark:text-[#AAAAAA]">
             {globalFilter === "all"
               ? "All tracked assets"
               : `${CHAINS.find((c) => c.id === globalFilter)?.name} ecosystem assets`}
           </div>
         </div>
-        <div className="p-4 md:p-5 bg-[#FAFAFA] dark:bg-[#111] flex flex-col justify-between relative">
+        <div className="p-4 md:p-5 bg-[#FAFAFA] dark:bg-[#111] flex flex-col justify-between relative dark:bg-[#0a0a0a]">
           <div className="absolute right-4 top-4 text-[9px] font-mono text-[#FF5C00] animate-pulse">
             +24
           </div>
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1 dark:text-[#888888]">
               STREAMED LIVE
             </div>
             <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2">
               {Math.floor(12312 * statsMultiplier).toLocaleString()}
             </div>
           </div>
-          <div className="flex items-center justify-between text-[10px] font-sans text-[#666] dark:text-[#AAA]">
+          <div className="flex items-center justify-between text-[10px] font-sans text-[#666] dark:text-[#AAA] dark:text-[#AAAAAA]">
             <span>
               ${(20.02 * statsMultiplier).toFixed(2)}M updates since load
             </span>
             <button
               onClick={() => setShowFeed(!showFeed)}
-              className="hidden md:flex font-mono text-[9px] uppercase tracking-widest text-[#888] hover:text-[#111] items-center gap-1 transition-colors"
+              className="hidden md:flex font-mono text-[9px] uppercase tracking-widest text-[#888] hover:text-[#111] items-center gap-1 transition-colors dark:text-[#888888] dark:hover:text-white"
             >
               {showFeed ? "HIDE FEED" : "SHOW FEED"}{" "}
               <ChevronDown
@@ -400,12 +400,12 @@ export function LiveEcosystem({
       </div>
 
       {/* Main Chart Panel */}
-      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm flex flex-col dark:bg-[#000000] dark:border-[#333333]">
         {/* Panel Header */}
-        <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex flex-col md:flex-row md:items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888] gap-3">
+        <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex flex-col md:flex-row md:items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888] gap-3 dark:border-[#333333] dark:text-[#888888]">
           <div className="flex flex-wrap items-center gap-3">
             <div className="relative group">
-              <span className="text-[#111] dark:text-white font-semibold flex items-center cursor-help border-b border-dashed border-[#888] hover:text-[#FF5C00] transition-colors relative z-10">
+              <span className="text-[#111] dark:text-white font-semibold flex items-center cursor-help border-b border-dashed border-[#888] hover:text-[#FF5C00] transition-colors relative z-10 dark:border-[#666666]">
                 STREAMED VOLUME
               </span>
               {/* Tooltip Content */}
@@ -426,7 +426,7 @@ export function LiveEcosystem({
             <span className="hidden md:inline text-[#E5E5E5] mx-1">|</span>
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="flex items-center justify-center w-5 h-5 rounded-[2px] hover:bg-[#F0F0F0] hover:text-[#111] text-[#888] transition-colors"
+              className="flex items-center justify-center w-5 h-5 rounded-[2px] hover:bg-[#F0F0F0] hover:text-[#111] text-[#888] transition-colors dark:hover:text-white dark:text-[#888888]"
               title={isPlaying ? "Pause stream" : "Play stream"}
             >
               {isPlaying ? (
@@ -453,7 +453,7 @@ export function LiveEcosystem({
           </div>
           <button
             onClick={() => setShowFeed(!showFeed)}
-            className="hidden md:flex items-center gap-1 hover:text-[#111] transition-colors"
+            className="hidden md:flex items-center gap-1 hover:text-[#111] transition-colors dark:hover:text-white"
           >
             {showFeed ? "HIDE FEED" : "SHOW FEED"}{" "}
             <ChevronDown
@@ -484,7 +484,7 @@ export function LiveEcosystem({
                       <span className="font-sans text-[12px] font-medium text-[#111] dark:text-white">
                         {chain.name}
                       </span>
-                      <span className="font-mono text-[10px] text-[#888]">
+                      <span className="font-mono text-[10px] text-[#888] dark:text-[#888888]">
                         {chain.amt}
                       </span>
                     </div>
@@ -499,11 +499,11 @@ export function LiveEcosystem({
               <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute left-0 right-12 top-[6px] h-px border-t border-dashed border-[#E5E5E5]/60 z-0"></div>
                 <div className="absolute left-0 right-12 top-[calc(50%-12px)] h-px border-t border-dashed border-[#E5E5E5]/60 z-0"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-12 border-l border-dashed border-[#E5E5E5]/50 flex flex-col justify-between items-end pb-8 z-10 bg-white/50 dark:bg-[#0a0a0a]/50 backdrop-blur-[1px]">
-                  <span className="text-[#888] font-mono text-[9px]">
+                <div className="absolute right-0 top-0 bottom-0 w-12 border-l border-dashed border-[#E5E5E5]/50 flex flex-col justify-between items-end pb-8 z-10 bg-white/50 dark:bg-[#0a0a0a]/50 backdrop-blur-[1px] dark:bg-[#000000]/50">
+                  <span className="text-[#888] font-mono text-[9px] dark:text-[#888888]">
                     5.00M
                   </span>
-                  <span className="text-[#888] font-mono text-[9px]">
+                  <span className="text-[#888] font-mono text-[9px] dark:text-[#888888]">
                     2.50M
                   </span>
                   <span></span>
@@ -512,10 +512,10 @@ export function LiveEcosystem({
 
               {/* X Axis */}
               <div className="absolute left-0 right-12 bottom-0 h-6 border-t border-dashed border-[#E5E5E5]/50 flex justify-between items-end">
-                <span className="text-[#888] font-mono text-[9px]">
+                <span className="text-[#888] font-mono text-[9px] dark:text-[#888888]">
                   10 min ago
                 </span>
-                <span className="text-[#888] font-mono text-[9px]">now</span>
+                <span className="text-[#888] font-mono text-[9px] dark:text-[#888888]">now</span>
               </div>
 
               {/* Chart Mock - Lines SVG */}
@@ -664,7 +664,7 @@ export function LiveEcosystem({
                             transition: { duration: 0.15 },
                           }}
                           transition={{ duration: 0.4, ease: "easeOut" }}
-                          className="absolute right-0 bg-white dark:bg-[#0a0a0a] border shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-[2px] py-1 pl-1.5 pr-2.5 flex items-center justify-between pointer-events-auto whitespace-nowrap min-w-0 overflow-hidden"
+                          className="absolute right-0 bg-white dark:bg-[#0a0a0a] border shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-[2px] py-1 pl-1.5 pr-2.5 flex items-center justify-between pointer-events-auto whitespace-nowrap min-w-0 overflow-hidden dark:bg-[#000000]"
                           style={{
                             top: `calc(${relativeY}% - 14px)`,
                             borderColor: tag.color,
@@ -698,8 +698,8 @@ export function LiveEcosystem({
 
           {/* Live Feed Sidebar */}
           {showFeed && (
-            <div className="w-full md:w-[320px] lg:w-[360px] border-t md:border-t-0 md:border-l border-[#E5E5E5] dark:border-[#333] flex flex-col bg-[#FAFAFA] dark:bg-[#111]">
-              <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888]">
+            <div className="w-full md:w-[320px] lg:w-[360px] border-t md:border-t-0 md:border-l border-[#E5E5E5] dark:border-[#333] flex flex-col bg-[#FAFAFA] dark:bg-[#111] dark:border-[#333333] dark:bg-[#0a0a0a]">
+              <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888] dark:border-[#333333] dark:text-[#888888]">
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-[#111] dark:text-white">LIVE FEED</span>
                   <div
@@ -718,14 +718,14 @@ export function LiveEcosystem({
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.2 }}
-                      className="flex justify-between items-center px-3 md:px-4 border-b border-[#E5E5E5]/50 hover:bg-white transition-colors cursor-pointer group overflow-hidden origin-top"
+                      className="flex justify-between items-center px-3 md:px-4 border-b border-[#E5E5E5]/50 hover:bg-white transition-colors cursor-pointer group overflow-hidden origin-top dark:hover:bg-[#111111]"
                     >
                       <div className="flex w-full items-center justify-between py-2.5">
                         <div className="flex items-center gap-2 md:gap-3 min-w-0 pr-4">
-                          <div className="text-[#888] shrink-0">
+                          <div className="text-[#888] shrink-0 dark:text-[#888888]">
                             <Box className="w-4 h-4" />
                           </div>
-                          <span className="font-mono text-[11px] text-[#222] dark:text-[#E0E0E0] truncate">
+                          <span className="font-mono text-[11px] text-[#222] dark:text-[#E0E0E0] truncate dark:text-[#EAEAEA]">
                             {item.pair}
                           </span>
                         </div>

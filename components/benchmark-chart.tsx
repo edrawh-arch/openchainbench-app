@@ -10,11 +10,13 @@ import {
   CartesianGrid,
 } from "recharts";
 
+import { useTheme } from "next-themes";
+
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white dark:bg-[#0a0a0a] border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50">
-        <p className="text-[#888] mb-2 pb-2 border-b border-black/5 uppercase tracking-widest text-[9px]">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50 dark:bg-[#000000] dark:border-white/15">
+        <p className="text-[#888] mb-2 pb-2 border-b border-black/5 uppercase tracking-widest text-[9px] dark:text-[#888888] dark:border-white/10">
           {label}
         </p>
         {payload.map((entry: any, index: number) => (
@@ -22,10 +24,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             key={index}
             className="flex items-center justify-between gap-4 mb-1.5 last:mb-0"
           >
-            <span className="font-sans font-medium text-black">
+            <span className="font-sans font-medium text-black dark:text-white">
               {entry.dataKey}
             </span>
-            <span className="text-[#555] dark:text-[#AAA]">{entry.value.toFixed(1)}s</span>
+            <span className="text-[#555] dark:text-[#AAA] dark:text-[#BBBBBB]">{entry.value.toFixed(1)}s</span>
           </div>
         ))}
       </div>
@@ -35,12 +37,17 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   if (!data || data.length === 0) return null;
 
   const renderCustomDot = (props: any) => {
     const { cx, cy, stroke, index, dataKey, payload } = props;
     if (index === data.length - 1) {
-      const textColor = dataKey === "GeckoTerminal" ? "#000" : stroke;
+      const isCodex = dataKey === "Codex";
+      const defaultTextColor = isDark ? "#fff" : "#000";
+      const textColor = dataKey === "GeckoTerminal" ? defaultTextColor : (isCodex ? defaultTextColor : stroke);
 
       let yOffset = 0;
       if (dataKey === "Codex") yOffset = -12;
@@ -62,7 +69,7 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
           <text
             x={cx + 8}
             y={cy + 15 + yOffset}
-            fill="#888"
+            fill={isDark ? "#666" : "#888"}
             fontSize={10}
             fontFamily="monospace"
           >
@@ -122,9 +129,9 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
               </defs>
               <XAxis
                 dataKey="time"
-                axisLine={{ stroke: "#000", strokeWidth: 1, opacity: 0.1 }}
+                axisLine={{ stroke: isDark ? "#fff" : "#000", strokeWidth: 1, opacity: 0.1 }}
                 tickLine={false}
-                tick={{ fontSize: 9, fill: "#888", fontFamily: "monospace" }}
+                tick={{ fontSize: 9, fill: isDark ? "#666" : "#888", fontFamily: "monospace" }}
                 dy={10}
               />
               <YAxis
@@ -132,15 +139,15 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
                 ticks={[0, 3.2, 6.4, 9.6, 15]}
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 9, fill: "#888", fontFamily: "monospace" }}
+                tick={{ fontSize: 9, fill: isDark ? "#666" : "#888", fontFamily: "monospace" }}
                 tickFormatter={(val) => (val === 0 ? "0" : `${val}s`)}
                 width={28}
               />
-              <CartesianGrid vertical={false} stroke="#E5E5E5" />
+              <CartesianGrid vertical={false} stroke={isDark ? "#333" : "#E5E5E5"} />
               <Tooltip
                 content={<CustomTooltip />}
                 cursor={{
-                  stroke: "#000",
+                  stroke: isDark ? "#fff" : "#000",
                   strokeWidth: 1,
                   strokeDasharray: "2 2",
                   strokeOpacity: 0.3,
@@ -159,7 +166,7 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
               <Line
                 type="stepAfter"
                 dataKey="Codex"
-                stroke="#111111"
+                stroke={isDark ? "#FFFFFF" : "#111111"}
                 strokeWidth={1.5}
                 isAnimationActive={false}
                 dot={renderCustomDot}
@@ -178,22 +185,22 @@ export function BenchmarkChart({ data }: { type?: string; data: any[] }) {
           </ResponsiveContainer>
         </div>
       </div>
-      <div className="flex gap-6 text-[10px] font-sans font-semibold text-black items-center justify-start pt-4 border-t border-black/10">
+      <div className="flex gap-6 text-[10px] font-sans font-semibold text-black dark:text-white items-center justify-start pt-4 border-t border-black/10 dark:border-white/15">
         <div className="flex gap-2 items-center">
           <div className="w-4 h-[2px] bg-[#CCCCCC]"></div> GeckoTerminal{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal">
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
             11.0 s
           </span>
         </div>
         <div className="flex gap-2 items-center">
-          <div className="w-4 h-[2px] bg-[#111111]"></div> Codex{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal">
+          <div className="w-4 h-[2px] bg-[#111111] dark:bg-white"></div> Codex{" "}
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
             1.6 s
           </span>
         </div>
         <div className="flex gap-2 items-center">
           <div className="w-4 h-[2px] bg-[#FF5C00]"></div> Mobula{" "}
-          <span className="font-mono text-[9px] text-[#888] font-normal">
+          <span className="font-mono text-[9px] text-[#888] font-normal dark:text-[#888888]">
             0.9 s
           </span>
         </div>

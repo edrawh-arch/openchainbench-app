@@ -38,14 +38,14 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
       <div className="w-full max-w-[1000px] px-6">
         <Link
           href="/providers"
-          className="inline-flex items-center gap-1.5 text-[13px] text-[#888] font-sans hover:text-[#111] transition-colors mb-12 group"
+          className="inline-flex items-center gap-1.5 text-[13px] text-[#888] font-sans hover:text-[#111] transition-colors mb-12 group dark:text-[#888888] dark:hover:text-white"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
           All providers
         </Link>
 
         {/* Header Section */}
-        <div className="flex items-center gap-6 mb-12 pb-12 border-b border-[#E5E5E5] dark:border-[#333]">
+        <div className="flex items-center gap-6 mb-12 pb-12 border-b border-[#E5E5E5] dark:border-[#333] dark:border-[#333333]">
           <div
             className="w-[88px] h-[88px] rounded-full flex items-center justify-center text-[42px] font-bold font-sans overflow-hidden shrink-0 border border-[#111]/10 shadow-sm"
             style={{ backgroundColor: provider.logoBg, color: provider.logoFg }}
@@ -56,7 +56,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
             <h1 className="text-4xl md:text-[46px] font-semibold tracking-tight text-[#111] dark:text-white font-sans leading-none">
               {provider.name}
             </h1>
-            <div className="flex items-center gap-3 text-[11px] font-mono text-[#666] dark:text-[#AAA] uppercase tracking-widest mt-2">
+            <div className="flex items-center gap-3 text-[11px] font-mono text-[#666] dark:text-[#AAA] uppercase tracking-widest mt-2 dark:text-[#AAAAAA]">
               <span className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#111]"></span>
                 {provider.benches} BENCHMARKS
@@ -73,7 +73,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
         {/* Info row */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 mb-16 px-2">
           <div className="flex flex-col gap-4">
-            <p className="text-[18px] text-[#555] dark:text-[#AAA] font-sans leading-relaxed max-w-2xl tracking-tight">
+            <p className="text-[18px] text-[#555] dark:text-[#AAA] font-sans leading-relaxed max-w-2xl tracking-tight dark:text-[#BBBBBB]">
               Onchain market data API for EVM and Solana. GraphQL and WebSocket
               feeds for tokens, pairs, trades, and pricing.
             </p>
@@ -81,7 +81,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
               {provider.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] font-mono uppercase tracking-widest text-[#666] dark:text-[#AAA] bg-[#F5F5F5] dark:bg-[#111] px-2 py-1 rounded-[2px] border border-[#E5E5E5] dark:border-[#333]"
+                  className="text-[10px] font-mono uppercase tracking-widest text-[#666] dark:text-[#AAA] bg-[#F5F5F5] dark:bg-[#111] px-2 py-1 rounded-[2px] border border-[#E5E5E5] dark:border-[#333] dark:text-[#AAAAAA] dark:bg-[#111111] dark:border-[#333333]"
                 >
                   {tag}
                 </span>
@@ -91,14 +91,14 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
           <div className="flex flex-col items-start md:items-end gap-3 font-mono text-[10px] uppercase tracking-widest shrink-0 pt-1">
             <Link
               href="#"
-              className="text-[#888] hover:text-[#111] transition-colors flex items-center gap-1.5 border-b border-transparent hover:border-[#111] pb-0.5"
+              className="text-[#888] hover:text-[#111] transition-colors flex items-center gap-1.5 border-b border-transparent hover:border-[#111] pb-0.5 dark:text-[#888888] dark:hover:text-white dark:hover:border-[#AAAAAA]"
             >
               WWW.{provider.name.toUpperCase()}.IO{" "}
               <ExternalLink className="w-3 h-3" />
             </Link>
             <Link
               href="#"
-              className="text-[#888] hover:text-[#111] transition-colors flex items-center gap-1.5 border-b border-transparent hover:border-[#111] pb-0.5"
+              className="text-[#888] hover:text-[#111] transition-colors flex items-center gap-1.5 border-b border-transparent hover:border-[#111] pb-0.5 dark:text-[#888888] dark:hover:text-white dark:hover:border-[#AAAAAA]"
             >
               @{provider.name.toUpperCase()}DATA{" "}
               <ExternalLink className="w-3 h-3" />
@@ -108,14 +108,14 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
 
         {/* Benchmark Record Section */}
         <div className="mb-16">
-          <h2 className="text-[11px] font-mono text-[#888] uppercase tracking-widest mb-6 px-2">
+          <h2 className="text-[11px] font-mono text-[#888] uppercase tracking-widest mb-6 px-2 dark:text-[#888888]">
             BENCHMARK RECORD
           </h2>
-          <div className="flex flex-col border border-[#E5E5E5] dark:border-[#333] rounded-sm bg-white dark:bg-[#0a0a0a] shadow-sm">
+          <div className="flex flex-col border border-[#E5E5E5] dark:border-[#333] rounded-sm bg-white dark:bg-[#0a0a0a] shadow-sm dark:border-[#333333] dark:bg-[#000000]">
             {records.map((record, i) => (
               <div
                 key={i}
-                className={`flex flex-col md:flex-row md:items-center justify-between p-6 group ${i !== records.length - 1 ? "border-b border-[#E5E5E5]" : ""} hover:bg-[#F9F9F9] transition-colors`}
+                className={`flex flex-col md:flex-row md:items-center justify-between p-6 group ${i !== records.length - 1 ? "border-b border-[#E5E5E5]" : ""} hover:bg-[#F9F9F9] transition-colors dark:hover:bg-[#151515]`}
               >
                 <div className="flex items-center gap-6 mb-4 md:mb-0">
                   <div className="flex flex-col items-center justify-center w-12 shrink-0">
@@ -124,7 +124,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
                     >
                       #{record.place}
                     </div>
-                    <div className="font-mono text-[8px] uppercase tracking-widest text-[#AAA]">
+                    <div className="font-mono text-[8px] uppercase tracking-widest text-[#AAA] dark:text-[#666666]">
                       OF {record.total}
                     </div>
                   </div>
@@ -136,11 +136,11 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
                       >
                         {record.title}
                       </Link>
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#AAA] bg-[#F5F5F5] dark:bg-[#111] px-1.5 py-0.5 rounded-[2px] border border-[#E5E5E5] dark:border-[#333] leading-none">
+                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#AAA] bg-[#F5F5F5] dark:bg-[#111] px-1.5 py-0.5 rounded-[2px] border border-[#E5E5E5] dark:border-[#333] leading-none dark:text-[#666666] dark:bg-[#111111] dark:border-[#333333]">
                         {record.category}
                       </span>
                     </div>
-                    <div className="text-[13px] text-[#888] font-sans mt-1">
+                    <div className="text-[13px] text-[#888] font-sans mt-1 dark:text-[#888888]">
                       {record.desc}
                     </div>
                   </div>
@@ -148,12 +148,12 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
                 <div className="flex flex-col items-start md:items-end pl-[72px] md:pl-0 pt-2 md:pt-0">
                   <div className="font-mono text-[18px] text-[#111] dark:text-white font-medium mb-1.5">
                     {record.value}{" "}
-                    <span className="text-[13px] text-[#888] font-sans font-normal ml-0.5">
+                    <span className="text-[13px] text-[#888] font-sans font-normal ml-0.5 dark:text-[#888888]">
                       {record.unit}
                     </span>
                   </div>
-                  <div className="font-mono text-[9px] uppercase tracking-widest text-[#AAA] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E5E5E5]"></span>{" "}
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-[#AAA] flex items-center gap-1.5 dark:text-[#666666]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E5E5E5] dark:bg-[#333333]"></span>{" "}
                     P50 · 24H
                   </div>
                 </div>
@@ -163,27 +163,27 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
         </div>
 
         {/* Embeddable Badges */}
-        <div className="pt-8 mb-16 border-t border-[#E5E5E5] dark:border-[#333]">
-          <h2 className="text-[11px] font-mono text-[#888] uppercase tracking-widest mb-4 px-2">
+        <div className="pt-8 mb-16 border-t border-[#E5E5E5] dark:border-[#333] dark:border-[#333333]">
+          <h2 className="text-[11px] font-mono text-[#888] uppercase tracking-widest mb-4 px-2 dark:text-[#888888]">
             EMBEDDABLE BADGES
           </h2>
           <div className="px-2 mb-8">
-            <p className="text-[16px] text-[#666] dark:text-[#AAA] font-sans leading-relaxed tracking-tight max-w-2xl">
+            <p className="text-[16px] text-[#666] dark:text-[#AAA] font-sans leading-relaxed tracking-tight max-w-2xl dark:text-[#AAAAAA]">
               Drop these on your site to show your standing on a benchmark. The
               SVG fetches the latest figures on every request, so the badge
               stays accurate without redeploying.
             </p>
           </div>
-          <div className="border border-[#E5E5E5] dark:border-[#333] rounded-sm p-8 bg-[#FAFAFA] dark:bg-[#111] max-w-3xl">
+          <div className="border border-[#E5E5E5] dark:border-[#333] rounded-sm p-8 bg-[#FAFAFA] dark:bg-[#111] max-w-3xl dark:border-[#333333] dark:bg-[#0a0a0a]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
               <div>
-                <div className="text-[10px] font-mono text-[#888] uppercase tracking-widest mb-4 font-medium">
+                <div className="text-[10px] font-mono text-[#888] uppercase tracking-widest mb-4 font-medium dark:text-[#888888]">
                   {records[0]?.title.toUpperCase() ||
                     "BEST PROVIDER FOR TOKEN ONCHAIN METADATA"}
                 </div>
                 {/* Fake Badge */}
-                <div className="flex border border-[#E5E5E5] dark:border-[#333] rounded-sm overflow-hidden h-10 w-full max-w-[300px] shadow-sm bg-white dark:bg-[#0a0a0a]">
-                  <div className="bg-[#467d5e] text-white flex flex-col justify-center px-3 border-r border-[#E5E5E5] dark:border-[#333] w-[60px] shrink-0">
+                <div className="flex border border-[#E5E5E5] dark:border-[#333] rounded-sm overflow-hidden h-10 w-full max-w-[300px] shadow-sm bg-white dark:bg-[#0a0a0a] dark:border-[#333333] dark:bg-[#000000]">
+                  <div className="bg-[#467d5e] text-white flex flex-col justify-center px-3 border-r border-[#E5E5E5] dark:border-[#333] w-[60px] shrink-0 dark:border-[#333333]">
                     <div className="text-[8px] font-bold font-mono tracking-widest uppercase mb-0.5 leading-none">
                       OCB
                     </div>
@@ -196,7 +196,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
                       {records[0]?.title ||
                         "Best provider for token onchain metadata"}
                     </div>
-                    <div className="text-[9px] font-mono text-[#888] leading-none">
+                    <div className="text-[9px] font-mono text-[#888] leading-none dark:text-[#888888]">
                       {records[0]?.value || "52.5"}% (24h avg)
                     </div>
                   </div>
@@ -204,7 +204,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
               </div>
 
               <div className="flex items-end self-start md:self-end">
-                <button className="h-10 px-4 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm text-[12px] font-mono text-[#111] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#222] transition-colors flex items-center gap-2 font-medium shadow-sm">
+                <button className="h-10 px-4 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm text-[12px] font-mono text-[#111] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#222] transition-colors flex items-center gap-2 font-medium shadow-sm dark:bg-[#000000] dark:border-[#333333] dark:hover:bg-[#222222]">
                   <Code className="w-3.5 h-3.5" /> COPY HTML
                 </button>
               </div>
@@ -220,13 +220,13 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
           </div>
 
           <div className="mt-8 px-2 flex items-center gap-4">
-            <div className="text-[10px] font-mono text-[#888] uppercase tracking-widest flex items-center gap-1.5">
+            <div className="text-[10px] font-mono text-[#888] uppercase tracking-widest flex items-center gap-1.5 dark:text-[#888888]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#111]"></span> RAW
               FIGURES
             </div>
             <Link
               href="#"
-              className="text-[10px] font-mono uppercase tracking-widest text-[#888] border-b border-[#E5E5E5] dark:border-[#333] hover:border-[#111] hover:text-[#111] transition-colors flex items-center gap-1 pb-px"
+              className="text-[10px] font-mono uppercase tracking-widest text-[#888] border-b border-[#E5E5E5] dark:border-[#333] hover:border-[#111] hover:text-[#111] transition-colors flex items-center gap-1 pb-px dark:text-[#888888] dark:border-[#333333] dark:hover:border-[#AAAAAA] dark:hover:text-white"
             >
               /API/CITABLE <ExternalLink className="w-2.5 h-2.5" />
             </Link>

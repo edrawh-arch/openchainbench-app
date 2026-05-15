@@ -46,7 +46,7 @@ export function Header() {
           </button>
         </div>
       )}
-      <header className="border-b border-[#F0F0F0] dark:border-[#222] py-4 md:py-5 px-6 shrink-0 text-sm bg-white dark:bg-[#0a0a0a] relative">
+      <header className="border-b border-[#F0F0F0] dark:border-[#222] py-4 md:py-5 px-6 shrink-0 text-sm bg-white dark:bg-[#0a0a0a] relative dark:border-[#222222] dark:bg-[#000000]">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <svg
@@ -77,7 +77,7 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-[#888] font-medium">
+          <nav className="hidden md:flex items-center gap-8 text-[#888] font-medium dark:text-[#888888]">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"
@@ -93,7 +93,7 @@ export function Header() {
                 </Link>
               );
             })}
-            <div className="w-[1px] h-4 bg-[#E5E5E5] mx-[-12px]"></div>
+            <div className="w-[1px] h-4 bg-[#E5E5E5] mx-[-12px] dark:bg-[#333333]"></div>
             <Link
               href="#"
               className="hover:text-black transition-colors flex items-center gap-2"
@@ -129,7 +129,7 @@ export function Header() {
 
         {/* Mobile menu dropdown */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white dark:bg-[#0a0a0a] border-b border-[#F0F0F0] dark:border-[#222] shadow-lg md:hidden flex flex-col py-2 px-6">
+          <div className="absolute top-full left-0 w-full bg-white dark:bg-[#0a0a0a] border-b border-[#F0F0F0] dark:border-[#222] shadow-lg md:hidden flex flex-col py-2 px-6 dark:bg-[#000000] dark:border-[#222222]">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"
@@ -147,7 +147,7 @@ export function Header() {
             })}
             <Link
               href="#"
-              className="py-3 font-medium text-[#888] hover:text-[#111] transition-colors flex items-center gap-2"
+              className="py-3 font-medium text-[#888] hover:text-[#111] transition-colors flex items-center gap-2 dark:text-[#888888] dark:hover:text-white"
             >
               <svg
                 width="16"

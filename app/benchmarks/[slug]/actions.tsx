@@ -12,13 +12,13 @@ export function BenchmarkActions({ data }: { data: any }) {
       <div className="flex gap-2">
         <button
           onClick={() => setShowExport(true)}
-          className="flex items-center gap-1.5 border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white px-3 md:px-4 py-1.5 rounded-sm text-[10px] md:text-[11px] font-mono tracking-widest uppercase hover:border-[#FF5C00] hover:text-[#FF5C00] hover:bg-[#FF5C00]/5 transition-colors"
+          className="flex items-center gap-1.5 border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white px-3 md:px-4 py-1.5 rounded-sm text-[10px] md:text-[11px] font-mono tracking-widest uppercase hover:border-[#FF5C00] hover:text-[#FF5C00] hover:bg-[#FF5C00]/5 transition-colors dark:border-[#333333] dark:bg-[#000000]"
         >
           <ImageIcon className="w-3.5 h-3.5" /> EXPORT
         </button>
         <button
           onClick={() => setShowReport(true)}
-          className="flex items-center gap-1.5 border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white px-3 md:px-4 py-1.5 rounded-sm text-[10px] md:text-[11px] font-mono tracking-widest uppercase hover:border-[#FF5C00] hover:text-[#FF5C00] hover:bg-[#FF5C00]/5 transition-colors"
+          className="flex items-center gap-1.5 border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white px-3 md:px-4 py-1.5 rounded-sm text-[10px] md:text-[11px] font-mono tracking-widest uppercase hover:border-[#FF5C00] hover:text-[#FF5C00] hover:bg-[#FF5C00]/5 transition-colors dark:border-[#333333] dark:bg-[#000000]"
         >
           <AlertTriangle className="w-3.5 h-3.5" /> REPORT
         </button>
@@ -30,65 +30,65 @@ export function BenchmarkActions({ data }: { data: any }) {
           onClick={() => setShowExport(false)}
         >
           <div
-            className="bg-white dark:bg-[#0a0a0a] w-full max-w-[800px] border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-2xl relative my-auto"
+            className="bg-white dark:bg-[#0a0a0a] w-full max-w-[800px] border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-2xl relative my-auto dark:bg-[#000000] dark:border-[#333333]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-[#E5E5E5] dark:border-[#333] p-5">
+            <div className="flex items-center justify-between border-b border-[#E5E5E5] dark:border-[#333] p-5 dark:border-[#333333]">
               <h3 className="font-mono text-[11px] tracking-widest uppercase text-[#111] dark:text-white">
                 Export as Image &middot; 5 Layouts
               </h3>
               <button
                 onClick={() => setShowExport(false)}
-                className="text-[#888] hover:text-[#111] transition-colors"
+                className="text-[#888] hover:text-[#111] transition-colors dark:text-[#888888] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
             <div className="p-6 md:p-8">
-              <p className="text-[14px] text-[#444] dark:text-[#CCC] mb-6 font-sans">
+              <p className="text-[14px] text-[#444] dark:text-[#CCC] mb-6 font-sans dark:text-[#CCCCCC]">
                 Pick a layout and download a 1200&times;630 PNG ready for
                 Twitter, Reddit, LinkedIn or any OG-card embed. Same data, same
                 colors as this dashboard.
               </p>
 
-              <div className="flex flex-wrap gap-0 font-mono text-[10px] tracking-widest uppercase mb-6 rounded-sm border border-[#E5E5E5] dark:border-[#333] w-fit overflow-hidden bg-[#FAFAFA] dark:bg-[#111]">
-                <button className="px-4 py-2.5 bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white border-r border-[#E5E5E5] dark:border-[#333]">
+              <div className="flex flex-wrap gap-0 font-mono text-[10px] tracking-widest uppercase mb-6 rounded-sm border border-[#E5E5E5] dark:border-[#333] w-fit overflow-hidden bg-[#FAFAFA] dark:bg-[#111] dark:border-[#333333] dark:bg-[#0a0a0a]">
+                <button className="px-4 py-2.5 bg-white dark:bg-[#0a0a0a] text-[#111] dark:text-white border-r border-[#E5E5E5] dark:border-[#333] dark:bg-[#000000] dark:border-[#333333]">
                   Ranking
                 </button>
-                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors">
+                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors dark:text-[#888888] dark:hover:text-white dark:border-[#333333]">
                   Leaderboard
                 </button>
-                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors">
+                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors dark:text-[#888888] dark:hover:text-white dark:border-[#333333]">
                   Snapshot
                 </button>
-                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors">
+                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] border-r border-[#E5E5E5] dark:border-[#333] transition-colors dark:text-[#888888] dark:hover:text-white dark:border-[#333333]">
                   Headline
                 </button>
-                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] transition-colors">
+                <button className="px-4 py-2.5 text-[#888] hover:text-[#111] transition-colors dark:text-[#888888] dark:hover:text-white">
                   Compare
                 </button>
               </div>
 
-              <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-4 font-sans">
+              <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-4 font-sans dark:text-[#AAAAAA]">
                 Vertical bars sorted ascending by p50, with provider names and
                 p99 tails.
               </p>
 
               {/* Fake image mock */}
-              <div className="w-full aspect-[1200/630] border border-[#E5E5E5] dark:border-[#333] rounded-sm bg-[#FAFAFA] dark:bg-[#111] p-8 flex flex-col justify-between mb-6 shadow-sm overflow-hidden relative">
+              <div className="w-full aspect-[1200/630] border border-[#E5E5E5] dark:border-[#333] rounded-sm bg-[#FAFAFA] dark:bg-[#111] p-8 flex flex-col justify-between mb-6 shadow-sm overflow-hidden relative dark:border-[#333333] dark:bg-[#0a0a0a]">
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-2">
                     <div className="font-serif font-bold text-lg">C</div>
-                    <span className="font-sans text-[13px] text-[#444] dark:text-[#CCC]">
+                    <span className="font-sans text-[13px] text-[#444] dark:text-[#CCC] dark:text-[#CCCCCC]">
                       OpenChainBench
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-[8px] font-mono tracking-widest uppercase text-[#888]">
+                  <div className="flex items-center gap-2 text-[8px] font-mono tracking-widest uppercase text-[#888] dark:text-[#888888]">
                     <span className="flex items-center gap-1 bg-[#DCE7E1] text-[#335A48] px-2 py-1 rounded-full">
                       <span className="w-1 h-1 bg-[#335A48] rounded-full"></span>{" "}
                       Live &middot; 24H
                     </span>
-                    <span className="border border-[#E5E5E5] dark:border-[#333] px-2 py-1 rounded-full">
+                    <span className="border border-[#E5E5E5] dark:border-[#333] px-2 py-1 rounded-full dark:border-[#333333]">
                       {data.tags[0]?.label || "DATA"}
                     </span>
                     <span>May 14, 2026 &middot; 09:43 UTC</span>
@@ -98,7 +98,7 @@ export function BenchmarkActions({ data }: { data: any }) {
                   <h2 className="text-4xl text-[#111] dark:text-white font-sans font-semibold tracking-tight mb-2">
                     {data.title}
                   </h2>
-                  <p className="font-sans text-[#666] dark:text-[#AAA] text-[13px]">
+                  <p className="font-sans text-[#666] dark:text-[#AAA] text-[13px] dark:text-[#AAAAAA]">
                     Provider ranking by p50 &middot; Quote latency.
                   </p>
                 </div>
@@ -107,69 +107,69 @@ export function BenchmarkActions({ data }: { data: any }) {
                   <div className="flex flex-col items-center flex-1 h-[20%]">
                     <span className="mb-2 font-sans text-sm text-[#111] dark:text-white">
                       31
-                      <span className="text-[9px] text-[#888] ml-0.5">ms</span>
+                      <span className="text-[9px] text-[#888] ml-0.5 dark:text-[#888888]">ms</span>
                     </span>
                     <div className="w-full h-full bg-[#4A4746] rounded-t-[2px]"></div>
                     <span className="mt-3 font-sans text-[12px] text-[#111] dark:text-white font-semibold flex items-center gap-1">
-                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0">
+                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0 dark:border-[#333333] dark:bg-[#000000]">
                         M
                       </span>{" "}
                       Mobula
                     </span>
-                    <span className="mt-1 font-mono text-[8px] text-[#888]">
+                    <span className="mt-1 font-mono text-[8px] text-[#888] dark:text-[#888888]">
                       p99 680 ms
                     </span>
                   </div>
                   <div className="flex flex-col items-center flex-1 h-[40%]">
                     <span className="mb-2 font-sans text-sm text-[#111] dark:text-white">
                       508
-                      <span className="text-[9px] text-[#888] ml-0.5">ms</span>
+                      <span className="text-[9px] text-[#888] ml-0.5 dark:text-[#888888]">ms</span>
                     </span>
                     <div className="w-full h-full bg-[#A26D5A] rounded-t-[2px]"></div>
                     <span className="mt-3 font-sans text-[12px] text-[#111] dark:text-white font-semibold flex items-center gap-1">
-                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0">
+                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0 dark:border-[#333333] dark:bg-[#000000]">
                         D
                       </span>{" "}
                       Debridge
                     </span>
-                    <span className="mt-1 font-mono text-[8px] text-[#888]">
+                    <span className="mt-1 font-mono text-[8px] text-[#888] dark:text-[#888888]">
                       p99 4.34 s
                     </span>
                   </div>
                   <div className="flex flex-col items-center flex-1 h-[55%]">
                     <span className="mb-2 font-sans text-sm text-[#111] dark:text-white">
                       975
-                      <span className="text-[9px] text-[#888] ml-0.5">ms</span>
+                      <span className="text-[9px] text-[#888] ml-0.5 dark:text-[#888888]">ms</span>
                     </span>
                     <div className="w-full h-full bg-[#628886] rounded-t-[2px]"></div>
                     <span className="mt-3 font-sans text-[12px] text-[#111] dark:text-white font-semibold flex items-center gap-1">
-                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0">
+                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-white dark:bg-[#0a0a0a] text-[7px] text-center flex-shrink-0 dark:border-[#333333] dark:bg-[#000000]">
                         R
                       </span>{" "}
                       Relay
                     </span>
-                    <span className="mt-1 font-mono text-[8px] text-[#888]">
+                    <span className="mt-1 font-mono text-[8px] text-[#888] dark:text-[#888888]">
                       p99 4.71 s
                     </span>
                   </div>
                   <div className="flex flex-col items-center flex-1 h-[80%]">
                     <span className="mb-2 font-sans text-sm text-[#111] dark:text-white">
                       1.55
-                      <span className="text-[9px] text-[#888] ml-0.5">s</span>
+                      <span className="text-[9px] text-[#888] ml-0.5 dark:text-[#888888]">s</span>
                     </span>
                     <div className="w-full h-full bg-[#AC9649] rounded-t-[2px]"></div>
                     <span className="mt-3 font-sans text-[12px] text-[#111] dark:text-white font-semibold flex items-center gap-1">
-                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-[#F0E4FF] text-[#8B3DFF] text-[7px] text-center flex-shrink-0">
+                      <span className="w-3 h-3 border border-[#E5E5E5] dark:border-[#333] rounded-full inline-block bg-[#F0E4FF] text-[#8B3DFF] text-[7px] text-center flex-shrink-0 dark:border-[#333333]">
                         L
                       </span>{" "}
                       LiFi
                     </span>
-                    <span className="mt-1 font-mono text-[8px] text-[#888]">
+                    <span className="mt-1 font-mono text-[8px] text-[#888] dark:text-[#888888]">
                       p99 4.91 s
                     </span>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-[7px] font-mono tracking-widest text-[#888] uppercase mt-8 border-t border-[#111] pt-3">
+                <div className="flex justify-between items-center text-[7px] font-mono tracking-widest text-[#888] uppercase mt-8 border-t border-[#111] pt-3 dark:text-[#888888] dark:border-[#888888]">
                   <span>
                     OPENCHAINBENCH.COM &middot; N&ordm; {data.number} &middot;{" "}
                     {data.tags[0]?.label || "DATA"}
@@ -184,7 +184,7 @@ export function BenchmarkActions({ data }: { data: any }) {
                 <button className="flex items-center gap-2 bg-[#FF5C00] text-white px-5 py-3 rounded-sm text-[11px] font-mono tracking-widest uppercase hover:bg-[#E05200] transition-colors">
                   <Download className="w-4 h-4" /> Download PNG
                 </button>
-                <button className="text-[#888] hover:text-[#111] font-mono text-[11px] tracking-widest uppercase transition-colors">
+                <button className="text-[#888] hover:text-[#111] font-mono text-[11px] tracking-widest uppercase transition-colors dark:text-[#888888] dark:hover:text-white">
                   OPEN RAW &nearr;
                 </button>
               </div>
@@ -199,36 +199,36 @@ export function BenchmarkActions({ data }: { data: any }) {
           onClick={() => setShowReport(false)}
         >
           <div
-            className="bg-white dark:bg-[#0a0a0a] w-full max-w-[500px] border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-2xl relative"
+            className="bg-white dark:bg-[#0a0a0a] w-full max-w-[500px] border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-2xl relative dark:bg-[#000000] dark:border-[#333333]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-[#E5E5E5] dark:border-[#333] p-5">
+            <div className="flex items-center justify-between border-b border-[#E5E5E5] dark:border-[#333] p-5 dark:border-[#333333]">
               <h3 className="font-mono text-[11px] tracking-widest uppercase text-[#111] dark:text-white">
                 Report a problem
               </h3>
               <button
                 onClick={() => setShowReport(false)}
-                className="text-[#888] hover:text-[#111] transition-colors"
+                className="text-[#888] hover:text-[#111] transition-colors dark:text-[#888888] dark:hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
             <div className="p-6">
-              <p className="text-[14px] text-[#444] dark:text-[#CCC] mb-6 font-sans leading-relaxed">
+              <p className="text-[14px] text-[#444] dark:text-[#CCC] mb-6 font-sans leading-relaxed dark:text-[#CCCCCC]">
                 Spotted a wrong number, a missing provider, an outage, or
                 anything off about this benchmark? Tell us, it goes straight to
                 a maintainer.
               </p>
 
               <div className="mb-6">
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#888] mb-2">
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-[#888] mb-2 dark:text-[#888888]">
                   What&apos;s wrong?
                 </label>
                 <textarea
-                  className="w-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] focus:border-[#111] rounded-sm p-3 font-sans text-[14px] text-[#111] dark:text-white placeholder:text-[#AAA] dark:placeholder:text-[#666] focus:outline-none focus:ring-1 focus:ring-[#111] resize-none h-32"
+                  className="w-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] focus:border-[#111] rounded-sm p-3 font-sans text-[14px] text-[#111] dark:text-white placeholder:text-[#AAA] dark:placeholder:text-[#666] focus:outline-none focus:ring-1 focus:ring-[#111] resize-none h-32 dark:bg-[#000000] dark:border-[#333333] dark:placeholder:text-[#555555]"
                   placeholder="Describe what you saw, when, and where (chain / provider / time range)."
                 ></textarea>
-                <div className="mt-1 text-[10px] text-[#888] font-sans">
+                <div className="mt-1 text-[10px] text-[#888] font-sans dark:text-[#888888]">
                   0 / 2000
                 </div>
               </div>
@@ -238,7 +238,7 @@ export function BenchmarkActions({ data }: { data: any }) {
                   <div className="relative flex items-center justify-center pt-1">
                     <input
                       type="checkbox"
-                      className="peer w-4 h-4 appearance-none border border-[#111] rounded-sm checked:bg-[#111] checked:border-[#111] cursor-pointer transition-colors"
+                      className="peer w-4 h-4 appearance-none border border-[#111] rounded-sm checked:bg-[#111] checked:border-[#111] cursor-pointer transition-colors dark:border-[#888888]"
                     />
                     <svg
                       className="absolute w-3 h-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity"
@@ -258,7 +258,7 @@ export function BenchmarkActions({ data }: { data: any }) {
                     <div className="text-[14px] text-[#111] dark:text-white font-sans">
                       I&apos;d like a reply
                     </div>
-                    <div className="text-[12px] text-[#666] dark:text-[#AAA] font-sans">
+                    <div className="text-[12px] text-[#666] dark:text-[#AAA] font-sans dark:text-[#AAAAAA]">
                       Leave an email, Telegram or GitHub handle so a maintainer
                       can follow up.
                     </div>
@@ -272,7 +272,7 @@ export function BenchmarkActions({ data }: { data: any }) {
                 </button>
                 <button
                   onClick={() => setShowReport(false)}
-                  className="text-[#888] hover:text-[#111] font-mono text-[11px] tracking-widest uppercase transition-colors"
+                  className="text-[#888] hover:text-[#111] font-mono text-[11px] tracking-widest uppercase transition-colors dark:text-[#888888] dark:hover:text-white"
                 >
                   CANCEL
                 </button>

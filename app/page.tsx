@@ -32,7 +32,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/contribute"
-                className="flex border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] text-[#111] dark:text-white w-fit rounded-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors"
+                className="flex border border-[#E5E5E5] dark:border-[#333] bg-white dark:bg-[#0a0a0a] hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] text-[#111] dark:text-white w-fit rounded-sm shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors dark:border-[#333333] dark:bg-[#000000] dark:hover:bg-[#151515]"
               >
                 <div className="px-4 py-2 text-[11px] font-mono tracking-widest uppercase flex items-center gap-2">
                   Contribute <ArrowRight className="w-3.5 h-3.5" />
@@ -192,32 +192,32 @@ export default function Home() {
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[#F0F0F0] dark:border-[#222] pt-16 mb-24 max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[#F0F0F0] dark:border-[#222] pt-16 mb-24 max-w-5xl dark:border-[#222222]">
           <div>
-            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3">
+            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3 dark:text-[#888888]">
               01 / Methodology
             </h3>
-            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC]">
+            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC] dark:text-[#CCCCCC]">
               Runs continuously on independent hardware across US, EU and AP
               zones. Open-source runner configurations ensure full
               reproducibility of results.
             </p>
           </div>
           <div>
-            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3">
+            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3 dark:text-[#888888]">
               02 / Live Sync
             </h3>
-            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC]">
+            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC] dark:text-[#CCCCCC]">
               Latency and error metrics are indexed to the nearest canonical
               chain tip and exposed via dedicated Prometheus endpoints in
               real-time.
             </p>
           </div>
           <div>
-            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3">
+            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-3 dark:text-[#888888]">
               03 / Contributions
             </h3>
-            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC]">
+            <p className="text-[13px] font-sans leading-relaxed text-[#444] dark:text-[#CCC] dark:text-[#CCCCCC]">
               Anyone can submit a new RPC provider, cross-chain bridge or
               indexer via PR. Verified entities are tested and logged publicly.
             </p>
@@ -227,13 +227,13 @@ export default function Home() {
         {/* Benchmarks Section Header */}
         <div
           id="benchmarks"
-          className="flex items-end justify-between border-b-[2px] border-[#111] pb-3 mb-4 font-mono text-[10px] uppercase tracking-widest text-[#888] px-4 md:px-8"
+          className="flex items-end justify-between border-b-[2px] border-[#111] pb-3 mb-4 font-mono text-[10px] uppercase tracking-widest text-[#888] px-4 md:px-8 dark:border-[#888888] dark:text-[#888888]"
         >
           <div className="flex-[1.5] md:mr-8 flex items-center gap-3 flex-wrap">
             <span>Latest deployed benchmarks</span>
             <Link
               href="/benchmarks"
-              className="ml-0 md:ml-2 font-sans text-[11px] bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] text-[#111] dark:text-white hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] hover:border-[#CCC] dark:hover:border-[#444] px-2 py-0.5 rounded-[2px] tracking-normal capitalize flex items-center gap-1 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
+              className="ml-0 md:ml-2 font-sans text-[11px] bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] text-[#111] dark:text-white hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] hover:border-[#CCC] dark:hover:border-[#444] px-2 py-0.5 rounded-[2px] tracking-normal capitalize flex items-center gap-1 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)] dark:bg-[#000000] dark:border-[#333333] dark:hover:bg-[#151515] dark:hover:border-[#555555]"
             >
               See all
             </Link>
@@ -244,24 +244,24 @@ export default function Home() {
 
         {/* Benchmarks List */}
         <div className="flex flex-col mb-16 relative">
-          <div className="relative z-10 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-[0_4px_24px_rgba(0,0,0,0.02)] pt-2 pb-2 max-h-[620px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#E5E5E5] [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#CCC]">
+          <div className="relative z-10 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm border border-[#E5E5E5] dark:border-[#333] rounded-sm shadow-[0_4px_24px_rgba(0,0,0,0.02)] pt-2 pb-2 max-h-[620px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#E5E5E5] [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#CCC] dark:bg-[#000000]/80 dark:border-[#333333]">
             {BENCHMARKS_LIST.map((item) => (
               <Link
                 key={item.id}
                 href={`/benchmarks/${item.id}`}
-                className="py-6 border-b border-[#F0F0F0] dark:border-[#222] last:border-0 group hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] flex flex-col md:flex-row md:items-center px-4 md:px-8 transition-colors relative"
+                className="py-6 border-b border-[#F0F0F0] dark:border-[#222] last:border-0 group hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] flex flex-col md:flex-row md:items-center px-4 md:px-8 transition-colors relative dark:border-[#222222] dark:hover:bg-[#151515]"
               >
                 {/* Col 1: Info */}
                 <div className="flex-[1.5] md:mr-8 mb-4 md:mb-0">
                   <div className="flex items-center gap-4 mb-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#888]">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#888] dark:text-[#888888]">
                       {item.category}
                     </span>
                     <div className="flex -space-x-1.5">
                       {item.lines?.slice(0, 4).map((line) => (
                         <div
                           key={line.name}
-                          className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white"
+                          className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white dark:bg-[#000000] dark:border-[#333333]"
                         >
                           {line.name.charAt(0)}
                         </div>
@@ -314,15 +314,15 @@ export default function Home() {
                 </div>
 
                 {/* Col 4: Value */}
-                <div className="w-full md:w-32 text-left md:text-right shrink-0 pt-2 md:pt-1 mt-2 md:mt-0 flex items-center justify-between md:block border-t border-[#F0F0F0] dark:border-[#222] md:border-none">
-                  <span className="md:hidden font-mono text-[10px] uppercase tracking-widest text-[#888]">
+                <div className="w-full md:w-32 text-left md:text-right shrink-0 pt-2 md:pt-1 mt-2 md:mt-0 flex items-center justify-between md:block border-t border-[#F0F0F0] dark:border-[#222] md:border-none dark:border-[#222222]">
+                  <span className="md:hidden font-mono text-[10px] uppercase tracking-widest text-[#888] dark:text-[#888888]">
                     Value
                   </span>
                   <div>
                     <span className="text-[20px] font-mono tracking-tight text-[#111] dark:text-white">
                       {item.value}{" "}
                     </span>
-                    <span className="text-[#888] font-mono text-[12px]">
+                    <span className="text-[#888] font-mono text-[12px] dark:text-[#888888]">
                       {item.unit}
                     </span>
                   </div>
@@ -335,7 +335,7 @@ export default function Home() {
         <div className="flex justify-end mb-24">
           <Link
             href="/benchmarks"
-            className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#666] dark:text-[#AAA] hover:text-black transition-colors"
+            className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#666] dark:text-[#AAA] hover:text-black transition-colors dark:text-[#AAAAAA]"
           >
             See all benchmarks <ArrowRight className="w-3.5 h-3.5" />
           </Link>
