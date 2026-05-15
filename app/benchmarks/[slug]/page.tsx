@@ -31,6 +31,7 @@ const BENCHMARK_DETAILS: Record<string, any> = {
       samples: "10 093",
       providers: "9 providers",
     },
+    conclusion: "TonAPI and StellarExpert lead with 100% coverage tailored for their respective ecosystems. OLI provides strong multi-chain coverage at nearly 70%. Overall coverage drops steeply among aggregators mapping multiple chains, highlighting challenges in broad label normalization.",
     chains: [
       { id: "all", name: "ALL CHAINS" },
       { id: "ethereum", name: "ETHEREUM", icon: "ethereum" },
@@ -120,6 +121,7 @@ const BENCHMARK_DETAILS: Record<string, any> = {
       samples: "155,140",
       providers: "3 providers",
     },
+    conclusion: "Mobula dominates with sub-second WebSocket feeds (0.8s median) and high consistency. Codex offers a relatively fast GraphQL alternative at 1.3s but faces slight degradation at P99 limits. GeckoTerminal heavily trails behind due to REST polling latency, highlighting the critical performance distinction between event-based pipes and interval endpoints.",
     chains: [
       { id: "all", name: "ALL CHAINS" },
       { id: "solana", name: "SOLANA", icon: "solana" },
@@ -869,6 +871,19 @@ export default function BenchmarkPage({
               </tbody>
             </table>
           </div>
+        </div>
+      )}
+
+      {/* Conclusion */}
+      {data.conclusion && (
+        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+          <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-4 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-[#FF5C00] rounded-full inline-block"></span>
+            CONCLUSION & TAKEAWAYS
+          </h3>
+          <p className="text-[14px] leading-relaxed text-[#555]">
+            {data.conclusion}
+          </p>
         </div>
       )}
 
