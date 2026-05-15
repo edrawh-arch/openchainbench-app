@@ -96,7 +96,7 @@ export function NetworkMetrics({ globalFilter = 'all' }: { globalFilter?: string
              <div>
                <div className="text-[10px] font-sans text-[#666] mb-1">Current TPS (Transactions/sec)</div>
                <div className="font-mono text-3xl font-medium tracking-tight text-[#111]">
-                 {tps.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                 {tps.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                </div>
              </div>
              <div className="w-16 h-8 flex items-end gap-0.5 opacity-50">

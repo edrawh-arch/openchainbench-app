@@ -17,7 +17,7 @@ const nextConfig = {
       },
     ],
   },
-  // output: 'standalone',
+  output: 'standalone',
 
   webpack: (config, {dev}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
