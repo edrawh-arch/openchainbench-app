@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 
 export interface ChartLine {
@@ -7,6 +6,7 @@ export interface ChartLine {
   color: string;
   data: number[];
 }
+
 export function MiniMultiLineChart({
   lines,
   height = 50,
@@ -16,7 +16,6 @@ export function MiniMultiLineChart({
   height?: number | string;
   className?: string;
 }) {
-  const isDark = false;
   let min = Infinity;
   let max = -Infinity;
   lines.forEach((line) => {
@@ -25,17 +24,17 @@ export function MiniMultiLineChart({
       if (val > max) max = val;
     });
   });
+
   if (min === Infinity) return null;
   const range = max - min || 1;
+
   return (
     <div className={`relative w-full ${className}`} style={{ height }}>
-      {" "}
       <svg
         viewBox="0 0 1000 100"
         preserveAspectRatio="none"
         className="w-full h-full overflow-visible"
       >
-        {" "}
         {lines.map((line, idx) => {
           const points = line.data
             .map((val, i) => {
@@ -43,14 +42,13 @@ export function MiniMultiLineChart({
               const y = 100 - ((val - min) / range) * 90 - 5;
               return `${x.toFixed(2)},${y.toFixed(2)}`;
             })
-            .join("");
-          const actualColor =
-            isDark && line.color === "#111111" ? "#FFFFFF" : line.color;
+            .join(" ");
+
           return (
             <polyline
               key={line.id}
               fill="none"
-              stroke={actualColor}
+              stroke={line.color}
               strokeWidth="2"
               strokeLinejoin="round"
               strokeLinecap="round"
@@ -59,13 +57,11 @@ export function MiniMultiLineChart({
               className="opacity-90"
             />
           );
-        })}{" "}
-      </svg>{" "}
+        })}
+      </svg>
       {lines.map((line) => {
         const lastVal = line.data[line.data.length - 1];
         const lastYPercent = 100 - ((lastVal - min) / range) * 90 - 5;
-        const actualColor =
-          isDark && line.color === "#111111" ? "#FFFFFF" : line.color;
         return (
           <div
             key={`dot-${line.id}`}
@@ -73,12 +69,12 @@ export function MiniMultiLineChart({
             style={{
               right: -2.5,
               top: `${lastYPercent}%`,
-              backgroundColor: actualColor,
+              backgroundColor: line.color,
               transform: "translateY(-50%)",
             }}
           />
         );
-      })}{" "}
+      })}
     </div>
   );
 }

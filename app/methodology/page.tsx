@@ -1,283 +1,227 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "OpenChainBench - Methodology" };
+
+export const metadata: Metadata = {
+  title: "OpenChainBench - Methodology",
+};
+
 export default function Methodology() {
   return (
     <div className="w-full flex justify-center py-24 bg-transparent min-h-screen relative z-10">
-      {" "}
       <div className="w-full max-w-[1000px] px-6">
-        {" "}
         <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
-          {" "}
-          Methodology{" "}
-        </h1>{" "}
+          Methodology
+        </h1>
         <p className="text-[20px] text-[#777] font-sans leading-relaxed mb-20 tracking-tight">
-          {" "}
-          How every benchmark is measured, reported and reproduced.{" "}
-        </p>{" "}
-        {/* DESIGN PRINCIPLES */}{" "}
+          How every benchmark is measured, reported and reproduced.
+        </p>
+
+        {/* DESIGN PRINCIPLES */}
         <section className="mb-20">
-          {" "}
           <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
-            {" "}
-            Design Principles{" "}
-          </h2>{" "}
+            Design Principles
+          </h2>
           <div className="flex flex-col gap-8">
-            {" "}
             <div className="flex gap-6">
-              {" "}
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
-                {" "}
-                I.{" "}
-              </span>{" "}
+                I.
+              </span>
               <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 <strong className="text-[#111] font-semibold">
-                  {" "}
-                  Identical inputs.{" "}
+                  Identical inputs.
                 </strong>{" "}
                 Every provider sees the same request. same pair, same notional,
                 same destination. submitted at the same moment from the same
-                region. If inputs differ, we say so.{" "}
-              </p>{" "}
-            </div>{" "}
+                region. If inputs differ, we say so.
+              </p>
+            </div>
             <div className="flex gap-6">
-              {" "}
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
-                {" "}
-                II.{" "}
-              </span>{" "}
+                II.
+              </span>
               <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 <strong className="text-[#111] font-semibold">
-                  {" "}
-                  Honest aggregates.{" "}
+                  Honest aggregates.
                 </strong>{" "}
                 We report p50, p90 and p99 latency along with success rate.
                 Means are reported but never used as a headline. tail behaviour
-                is what users feel.{" "}
-              </p>{" "}
-            </div>{" "}
+                is what users feel.
+              </p>
+            </div>
             <div className="flex gap-6">
-              {" "}
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
-                {" "}
-                III.{" "}
-              </span>{" "}
+                III.
+              </span>
               <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 <strong className="text-[#111] font-semibold">
-                  {" "}
-                  Auditable runs.{" "}
+                  Auditable runs.
                 </strong>{" "}
                 Raw metrics are stored in Prometheus and exposed publicly.
                 Anyone can re-run the harness against the same endpoints and
-                verify the numbers match.{" "}
-              </p>{" "}
-            </div>{" "}
+                verify the numbers match.
+              </p>
+            </div>
             <div className="flex gap-6">
-              {" "}
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
-                {" "}
-                IV.{" "}
-              </span>{" "}
+                IV.
+              </span>
               <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 <strong className="text-[#111] font-semibold">
-                  {" "}
-                  No cherry-picking.{" "}
+                  No cherry-picking.
                 </strong>{" "}
                 The benchmark plan is committed before each run: providers,
                 routes, cadence, timeout. Adding or removing providers after
-                seeing results requires a published correction.{" "}
-              </p>{" "}
-            </div>{" "}
+                seeing results requires a published correction.
+              </p>
+            </div>
             <div className="flex gap-6">
-              {" "}
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
-                {" "}
-                V.{" "}
-              </span>{" "}
+                V.
+              </span>
               <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 <strong className="text-[#111] font-semibold">
-                  {" "}
-                  Neutral presentation.{" "}
+                  Neutral presentation.
                 </strong>{" "}
                 No spec marks a winner ahead of time. Tables sort mechanically
-                by p50; readers compare the columns themselves.{" "}
-              </p>{" "}
-            </div>{" "}
-          </div>{" "}
-        </section>{" "}
-        {/* STATISTICAL CONVENTIONS */}{" "}
+                by p50; readers compare the columns themselves.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* STATISTICAL CONVENTIONS */}
         <section className="mb-20">
-          {" "}
           <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
-            {" "}
-            Statistical Conventions{" "}
-          </h2>{" "}
+            Statistical Conventions
+          </h2>
           <div className="flex flex-col border-b border-[#E5E5E5]">
-            {" "}
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                Latency Aggregates{" "}
-              </div>{" "}
+                Latency Aggregates
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Reported as p50, p90, p99 and arithmetic mean over the run
                 window. Failed requests (timeout, 5xx, malformed response) are
                 excluded from latency aggregates and counted toward success
-                rate.{" "}
-              </div>{" "}
-            </div>{" "}
+                rate.
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                24H Range{" "}
-              </div>{" "}
+                24H Range
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Min and max of p50 observed across the rolling 24-hour window.
                 captures the volatility of each provider, not just its central
-                tendency.{" "}
-              </div>{" "}
-            </div>{" "}
+                tendency.
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                Δ Field{" "}
-              </div>{" "}
+                Δ Field
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Each provider&apos;s p50 expressed as a percentage delta from
-                the field mean. Negative is below the field, positive is
-                above.{" "}
-              </div>{" "}
-            </div>{" "}
+                the field mean. Negative is below the field, positive is above.
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                Success Rate{" "}
-              </div>{" "}
+                Success Rate
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Share of requests returning a usable result within the published
-                timeout. The only metric that includes failures.{" "}
-              </div>{" "}
-            </div>{" "}
+                timeout. The only metric that includes failures.
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                Region Normalisation{" "}
-              </div>{" "}
+                Region Normalisation
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Wherever a benchmark is multi-region, the headline figure is the
                 cross-region median. Per-region figures appear in Fig. 3 of each
-                report.{" "}
-              </div>{" "}
-            </div>{" "}
+                report.
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
-              {" "}
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
-                {" "}
-                Significance{" "}
-              </div>{" "}
+                Significance
+              </div>
               <div className="text-[15px] font-sans text-[#444] leading-relaxed">
-                {" "}
                 Differences smaller than the within-provider standard deviation
-                are noted but not framed as a ranking.{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-        </section>{" "}
-        {/* REPRODUCING A RESULT */}{" "}
+                are noted but not framed as a ranking.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* REPRODUCING A RESULT */}
         <section className="mb-20">
-          {" "}
           <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
-            {" "}
-            Reproducing A Result{" "}
-          </h2>{" "}
+            Reproducing A Result
+          </h2>
           <ol className="flex flex-col gap-6 list-decimal pl-5 text-[15px] font-sans text-[#444] leading-relaxed marker:text-[#111] marker:font-semibold">
-            {" "}
             <li className="pl-2">
-              {" "}
               Clone the harness from the link at the bottom of any benchmark
-              report.{" "}
-            </li>{" "}
+              report.
+            </li>
             <li className="pl-2">
-              {" "}
               Set API keys for the providers you want to include. Public
               endpoints work for most aggregators; some bridges require
-              allow-listing.{" "}
-            </li>{" "}
+              allow-listing.
+            </li>
             <li className="pl-2">
-              {" "}
               Run the harness. it exposes{" "}
               <code className="font-mono text-[11px] bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded-sm shadow-sm text-[#222]">
-                {" "}
-                /metrics{" "}
+                /metrics
               </code>{" "}
               over HTTP. Point a local Prometheus at it, or query the public
-              OpenChainBench Prometheus directly.{" "}
-            </li>{" "}
+              OpenChainBench Prometheus directly.
+            </li>
             <li className="pl-2">
-              {" "}
               Run for at least 24 hours to get a comparable sample size (n
-              typically ≥ 1,000 per provider per region).{" "}
-            </li>{" "}
+              typically ≥ 1,000 per provider per region).
+            </li>
             <li className="pl-2">
-              {" "}
               Compare your aggregates to the published numbers. If they diverge,
               file a{" "}
               <a
                 href="#"
                 className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
               >
-                {" "}
-                provider correction{" "}
+                provider correction
               </a>{" "}
-              with a reproducer.{" "}
-            </li>{" "}
-          </ol>{" "}
-        </section>{" "}
-        {/* CORRECTIONS */}{" "}
+              with a reproducer.
+            </li>
+          </ol>
+        </section>
+
+        {/* CORRECTIONS */}
         <section>
-          {" "}
           <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
-            {" "}
-            Corrections{" "}
-          </h2>{" "}
+            Corrections
+          </h2>
           <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-            {" "}
             Found a number you can&apos;t reproduce? File a{" "}
             <a
               href="#"
               className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
             >
-              {" "}
-              data-quality issue{" "}
+              data-quality issue
             </a>{" "}
             (the published figure looks wrong) or a{" "}
             <a
               href="#"
               className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
             >
-              {" "}
-              provider correction{" "}
+              provider correction
             </a>{" "}
             (your service measures a different value). Material errors are
-            corrected in place with a dated note.{" "}
-          </p>{" "}
-        </section>{" "}
-      </div>{" "}
+            corrected in place with a dated note.
+          </p>
+        </section>
+      </div>
     </div>
   );
 }
