@@ -41,15 +41,15 @@ const BENCHMARK_DETAILS: Record<string, any> = {
       { id: 'bitcoin', name: 'BITCOIN', icon: 'bitcoin' },
     ],
     coverage: [
-      { id: '01', name: 'TonAPI', value: 100.0, color: '#444444' },
-      { id: '02', name: 'StellarExpert', value: 100.0, color: '#6B6B6B' },
-      { id: '03', name: 'OLI', value: 69.6, color: '#A05C6B' },
-      { id: '04', name: 'XRPScan', value: 66.7, color: '#598C63' },
-      { id: '05', name: 'Blockscout', value: 52.5, color: '#7457A6' },
-      { id: '06', name: 'Helius', value: 39.8, color: '#B08846' },
-      { id: '07', name: 'Mobula', value: 39.2, color: '#45797C' },
-      { id: '08', name: 'Moralis', value: 37.0, color: '#9E6252' },
-      { id: '09', name: 'WalletExplorer', value: 32.9, color: '#2B2B2B' }
+      { id: '01', name: 'TonAPI', value: 100.0, color: '#444444', icon: 'https://tonapi.io/apple-touch-icon.png' },
+      { id: '02', name: 'StellarExpert', value: 100.0, color: '#6B6B6B', icon: 'https://stellar.expert/img/logo-stellar.svg' },
+      { id: '03', name: 'OLI', value: 69.6, color: '#A05C6B', icon: null },
+      { id: '04', name: 'XRPScan', value: 66.7, color: '#598C63', icon: 'https://xrpscan.com/favicon.ico' },
+      { id: '05', name: 'Blockscout', value: 52.5, color: '#7457A6', icon: 'https://www.blockscout.com/favicon.ico' },
+      { id: '06', name: 'Helius', value: 39.8, color: '#B08846', icon: 'https://www.helius.dev/favicon.ico' },
+      { id: '07', name: 'Mobula', value: 39.2, color: '#45797C', icon: 'https://mobula.io/favicon.ico' },
+      { id: '08', name: 'Moralis', value: 37.0, color: '#9E6252', icon: 'https://moralis.io/favicon.ico' },
+      { id: '09', name: 'WalletExplorer', value: 32.9, color: '#2B2B2B', icon: null }
     ]
   },
   'fastest-onchain-data-provider': {
@@ -66,6 +66,12 @@ const BENCHMARK_DETAILS: Record<string, any> = {
       samples: '155,140',
       providers: '3 providers'
     },
+    chains: [
+      { id: 'all', name: 'ALL CHAINS' },
+      { id: 'solana', name: 'SOLANA', icon: 'solana' },
+      { id: 'bnb', name: 'BNB CHAIN', icon: 'bnb' },
+      { id: 'base', name: 'BASE', icon: 'base' },
+    ],
     results: [
       { id: '01', name: 'Mobula', type: 'WEBSOCKET FEED', p50: '0.8 s', p90: '1.6 s', p99: '2.4 s', mean: '0.9 s', min: '0.6 s', max: '1.0 s', dField: '-75%', success: '99.77%', n: '51,751', trend: [1, 2, 1, 3, 2, 1, 2, 1, 2, 1] },
       { id: '02', name: 'Codex', type: 'GRAPHQL FEED', p50: '1.3 s', p90: '1.7 s', p99: '2.3 s', mean: '1.3 s', min: '1.4 s', max: '1.7 s', dField: '-58%', success: '99.76%', n: '51,684', trend: [3, 2, 4, 3, 2, 3, 2, 3, 2, 2] },
@@ -266,7 +272,9 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
                         <span className="text-[10px] font-mono text-[#AAA] w-4 mt-px">#{parseInt(row.id, 10)}</span>
                         <div className="flex items-center text-[13px] font-sans font-medium text-[#111] truncate mt-px">
                            {/* logo box */}
-                           <div className="w-[18px] h-[18px] rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2 shadow-sm">{row.name.charAt(0)}</div>
+                           <div className="w-[18px] h-[18px] rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2 shadow-sm">
+                             {row.icon ? <img src={row.icon} alt={row.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement!.innerHTML = row.name.charAt(0) }} /> : row.name.charAt(0)}
+                           </div>
                            {row.name}
                         </div>
                      </div>
