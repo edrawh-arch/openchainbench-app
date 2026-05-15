@@ -208,6 +208,20 @@ export const BENCHMARKS_LIST = [
        { id: 'RedStone', name: 'RedStone', color: '#111111', data: genNoise(0.03, 0.01, pts) },
        { id: 'Mobula', name: 'Mobula', color: '#FF5C00', data: genNoise(0.01, 0.002, pts) },
     ]
+  },
+  {
+    id: 'wallet-labels-coverage',
+    number: '011',
+    numberColor: '#FF5C00',
+    category: 'DATA',
+    title: 'Wallet Labels Coverage',
+    description: 'Percentage of known operational addresses correctly mapped to an entity name.',
+    value: '32.9',
+    unit: '%',
+    live: true,
+    providers: 9,
+    samples: '10,093',
+    updatedAt: 'May 6, 2026, 9:17 AM UTC',
   }
 ];
 

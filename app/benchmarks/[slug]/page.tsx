@@ -11,6 +11,47 @@ const BenchmarkChart = dynamicImport(() => import('@/components/benchmark-chart'
 
 // Mock data to match the screenshot 'Fastest on-chain data provider'
 const BENCHMARK_DETAILS: Record<string, any> = {
+  'wallet-labels-coverage': {
+    id: 'wallet-labels-coverage',
+    title: 'Wallet Labels Coverage',
+    description: 'Percentage of known operational addresses correctly mapped to an entity name.',
+    updatedAt: 'May 6, 2026, 9:17 AM UTC',
+    number: '011',
+    tags: [{ label: 'DATA', live: true }],
+    stats: {
+      best: '32.9 %',
+      median: '52.5 %',
+      worst: '100.0 %',
+      spread: '3.0×   32.9% → 100.0%',
+      samples: '10 093',
+      providers: '9 providers'
+    },
+    chains: [
+      { id: 'all', name: 'ALL CHAINS' },
+      { id: 'ethereum', name: 'ETHEREUM', icon: 'ethereum' },
+      { id: 'solana', name: 'SOLANA', icon: 'solana' },
+      { id: 'bnb', name: 'BNB CHAIN', icon: 'bnb' },
+      { id: 'base', name: 'BASE', icon: 'base' },
+      { id: 'arbitrum', name: 'ARBITRUM', icon: 'arbitrum' },
+      { id: 'polygon', name: 'POLYGON', icon: 'polygon' },
+      { id: 'optimism', name: 'OPTIMISM', icon: 'optimism' },
+      { id: 'ton', name: 'TON', icon: 'ton' },
+      { id: 'stellar', name: 'STELLAR', icon: 'stellar' },
+      { id: 'xrp', name: 'XRP', icon: 'xrp' },
+      { id: 'bitcoin', name: 'BITCOIN', icon: 'bitcoin' },
+    ],
+    coverage: [
+      { id: '01', name: 'TonAPI', value: 100.0, color: '#444444' },
+      { id: '02', name: 'StellarExpert', value: 100.0, color: '#6B6B6B' },
+      { id: '03', name: 'OLI', value: 69.6, color: '#A05C6B' },
+      { id: '04', name: 'XRPScan', value: 66.7, color: '#598C63' },
+      { id: '05', name: 'Blockscout', value: 52.5, color: '#7457A6' },
+      { id: '06', name: 'Helius', value: 39.8, color: '#B08846' },
+      { id: '07', name: 'Mobula', value: 39.2, color: '#45797C' },
+      { id: '08', name: 'Moralis', value: 37.0, color: '#9E6252' },
+      { id: '09', name: 'WalletExplorer', value: 32.9, color: '#2B2B2B' }
+    ]
+  },
   'fastest-onchain-data-provider': {
     title: 'Fastest on-chain data provider',
     description: 'On-chain event to WebSocket emission, in seconds. Measured against canonical-tip archive nodes.',
@@ -120,7 +161,7 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
       </p>
 
       {/* Methodology Section */}
-      <div className="border-t border-[#E5E5E5] mb-12">
+      <div className="border-t border-[#E5E5E5] mb-8">
         <details className="group border-b border-[#E5E5E5]">
           <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
              METHODOLOGY
@@ -144,6 +185,21 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
           </div>
         </details>
       </div>
+
+      {/* Chains Filter */}
+      {data.chains && (
+         <div className="mb-12">
+            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-4">CHAIN</h3>
+            <div className="flex flex-wrap gap-2">
+               {data.chains.map((chain: any, i: number) => (
+                  <button key={chain.id} className={`flex items-center gap-2 px-3 py-1.5 border rounded-[4px] font-mono text-[10px] uppercase tracking-widest transition-colors ${i === 0 ? 'bg-[#111] text-white border-[#111]' : 'bg-transparent text-[#555] border-[#E5E5E5] hover:border-[#111] hover:text-[#111]'}`}>
+                     {chain.icon && i > 0 && <span className="w-3.5 h-3.5 rounded-full flex items-center justify-center border border-current text-[8px] opacity-70"><span className="scale-75 leading-none">♦</span></span>}
+                     {chain.name}
+                  </button>
+               ))}
+            </div>
+         </div>
+      )}
 
       {/* Aggregate Stats Bar */}
       <div className="bg-white p-4 md:px-6 md:py-4 mb-16 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-wrap items-center justify-between text-[10px] font-mono uppercase tracking-widest gap-2">
@@ -173,33 +229,74 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
       </div>
 
       {/* Chart Section */}
-      <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888]">Head Lag · Last 24 Hours</h3>
-          <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest text-[#888]">
-               <button className="hover:text-[#111] transition-colors">1H</button>
-               <button className="hover:text-[#111] transition-colors">6H</button>
-               <button className="bg-[#FF5C00] text-white px-2 py-0.5 rounded-sm shadow-[0_2px_8px_rgba(255,92,0,0.25)]">24H</button>
-               <button className="hover:text-[#111] transition-colors">7D</button>
+      {!data.coverage && (
+         <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+             <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888]">Head Lag · Last 24 Hours</h3>
+             <div className="flex flex-wrap items-center gap-6">
+               <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest text-[#888]">
+                  <button className="hover:text-[#111] transition-colors">1H</button>
+                  <button className="hover:text-[#111] transition-colors">6H</button>
+                  <button className="bg-[#FF5C00] text-white px-2 py-0.5 rounded-sm shadow-[0_2px_8px_rgba(255,92,0,0.25)]">24H</button>
+                  <button className="hover:text-[#111] transition-colors">7D</button>
+               </div>
+               <div className="w-px h-3 bg-[#E5E5E5] hidden md:block"></div>
+               <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest text-[#888]">
+                  <span className="text-[#AAA] mr-1 hidden md:inline">REGION</span>
+                  <button className="bg-[#FF5C00] text-white px-2 py-0.5 rounded-sm shadow-[0_2px_8px_rgba(255,92,0,0.25)]">ALL</button>
+                  <button className="hover:text-[#111] transition-colors">AP-SOUTHEAST</button>
+                  <button className="hover:text-[#111] transition-colors">EU-WEST</button>
+                  <button className="hover:text-[#111] transition-colors">US-EAST</button>
+               </div>
+             </div>
+           </div>
+           <BenchmarkChart type="area" data={data.chartData} />
+         </div>
+      )}
+
+      {/* Coverage Section */}
+      {data.coverage && (
+         <div className="mb-16">
+            <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] flex items-center gap-1.5 mb-6"><span className="w-1.5 h-1.5 rounded-full bg-[#00A152]"></span> COVERAGE RATE · LAST 24 HOURS</h3>
+            <div className="flex flex-col space-y-4">
+               {data.coverage.map((row: any) => (
+                  <div key={row.name} className="flex items-center justify-between group">
+                     {/* rank and provider */}
+                     <div className="flex items-center gap-3 w-40 shrink-0">
+                        <span className="text-[10px] font-mono text-[#AAA] w-4 mt-px">#{parseInt(row.id, 10)}</span>
+                        <div className="flex items-center text-[13px] font-sans font-medium text-[#111] truncate mt-px">
+                           {/* logo box */}
+                           <div className="w-[18px] h-[18px] rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2 shadow-sm">{row.name.charAt(0)}</div>
+                           {row.name}
+                        </div>
+                     </div>
+
+                     {/* Bar Section */}
+                     <div className="flex-1 px-4 relative flex items-center h-8">
+                        <div className="w-full bg-[#F5F5F5] h-7 rounded-sm overflow-hidden relative">
+                           <div className="absolute top-0 left-0 h-full rounded-sm transition-all duration-500 ease-out" style={{ width: `${row.value}%`, backgroundColor: row.color }}></div>
+                        </div>
+                     </div>
+
+                     {/* Value */}
+                     <div className="w-12 text-right">
+                        <span className="text-[11px] font-mono text-[#111]">{row.value.toFixed(1)}%</span>
+                     </div>
+                  </div>
+               ))}
+               
+               <div className="pt-6 font-mono text-[9px] uppercase tracking-widest text-[#888] flex items-center gap-1.5">
+                  P50 · LAST 24 H · CLICK ROWS TO EXCLUDE
+               </div>
             </div>
-            <div className="w-px h-3 bg-[#E5E5E5] hidden md:block"></div>
-            <div className="flex items-center gap-3 text-[10px] font-mono tracking-widest text-[#888]">
-               <span className="text-[#AAA] mr-1 hidden md:inline">REGION</span>
-               <button className="bg-[#FF5C00] text-white px-2 py-0.5 rounded-sm shadow-[0_2px_8px_rgba(255,92,0,0.25)]">ALL</button>
-               <button className="hover:text-[#111] transition-colors">AP-SOUTHEAST</button>
-               <button className="hover:text-[#111] transition-colors">EU-WEST</button>
-               <button className="hover:text-[#111] transition-colors">US-EAST</button>
-            </div>
-          </div>
-        </div>
-        <BenchmarkChart type="area" data={data.chartData} />
-      </div>
+         </div>
+      )}
 
       {/* Provider Ledger Table */}
-      <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">Provider Ledger · Sorted by P50</h3>
-        <div className="w-full overflow-x-auto">
+      {!data.coverage && data.results && (
+        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+          <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">Provider Ledger · Sorted by P50</h3>
+          <div className="w-full overflow-x-auto">
           <table className="w-full text-left border-t border-[#E5E5E5] border-b">
             <thead>
               <tr className="border-b border-[#E5E5E5] relative">
@@ -274,9 +371,11 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
           </table>
         </div>
       </div>
+      )}
 
       {/* Regional Table */}
-      <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+      {!data.coverage && data.regions && (
+        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">By Region</h3>
         <div className="w-full overflow-x-auto">
           <table className="w-full text-left border-t border-[#E5E5E5]">
@@ -327,6 +426,7 @@ export default function BenchmarkPage({ params }: { params: { slug: string } }) 
           </table>
         </div>
       </div>
+      )}
 
       {/* Share / Export */}
       <div className="bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] pb-12">

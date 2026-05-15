@@ -154,7 +154,7 @@ export default function Home() {
                       {item.category}
                      </span>
                      <div className="flex -space-x-1.5">
-                       {item.lines.slice(0, 4).map((line) => (
+                       {item.lines?.slice(0, 4).map((line) => (
                          <div key={line.name} className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]">
                            {line.name.charAt(0)}
                          </div>
@@ -171,15 +171,24 @@ export default function Home() {
 
               {/* Col 3: Chart */}
               <div className="flex-1 hidden md:flex flex-col pr-8 h-full pointer-events-none self-stretch justify-center -mt-2">
-                 <MiniMultiLineChart lines={item.lines} height={35} className="mb-3" />
-                 <div className="flex items-center gap-4 flex-wrap mt-auto">
-                    {item.lines.map((line) => (
-                      <div key={line.id} className="flex items-center gap-2">
-                        <div className="w-3 h-0.5 rounded-full" style={{ backgroundColor: line.color }}></div>
-                        <span className="font-sans text-[11px] font-medium" style={{ color: line.color }}>{line.name}</span>
-                      </div>
-                    ))}
-                 </div>
+                 {item.lines ? (
+                   <>
+                     <MiniMultiLineChart lines={item.lines} height={35} className="mb-3" />
+                     <div className="flex items-center gap-4 flex-wrap mt-auto">
+                        {item.lines.map((line) => (
+                          <div key={line.id} className="flex items-center gap-2">
+                            <div className="w-3 h-0.5 rounded-full" style={{ backgroundColor: line.color }}></div>
+                            <span className="font-sans text-[11px] font-medium" style={{ color: line.color }}>{line.name}</span>
+                          </div>
+                        ))}
+                     </div>
+                   </>
+                 ) : (
+                   <div className="w-full flex gap-1 h-8 opacity-60">
+                     <div className="h-full flex-1 bg-black/5 rounded-sm"></div>
+                     <div className="h-full flex-1 bg-black/5 rounded-sm w-3/4"></div>
+                   </div>
+                 )}
               </div>
 
               {/* Col 4: Value */}

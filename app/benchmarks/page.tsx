@@ -137,8 +137,15 @@ export default function BenchmarksIndex() {
                     </td>
                     <td className="px-5 py-4 font-mono text-[11px] text-[#111]">{item.providers}</td>
                     <td className="px-5 py-4">
-                       <div className="w-[180px] h-[30px] pointer-events-none">
-                         <MiniMultiLineChart lines={item.lines} height="100%" />
+                       <div className="w-[180px] h-[30px] pointer-events-none flex items-center">
+                         {item.lines ? (
+                           <MiniMultiLineChart lines={item.lines} height="100%" />
+                         ) : (
+                           <div className="w-full flex gap-1">
+                             <div className="h-4 flex-1 bg-black/5 rounded-sm"></div>
+                             <div className="h-4 flex-1 bg-black/5 rounded-sm w-3/4"></div>
+                           </div>
+                         )}
                        </div>
                     </td>
                     <td className="px-5 py-4 text-right">
@@ -167,7 +174,7 @@ export default function BenchmarksIndex() {
                     {item.category}
                   </div>
                   <div className="flex -space-x-1.5">
-                    {item.lines.slice(0, 4).map((line) => (
+                    {item.lines?.slice(0, 4).map((line) => (
                       <div key={line.name} className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]">
                         {line.name.charAt(0)}
                       </div>
@@ -189,12 +196,20 @@ export default function BenchmarksIndex() {
                   <div className="text-[9px] font-mono text-[#AAA] mb-0.5">24H</div>
                </div>
                
-               <div className="h-[48px] mb-3 pointer-events-none">
-                  <MiniMultiLineChart lines={item.lines} height="100%" />
+               <div className="h-[48px] mb-3 pointer-events-none flex items-center">
+                  {item.lines ? (
+                     <MiniMultiLineChart lines={item.lines} height="100%" />
+                  ) : (
+                     <div className="w-full h-8 flex flex-col gap-1.5 justify-center opacity-60">
+                        <div className="h-2 w-full bg-[#E5E5E5] rounded-sm"></div>
+                        <div className="h-2 w-3/4 bg-[#E5E5E5] rounded-sm"></div>
+                        <div className="h-2 w-5/6 bg-[#E5E5E5] rounded-sm"></div>
+                     </div>
+                  )}
                </div>
                
                <div className="flex items-center gap-3 flex-wrap mb-5">
-                  {item.lines.map((line) => (
+                  {item.lines?.map((line) => (
                     <div key={line.id} className="flex items-center gap-1.5">
                       <div className="w-2.5 h-[2px] rounded-full" style={{ backgroundColor: line.color }}></div>
                       <span className="font-sans text-[10px] font-medium" style={{ color: line.color }}>{line.name}</span>

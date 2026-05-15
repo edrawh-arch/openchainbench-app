@@ -16,7 +16,7 @@ export default function ProviderDetail({ params }: { params: { id: string } }) {
   const records = BENCHMARKS_LIST.slice(0, provider.benches).map((bench, idx) => {
     // Fake placement stuff
     const place = idx < provider.firstPlaces ? 1 : (idx % 3) + 2;
-    const value = bench.lines[0]?.data?.[bench.lines[0]?.data?.length - 1]?.toFixed(1) || '0.0';
+    const value = bench.lines?.[0]?.data?.[(bench.lines?.[0]?.data?.length || 1) - 1]?.toFixed(1) || '0.0';
     return {
       place,
       total: bench.providers,
