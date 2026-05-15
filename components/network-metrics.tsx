@@ -60,16 +60,17 @@ export function NetworkMetrics({
   const [gas, setGas] = useState(BASE_METRICS[globalFilter].gas);
   useEffect(() => {
     const baseTPS = BASE_METRICS[globalFilter].tps;
-    const baseGas = BASE_METRICS[globalFilter].gas; // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTps(baseTPS);
+    const baseGas = BASE_METRICS[globalFilter].gas;
+    /* eslint-disable-next-line react-hooks/set-state-in-effect */ setTps(
+      baseTPS,
+    );
     setGas(baseGas);
     const interval = setInterval(() => {
-      // Fluctuate TPS by ±5%
-      setTps((prev) => {
+      /* Fluctuate TPS by ±5% */ setTps((prev) => {
         const diff = prev * 0.05;
         return Math.max(0, baseTPS + (Math.random() * diff * 2 - diff));
-      }); // Fluctuate Gas by ±10%
-      if (baseGas > 0) {
+      });
+      /* Fluctuate Gas by ±10% */ if (baseGas > 0) {
         setGas((prev) => {
           const diff = prev * 0.1;
           return Math.max(0, baseGas + (Math.random() * diff * 2 - diff));
@@ -82,32 +83,32 @@ export function NetworkMetrics({
   const metrics = BASE_METRICS[globalFilter] || BASE_METRICS.all;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
-      
-      {/* Network Health */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#0A0A0A] dark:border-[#222222]">
-        
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#71717A]">
-          
-          Network Performance
-        </h3>
+      {" "}
+      {/* Network Health */}{" "}
+      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col">
+        {" "}
+        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
+          {" "}
+          Network Performance{" "}
+        </h3>{" "}
         <div className="flex-1 flex flex-col justify-center gap-8">
-          
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4 dark:border-[#222222]">
-            
+          {" "}
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4">
+            {" "}
             <div>
-              
-              <div className="text-[10px] font-sans text-[#666] mb-1 dark:text-[#A1A1AA]">
-                
-                Current TPS (Transactions/sec)
-              </div>
-              <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
-                
-                {tps.toLocaleString("en-US", { maximumFractionDigits: 0 })}
-              </div>
-            </div>
+              {" "}
+              <div className="text-[10px] font-sans text-[#666] mb-1">
+                {" "}
+                Current TPS (Transactions/sec){" "}
+              </div>{" "}
+              <div className="font-mono text-3xl font-medium tracking-tight text-[#111]">
+                {" "}
+                {tps.toLocaleString("en-US", { maximumFractionDigits: 0 })}{" "}
+              </div>{" "}
+            </div>{" "}
             <div className="w-16 h-8 flex items-end gap-0.5 opacity-50">
-              
-              {/* Fake mini bars for TPS */}
+              {" "}
+              {/* Fake mini bars for TPS */}{" "}
               {[...Array(12)].map((_, i) => (
                 <motion.div
                   key={i}
@@ -123,73 +124,69 @@ export function NetworkMetrics({
                     delay: i * 0.1,
                   }}
                 />
-              ))}
-            </div>
-          </div>
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4 dark:border-[#222222]">
-            
+              ))}{" "}
+            </div>{" "}
+          </div>{" "}
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4">
+            {" "}
             <div>
-              
-              <div className="text-[10px] font-sans text-[#666] mb-1 dark:text-[#A1A1AA]">
-                
-                Avg Gas / Transact Fee
-              </div>
-              <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
-                
+              {" "}
+              <div className="text-[10px] font-sans text-[#666] mb-1">
+                {" "}
+                Avg Gas / Transact Fee{" "}
+              </div>{" "}
+              <div className="font-mono text-3xl font-medium tracking-tight text-[#111]">
+                {" "}
                 {globalFilter === "all" ? (
-                  <span className="text-xl text-[#888] italic dark:text-[#71717A]">
-                    
-                    Varies by chain
+                  <span className="text-xl text-[#888] italic">
+                    {" "}
+                    Varies by chain{" "}
                   </span>
                 ) : (
                   <>
-                    
-                    {gas < 0.01 ? gas.toFixed(6) : gas.toFixed(2)}
-                    <span className="text-sm text-[#888] ml-2 dark:text-[#71717A]">
-                      
-                      {metrics.gasUnit}
-                    </span>
+                    {" "}
+                    {gas < 0.01 ? gas.toFixed(6) : gas.toFixed(2)}{" "}
+                    <span className="text-sm text-[#888] ml-2">
+                      {" "}
+                      {metrics.gasUnit}{" "}
+                    </span>{" "}
                   </>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Protocol Dominance */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col dark:bg-[#0A0A0A] dark:border-[#222222]">
-        
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 dark:text-[#71717A]">
-          
-          Protocol Dominance (24h Vol)
-        </h3>
+                )}{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
+      </div>{" "}
+      {/* Protocol Dominance */}{" "}
+      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col">
+        {" "}
+        <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
+          {" "}
+          Protocol Dominance (24h Vol){" "}
+        </h3>{" "}
         <div className="flex-1 flex flex-col justify-center gap-4">
-          
+          {" "}
           {protocols.map((protocol, i) => (
             <div key={protocol.name} className="flex flex-col gap-1.5 group">
-              
+              {" "}
               <div className="flex justify-between items-center text-xs font-mono">
-                
-                <span className="text-[#111] dark:text-white">
-                  {protocol.name}
-                </span>
-                <span className="text-[#888] dark:text-[#71717A]">
-                  {protocol.volume}%
-                </span>
-              </div>
-              <div className="w-full h-1.5 bg-[#F0F0F0] rounded-full overflow-hidden dark:bg-[#1A1A1A]">
-                
+                {" "}
+                <span className="text-[#111]"> {protocol.name} </span>{" "}
+                <span className="text-[#888]"> {protocol.volume}% </span>{" "}
+              </div>{" "}
+              <div className="w-full h-1.5 bg-[#F0F0F0] rounded-full overflow-hidden">
+                {" "}
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${protocol.volume}%` }}
                   transition={{ duration: 1, ease: "easeOut", delay: i * 0.1 }}
                   className="h-full bg-[#111] group-hover:bg-[#FF5C00] transition-colors"
-                />
-              </div>
+                />{" "}
+              </div>{" "}
             </div>
-          ))}
-        </div>
-      </div>
+          ))}{" "}
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }
