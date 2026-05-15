@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface ChartLine {
   id: string;
@@ -7,36 +7,42 @@ export interface ChartLine {
   data: number[];
 }
 
-export function MiniMultiLineChart({ 
-  lines, 
+export function MiniMultiLineChart({
+  lines,
   height = 50,
-  className = ""
-}: { 
-  lines: ChartLine[],
-  height?: number | string,
-  className?: string
+  className = "",
+}: {
+  lines: ChartLine[];
+  height?: number | string;
+  className?: string;
 }) {
   let min = Infinity;
   let max = -Infinity;
-  lines.forEach(line => {
-    line.data.forEach(val => {
+  lines.forEach((line) => {
+    line.data.forEach((val) => {
       if (val < min) min = val;
       if (val > max) max = val;
     });
   });
-  
+
   if (min === Infinity) return null;
   const range = max - min || 1;
 
   return (
     <div className={`relative w-full ${className}`} style={{ height }}>
-      <svg viewBox="0 0 1000 100" preserveAspectRatio="none" className="w-full h-full overflow-visible">
+      <svg
+        viewBox="0 0 1000 100"
+        preserveAspectRatio="none"
+        className="w-full h-full overflow-visible"
+      >
         {lines.map((line, idx) => {
-          const points = line.data.map((val, i) => {
-            const x = (i / (line.data.length - 1)) * 1000;
-            const y = 100 - ((val - min) / range) * 90 - 5;
-            return `${x.toFixed(2)},${y.toFixed(2)}`;
-          }).join(' ');
+          const points = line.data
+            .map((val, i) => {
+              const x = (i / (line.data.length - 1)) * 1000;
+              const y = 100 - ((val - min) / range) * 90 - 5;
+              return `${x.toFixed(2)},${y.toFixed(2)}`;
+            })
+            .join(" ");
 
           return (
             <polyline
@@ -54,20 +60,20 @@ export function MiniMultiLineChart({
         })}
       </svg>
       {lines.map((line) => {
-         const lastVal = line.data[line.data.length - 1];
-         const lastYPercent = 100 - ((lastVal - min) / range) * 90 - 5;
-         return (
-           <div 
-             key={`dot-${line.id}`}
-             className="absolute w-[5px] h-[5px] rounded-full z-10" 
-             style={{ 
-               right: -2.5, 
-               top: `${lastYPercent}%`, 
-               backgroundColor: line.color, 
-               transform: 'translateY(-50%)',
-             }} 
-           />
-         );
+        const lastVal = line.data[line.data.length - 1];
+        const lastYPercent = 100 - ((lastVal - min) / range) * 90 - 5;
+        return (
+          <div
+            key={`dot-${line.id}`}
+            className="absolute w-[5px] h-[5px] rounded-full z-10"
+            style={{
+              right: -2.5,
+              top: `${lastYPercent}%`,
+              backgroundColor: line.color,
+              transform: "translateY(-50%)",
+            }}
+          />
+        );
       })}
     </div>
   );
