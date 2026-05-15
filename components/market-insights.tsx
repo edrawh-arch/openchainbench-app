@@ -137,21 +137,21 @@ export function MarketInsights({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
       {/* Chart Section */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 lg:col-span-2 flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 lg:col-span-2 flex flex-col">
         <div className="flex justify-between items-center mb-6">
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888]">
             7-Day Trend
           </h3>
-          <div className="flex bg-[#F5F5F5] p-1 rounded-sm">
+          <div className="flex bg-[#F5F5F5] dark:bg-[#111] p-1 rounded-sm">
             <button
               onClick={() => setMetric("volume")}
-              className={`text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-sm transition-colors ${metric === "volume" ? "bg-white text-[#111] shadow-sm" : "text-[#888] hover:text-[#111]"}`}
+              className={`text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-sm transition-colors ${metric === "volume" ? "bg-white dark:bg-[#0a0a0a] text-[#111] shadow-sm" : "text-[#888] hover:text-[#111]"}`}
             >
               Volume
             </button>
             <button
               onClick={() => setMetric("tvl")}
-              className={`text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-sm transition-colors ${metric === "tvl" ? "bg-white text-[#111] shadow-sm" : "text-[#888] hover:text-[#111]"}`}
+              className={`text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-sm transition-colors ${metric === "tvl" ? "bg-white dark:bg-[#0a0a0a] text-[#111] shadow-sm" : "text-[#888] hover:text-[#111]"}`}
             >
               TVL
             </button>
@@ -211,7 +211,7 @@ export function MarketInsights({
       </div>
 
       {/* Whale Tracker */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 flex flex-col">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 flex items-center gap-2">
           <span>Whale Radar</span>
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -233,7 +233,7 @@ export function MarketInsights({
                 className="flex justify-between items-center py-2 border-b border-[#F5F5F5] last:border-0"
               >
                 <div className="flex flex-col">
-                  <span className="text-xs font-medium text-[#111]">
+                  <span className="text-xs font-medium text-[#111] dark:text-white">
                     {tx.pair}
                   </span>
                   <span className="text-[10px] font-mono text-[#888] mt-0.5">
@@ -241,7 +241,7 @@ export function MarketInsights({
                   </span>
                 </div>
                 <div className="flex flex-col items-end">
-                  <span className="font-mono text-xs font-bold text-[#111]">
+                  <span className="font-mono text-xs font-bold text-[#111] dark:text-white">
                     {tx.amount}
                   </span>
                   <span

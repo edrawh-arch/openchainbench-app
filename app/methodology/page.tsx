@@ -9,7 +9,7 @@ export default function Methodology() {
   return (
     <div className="w-full flex justify-center py-24 bg-transparent min-h-screen relative z-10">
       <div className="w-full max-w-[1000px] px-6">
-        <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
+        <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] dark:text-white mb-4 font-sans">
           Methodology
         </h1>
         <p className="text-[20px] text-[#777] font-sans leading-relaxed mb-20 tracking-tight">
@@ -18,7 +18,7 @@ export default function Methodology() {
 
         {/* DESIGN PRINCIPLES */}
         <section className="mb-20">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             Design Principles
           </h2>
           <div className="flex flex-col gap-8">
@@ -26,8 +26,8 @@ export default function Methodology() {
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
                 I.
               </span>
-              <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                <strong className="text-[#111] font-semibold">
+              <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
+                <strong className="text-[#111] dark:text-white font-semibold">
                   Identical inputs.
                 </strong>{" "}
                 Every provider sees the same request. same pair, same notional,
@@ -39,8 +39,8 @@ export default function Methodology() {
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
                 II.
               </span>
-              <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                <strong className="text-[#111] font-semibold">
+              <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
+                <strong className="text-[#111] dark:text-white font-semibold">
                   Honest aggregates.
                 </strong>{" "}
                 We report p50, p90 and p99 latency along with success rate.
@@ -52,8 +52,8 @@ export default function Methodology() {
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
                 III.
               </span>
-              <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                <strong className="text-[#111] font-semibold">
+              <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
+                <strong className="text-[#111] dark:text-white font-semibold">
                   Auditable runs.
                 </strong>{" "}
                 Raw metrics are stored in Prometheus and exposed publicly.
@@ -65,8 +65,8 @@ export default function Methodology() {
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
                 IV.
               </span>
-              <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                <strong className="text-[#111] font-semibold">
+              <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
+                <strong className="text-[#111] dark:text-white font-semibold">
                   No cherry-picking.
                 </strong>{" "}
                 The benchmark plan is committed before each run: providers,
@@ -78,8 +78,8 @@ export default function Methodology() {
               <span className="font-semibold text-[#FF5C00] w-6 shrink-0">
                 V.
               </span>
-              <p className="text-[15px] font-sans text-[#444] leading-relaxed">
-                <strong className="text-[#111] font-semibold">
+              <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
+                <strong className="text-[#111] dark:text-white font-semibold">
                   Neutral presentation.
                 </strong>{" "}
                 No spec marks a winner ahead of time. Tables sort mechanically
@@ -91,64 +91,64 @@ export default function Methodology() {
 
         {/* STATISTICAL CONVENTIONS */}
         <section className="mb-20">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             Statistical Conventions
           </h2>
-          <div className="flex flex-col border-b border-[#E5E5E5]">
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+          <div className="flex flex-col border-b border-[#E5E5E5] dark:border-[#333]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 Latency Aggregates
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Reported as p50, p90, p99 and arithmetic mean over the run
                 window. Failed requests (timeout, 5xx, malformed response) are
                 excluded from latency aggregates and counted toward success
                 rate.
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 24H Range
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Min and max of p50 observed across the rolling 24-hour window.
                 captures the volatility of each provider, not just its central
                 tendency.
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 Δ Field
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Each provider&apos;s p50 expressed as a percentage delta from
                 the field mean. Negative is below the field, positive is above.
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 Success Rate
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Share of requests returning a usable result within the published
                 timeout. The only metric that includes failures.
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 Region Normalisation
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Wherever a benchmark is multi-region, the headline figure is the
                 cross-region median. Per-region figures appear in Fig. 3 of each
                 report.
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 py-5 border-t border-[#E5E5E5] dark:border-[#333]">
               <div className="w-full md:w-32 lg:w-48 shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#888] pt-1">
                 Significance
               </div>
-              <div className="text-[15px] font-sans text-[#444] leading-relaxed">
+              <div className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
                 Differences smaller than the within-provider standard deviation
                 are noted but not framed as a ranking.
               </div>
@@ -158,10 +158,10 @@ export default function Methodology() {
 
         {/* REPRODUCING A RESULT */}
         <section className="mb-20">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             Reproducing A Result
           </h2>
-          <ol className="flex flex-col gap-6 list-decimal pl-5 text-[15px] font-sans text-[#444] leading-relaxed marker:text-[#111] marker:font-semibold">
+          <ol className="flex flex-col gap-6 list-decimal pl-5 text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed marker:text-[#111] marker:font-semibold">
             <li className="pl-2">
               Clone the harness from the link at the bottom of any benchmark
               report.
@@ -173,7 +173,7 @@ export default function Methodology() {
             </li>
             <li className="pl-2">
               Run the harness. it exposes{" "}
-              <code className="font-mono text-[11px] bg-white border border-[#E5E5E5] px-1.5 py-0.5 rounded-sm shadow-sm text-[#222]">
+              <code className="font-mono text-[11px] bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] px-1.5 py-0.5 rounded-sm shadow-sm text-[#222] dark:text-[#E0E0E0]">
                 /metrics
               </code>{" "}
               over HTTP. Point a local Prometheus at it, or query the public
@@ -188,7 +188,7 @@ export default function Methodology() {
               file a{" "}
               <a
                 href="#"
-                className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
+                className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] dark:text-white transition-colors"
               >
                 provider correction
               </a>{" "}
@@ -199,21 +199,21 @@ export default function Methodology() {
 
         {/* CORRECTIONS */}
         <section>
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-8 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             Corrections
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
             Found a number you can&apos;t reproduce? File a{" "}
             <a
               href="#"
-              className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
+              className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] dark:text-white transition-colors"
             >
               data-quality issue
             </a>{" "}
             (the published figure looks wrong) or a{" "}
             <a
               href="#"
-              className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] transition-colors"
+              className="border-b border-[#888] hover:text-[#FF5C00] hover:border-[#FF5C00] text-[#111] dark:text-white transition-colors"
             >
               provider correction
             </a>{" "}

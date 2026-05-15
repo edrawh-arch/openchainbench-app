@@ -45,7 +45,7 @@ export default function BenchmarksIndex() {
       <div className="w-full max-w-[1400px] px-6">
         {/* Header Section */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
+          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] dark:text-white mb-4 font-sans">
             All benchmarks
           </h1>
           <p className="text-[20px] text-[#777] font-sans leading-relaxed max-w-2xl tracking-tight">
@@ -64,7 +64,7 @@ export default function BenchmarksIndex() {
                 className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${
                   selectedCategory === cat
                     ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]"
-                    : "bg-white text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
+                    : "bg-white dark:bg-[#0a0a0a] text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
                 }`}
               >
                 {cat}
@@ -73,7 +73,7 @@ export default function BenchmarksIndex() {
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto shrink-0 flex-col md:flex-row">
-            <div className="flex items-center bg-white border border-[#E5E5E5] p-1 rounded-sm self-start md:self-auto h-[38px]">
+            <div className="flex items-center bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] p-1 rounded-sm self-start md:self-auto h-[38px]">
               <button
                 onClick={() => setViewMode("card")}
                 className={`p-1.5 rounded-sm transition-colors ${viewMode === "card" ? "bg-[#F0F0F0] text-[#111] shadow-sm" : "text-[#888] hover:text-[#111]"}`}
@@ -100,10 +100,10 @@ export default function BenchmarksIndex() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pl-10 pr-12 py-2 bg-white border border-[#E5E5E5] rounded-sm text-sm focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] transition-colors font-sans text-[#111] shadow-[0_2px_8px_rgba(0,0,0,0.02)] placeholder:text-[#AAA] h-full"
+                className="block w-full pl-10 pr-12 py-2 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm text-sm focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] transition-colors font-sans text-[#111] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.02)] placeholder:text-[#AAA] dark:placeholder:text-[#666] h-full"
               />
               <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none h-full">
-                <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] bg-[#FAFAFA] px-1.5 py-0.5 rounded-[2px]">
+                <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] dark:border-[#333] bg-[#FAFAFA] dark:bg-[#111] px-1.5 py-0.5 rounded-[2px]">
                   ⌘K
                 </span>
               </div>
@@ -113,9 +113,9 @@ export default function BenchmarksIndex() {
 
         {/* Benchmarks Grid / Table */}
         {viewMode === "table" ? (
-          <div className="bg-white border border-[#E5E5E5] rounded-sm overflow-hidden overflow-x-auto shadow-sm relative z-10 w-full mb-16">
+          <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm overflow-hidden overflow-x-auto shadow-sm relative z-10 w-full mb-16">
             <table className="w-full text-left font-sans text-sm min-w-[800px]">
-              <thead className="bg-[#FAFAFA] border-b border-[#E5E5E5] font-mono text-[10px] uppercase tracking-widest text-[#888]">
+              <thead className="bg-[#FAFAFA] dark:bg-[#111] border-b border-[#E5E5E5] dark:border-[#333] font-mono text-[10px] uppercase tracking-widest text-[#888]">
                 <tr>
                   <th className="px-5 py-4 font-normal">Benchmark</th>
                   <th className="px-5 py-4 font-normal">Category</th>
@@ -132,22 +132,22 @@ export default function BenchmarksIndex() {
                 {filteredBenchmarks.map((item) => (
                   <tr
                     key={item.id}
-                    className="hover:bg-[#F9F9F9] transition-colors group"
+                    className="hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors group"
                   >
                     <td className="px-5 py-4">
                       <Link
                         href={`/benchmarks/${item.id}`}
-                        className="inline-block group-hover:text-[#FF5C00] font-semibold text-[#111] transition-colors"
+                        className="inline-block group-hover:text-[#FF5C00] font-semibold text-[#111] dark:text-white transition-colors"
                       >
                         {item.title}
                       </Link>
                     </td>
                     <td className="px-5 py-4">
-                      <span className="px-2 py-0.5 rounded-sm bg-[#F5F5F5] border border-[#E5E5E5] font-mono text-[9px] uppercase tracking-widest text-[#666]">
+                      <span className="px-2 py-0.5 rounded-sm bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] font-mono text-[9px] uppercase tracking-widest text-[#666] dark:text-[#AAA]">
                         {item.category}
                       </span>
                     </td>
-                    <td className="px-5 py-4 font-mono text-[11px] text-[#111]">
+                    <td className="px-5 py-4 font-mono text-[11px] text-[#111] dark:text-white">
                       {item.providers}
                     </td>
                     <td className="px-5 py-4">
@@ -166,14 +166,14 @@ export default function BenchmarksIndex() {
                       </div>
                     </td>
                     <td className="px-5 py-4 text-right">
-                      <div className="font-mono text-[14px] text-[#111] font-medium">
+                      <div className="font-mono text-[14px] text-[#111] dark:text-white font-medium">
                         {item.value}{" "}
                         <span className="text-[11px] text-[#888] font-sans font-normal">
                           {item.unit}
                         </span>
                       </div>
                     </td>
-                    <td className="px-5 py-4 font-mono text-[11px] text-[#555] text-right">
+                    <td className="px-5 py-4 font-mono text-[11px] text-[#555] dark:text-[#AAA] text-right">
                       {item.samples}
                     </td>
                     <td className="px-5 py-4 font-mono text-[10px] text-[#888]">
@@ -195,17 +195,17 @@ export default function BenchmarksIndex() {
               <Link
                 key={item.id}
                 href={`/benchmarks/${item.id}`}
-                className="bg-white/80 border border-[#E5E5E5] backdrop-blur-sm rounded-sm p-5 hover:border-[#FF5C00]/50 hover:shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all block group flex flex-col relative z-10"
+                className="bg-white/80 dark:bg-[#0a0a0a]/80 border border-[#E5E5E5] dark:border-[#333] backdrop-blur-sm rounded-sm p-5 hover:border-[#FF5C00]/50 hover:shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all block group flex flex-col relative z-10"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="px-2 py-0.5 rounded-sm bg-[#F5F5F5] border border-[#E5E5E5] font-mono text-[9px] uppercase tracking-widest text-[#666]">
+                  <div className="px-2 py-0.5 rounded-sm bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] font-mono text-[9px] uppercase tracking-widest text-[#666] dark:text-[#AAA]">
                     {item.category}
                   </div>
                   <div className="flex -space-x-1.5">
                     {item.lines?.slice(0, 4).map((line) => (
                       <div
                         key={line.name}
-                        className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]"
+                        className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white"
                       >
                         {line.name.charAt(0)}
                       </div>
@@ -213,7 +213,7 @@ export default function BenchmarksIndex() {
                   </div>
                 </div>
 
-                <h3 className="text-[15px] font-semibold text-[#111] font-sans group-hover:text-[#FF5C00] tracking-tight mb-5 leading-snug transition-colors">
+                <h3 className="text-[15px] font-semibold text-[#111] dark:text-white font-sans group-hover:text-[#FF5C00] tracking-tight mb-5 leading-snug transition-colors">
                   {item.title}
                 </h3>
 
@@ -221,7 +221,7 @@ export default function BenchmarksIndex() {
                   FIELD COMPOSITE · P50
                 </div>
                 <div className="flex justify-between items-end mb-4">
-                  <div className="font-bold text-[28px] font-mono leading-none tracking-tight text-[#111]">
+                  <div className="font-bold text-[28px] font-mono leading-none tracking-tight text-[#111] dark:text-white">
                     {item.value}
                     <span className="text-[14px] text-[#888] ml-1 font-sans font-normal tracking-normal">
                       {item.unit}
@@ -261,12 +261,12 @@ export default function BenchmarksIndex() {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#E5E5E5] mt-auto">
+                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#E5E5E5] dark:border-[#333] mt-auto">
                   <div>
                     <div className="text-[8px] font-mono uppercase tracking-widest text-[#888] mb-1">
                       PROVIDERS
                     </div>
-                    <div className="text-[11px] font-mono text-[#111]">
+                    <div className="text-[11px] font-mono text-[#111] dark:text-white">
                       {item.providers}
                     </div>
                   </div>
@@ -274,7 +274,7 @@ export default function BenchmarksIndex() {
                     <div className="text-[8px] font-mono uppercase tracking-widest text-[#888] mb-1">
                       N · 24H
                     </div>
-                    <div className="text-[11px] font-mono text-[#111]">
+                    <div className="text-[11px] font-mono text-[#111] dark:text-white">
                       {item.samples}
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export default function BenchmarksIndex() {
                     <div className="text-[8px] font-mono uppercase tracking-widest text-[#888] mb-1">
                       UPDATED
                     </div>
-                    <div className="text-[10px] font-mono text-[#555] leading-snug">
+                    <div className="text-[10px] font-mono text-[#555] dark:text-[#AAA] leading-snug">
                       {item.updatedAt}
                     </div>
                   </div>
@@ -291,7 +291,7 @@ export default function BenchmarksIndex() {
             ))}
 
             {filteredBenchmarks.length === 0 && viewMode === "card" && (
-              <div className="col-span-full p-8 text-center text-[#888] text-sm py-12 bg-white/50 border border-[#E5E5E5] border-dashed rounded-sm">
+              <div className="col-span-full p-8 text-center text-[#888] text-sm py-12 bg-white/50 dark:bg-[#0a0a0a]/50 border border-[#E5E5E5] dark:border-[#333] border-dashed rounded-sm">
                 No benchmarks found matching your criteria.
               </div>
             )}
@@ -299,11 +299,11 @@ export default function BenchmarksIndex() {
         )}
 
         {/* CTA Section */}
-        <div className="mt-24 sm:mt-32 max-w-2xl mx-auto text-center relative z-10 border-t border-[#E5E5E5] pt-16">
-          <h2 className="text-2xl md:text-[32px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
+        <div className="mt-24 sm:mt-32 max-w-2xl mx-auto text-center relative z-10 border-t border-[#E5E5E5] dark:border-[#333] pt-16">
+          <h2 className="text-2xl md:text-[32px] font-semibold tracking-tight text-[#111] dark:text-white mb-4 font-sans">
             Deploy yours today
           </h2>
-          <p className="text-[16px] text-[#555] font-sans mb-8 leading-relaxed max-w-xl mx-auto">
+          <p className="text-[16px] text-[#555] dark:text-[#AAA] font-sans mb-8 leading-relaxed max-w-xl mx-auto">
             Anyone can submit a benchmark, provider correction, or methodology
             change. We welcome community contributions to keep measurements
             accurate and up to date.

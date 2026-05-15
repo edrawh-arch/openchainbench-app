@@ -282,7 +282,7 @@ export default function BenchmarkPage({
                 {(data.results || data.lines).slice(0, 4).map((row: any) => (
                   <div
                     key={row.name}
-                    className="w-6 h-6 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[9px] font-bold overflow-hidden text-[#111] shadow-sm"
+                    className="w-6 h-6 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[9px] font-bold overflow-hidden text-[#111] dark:text-white shadow-sm"
                   >
                     {row.name.charAt(0)}
                   </div>
@@ -297,17 +297,17 @@ export default function BenchmarkPage({
         </div>
       </div>
 
-      <h1 className="text-3xl md:text-[40px] font-semibold tracking-tight text-[#111] mb-3 font-sans md:leading-[1.1]">
+      <h1 className="text-3xl md:text-[40px] font-semibold tracking-tight text-[#111] dark:text-white mb-3 font-sans md:leading-[1.1]">
         {data.title}
       </h1>
 
-      <p className="text-[18px] md:text-[20px] text-[#444] font-sans leading-relaxed max-w-3xl mb-8 tracking-tight">
+      <p className="text-[18px] md:text-[20px] text-[#444] dark:text-[#CCC] font-sans leading-relaxed max-w-3xl mb-8 tracking-tight">
         {data.description}
       </p>
 
       {/* Methodology Section */}
-      <div className="border-t border-[#E5E5E5] mb-8">
-        <details className="group border-b border-[#E5E5E5]">
+      <div className="border-t border-[#E5E5E5] dark:border-[#333] mb-8">
+        <details className="group border-b border-[#E5E5E5] dark:border-[#333]">
           <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
             METHODOLOGY
             <span className="transition group-open:rotate-180 text-[#888]">
@@ -326,7 +326,7 @@ export default function BenchmarkPage({
               </svg>
             </span>
           </summary>
-          <div className="text-[#444] font-sans text-[13px] leading-relaxed max-w-4xl pb-6">
+          <div className="text-[#444] dark:text-[#CCC] font-sans text-[13px] leading-relaxed max-w-4xl pb-6">
             <p className="mb-6">
               We measure the gap between a transaction settling on chain and the
               same transaction appearing on each aggregator&apos;s data feed.
@@ -336,7 +336,7 @@ export default function BenchmarkPage({
               each aggregator&apos;s WebSocket reflects the same event. Lower is
               better.
             </p>
-            <ul className="space-y-2 list-none text-[#555]">
+            <ul className="space-y-2 list-none text-[#555] dark:text-[#AAA]">
               <li className="flex gap-2 before:content-['·'] before:text-[#888]">
                 Aggregators measured: Mobula, Codex, GeckoTerminal.
               </li>
@@ -353,12 +353,12 @@ export default function BenchmarkPage({
               </li>
               <li className="flex gap-2 before:content-['·'] before:text-[#888]">
                 Metric: gauge{" "}
-                <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">
+                <code className="font-mono text-[11px] bg-[#F9F9F9] dark:bg-[#181818] px-1 py-0.5 rounded-sm">
                   head_lag_seconds
                 </code>
                 , sampled every 15 seconds. Aggregated over the 24-hour window
                 using{" "}
-                <code className="font-mono text-[11px] bg-[#F9F9F9] px-1 py-0.5 rounded-sm">
+                <code className="font-mono text-[11px] bg-[#F9F9F9] dark:bg-[#181818] px-1 py-0.5 rounded-sm">
                   quantile_over_time
                 </code>
                 .
@@ -403,40 +403,40 @@ export default function BenchmarkPage({
       )}
 
       {/* Aggregate Stats Bar */}
-      <div className="bg-white p-4 md:px-6 md:py-4 mb-16 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row flex-wrap sm:items-center justify-between text-[10px] font-mono uppercase tracking-widest gap-4 sm:gap-2">
+      <div className="bg-white dark:bg-[#0a0a0a] p-4 md:px-6 md:py-4 mb-16 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row flex-wrap sm:items-center justify-between text-[10px] font-mono uppercase tracking-widest gap-4 sm:gap-2">
         <div className="flex gap-6 items-center">
           <div className="flex items-center gap-2">
             <span className="text-[#888]">Best</span>
-            <span className="text-[#111] font-semibold text-xs">
+            <span className="text-[#111] dark:text-white font-semibold text-xs">
               {data.stats.best}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#888]">Median</span>
-            <span className="text-[#111] font-semibold text-xs">
+            <span className="text-[#111] dark:text-white font-semibold text-xs">
               {data.stats.median}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#888]">Worst</span>
-            <span className="text-[#111] font-semibold text-xs">
+            <span className="text-[#111] dark:text-white font-semibold text-xs">
               {data.stats.worst}
             </span>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[#888]">Spread</span>
-          <span className="text-[#111] font-semibold text-[11px] font-sans">
+          <span className="text-[#111] dark:text-white font-semibold text-[11px] font-sans">
             10.6×
           </span>
-          <span className="text-[#111] font-semibold text-[11px] font-sans flex items-center gap-2 ml-1 text-[#888]">
+          <span className="text-[#111] dark:text-white font-semibold text-[11px] font-sans flex items-center gap-2 ml-1 text-[#888]">
             2.3 s <ArrowLeft className="w-3 rotate-180 text-[#888] inline" />{" "}
             24.6 s
           </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[#888]">Samples · 24H</span>
-          <span className="text-[#111] font-semibold text-xs">
+          <span className="text-[#111] dark:text-white font-semibold text-xs">
             {data.stats.samples}{" "}
             <span className="text-[#888] font-normal uppercase">
               {data.stats.providers}
@@ -447,7 +447,7 @@ export default function BenchmarkPage({
 
       {/* Chart Section */}
       {!data.coverage && (
-        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+        <div className="mb-16 bg-white dark:bg-[#0a0a0a] p-6 md:p-8 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888]">
               Head Lag · Last 24 Hours
@@ -509,9 +509,9 @@ export default function BenchmarkPage({
                   <span className="text-[10px] font-mono text-[#AAA] w-4 mt-px">
                     #{parseInt(row.id, 10)}
                   </span>
-                  <div className="flex items-center text-[13px] font-sans font-medium text-[#111] truncate mt-px">
+                  <div className="flex items-center text-[13px] font-sans font-medium text-[#111] dark:text-white truncate mt-px">
                     {/* logo box */}
-                    <div className="w-[18px] h-[18px] rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2 shadow-sm">
+                    <div className="w-[18px] h-[18px] rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white shrink-0 mr-2 shadow-sm">
                       {row.icon ? (
                         <img
                           src={row.icon}
@@ -533,7 +533,7 @@ export default function BenchmarkPage({
 
                 {/* Bar Section */}
                 <div className="flex-1 px-4 relative flex items-center h-8">
-                  <div className="w-full bg-[#F5F5F5] h-7 rounded-sm overflow-hidden relative">
+                  <div className="w-full bg-[#F5F5F5] dark:bg-[#111] h-7 rounded-sm overflow-hidden relative">
                     <div
                       className="absolute top-0 left-0 h-full rounded-sm transition-all duration-500 ease-out"
                       style={{
@@ -546,7 +546,7 @@ export default function BenchmarkPage({
 
                 {/* Value */}
                 <div className="w-12 text-right">
-                  <span className="text-[11px] font-mono text-[#111]">
+                  <span className="text-[11px] font-mono text-[#111] dark:text-white">
                     {row.value.toFixed(1)}%
                   </span>
                 </div>
@@ -562,14 +562,14 @@ export default function BenchmarkPage({
 
       {/* Provider Ledger Table */}
       {!data.coverage && data.results && (
-        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+        <div className="mb-16 bg-white dark:bg-[#0a0a0a] p-6 md:p-8 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
             Provider Ledger · Sorted by P50
           </h3>
           <div className="w-full overflow-x-auto">
-            <table className="w-full text-left border-t border-[#E5E5E5] border-b">
+            <table className="w-full text-left border-t border-[#E5E5E5] dark:border-[#333] border-b">
               <thead>
-                <tr className="border-b border-[#E5E5E5] relative">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#333] relative">
                   <th
                     colSpan={3}
                     className="py-2 px-0 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] w-[25%] relative"
@@ -578,7 +578,7 @@ export default function BenchmarkPage({
                   </th>
                   <th
                     colSpan={7}
-                    className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9]"
+                    className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9] dark:bg-[#181818]"
                   >
                     Latency Aggregates
                   </th>
@@ -592,7 +592,7 @@ export default function BenchmarkPage({
                     Trend
                   </th>
                 </tr>
-                <tr className="border-b border-[#F0F0F0]">
+                <tr className="border-b border-[#F0F0F0] dark:border-[#222]">
                   <th className="py-2 px-0 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] w-8">
                     Nº
                   </th>
@@ -603,16 +603,16 @@ export default function BenchmarkPage({
                     Name
                   </th>
 
-                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9]">
+                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9] dark:bg-[#181818]">
                     P50
                   </th>
-                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9]">
+                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9] dark:bg-[#181818]">
                     P90
                   </th>
-                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9]">
+                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9] dark:bg-[#181818]">
                     P99
                   </th>
-                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9]">
+                  <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center bg-[#F9F9F9] dark:bg-[#181818]">
                     Mean
                   </th>
                   <th className="py-2 px-2 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] text-center">
@@ -637,7 +637,7 @@ export default function BenchmarkPage({
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#F0F0F0] text-[13px] font-mono tracking-tight text-[#444]">
+              <tbody className="divide-y divide-[#F0F0F0] text-[13px] font-mono tracking-tight text-[#444] dark:text-[#CCC]">
                 {data.results.map((row: any, i: number) => (
                   <tr
                     key={row.id}
@@ -653,8 +653,8 @@ export default function BenchmarkPage({
                       {row.id}
                     </td>
                     <td className="py-4 px-0 align-top" colSpan={2}>
-                      <div className="font-bold text-[#111] font-sans text-[14px] leading-none mb-1.5 pt-0.5 flex items-center">
-                        <div className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2">
+                      <div className="font-bold text-[#111] dark:text-white font-sans text-[14px] leading-none mb-1.5 pt-0.5 flex items-center">
+                        <div className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white shrink-0 mr-2">
                           {row.name.charAt(0)}
                         </div>
                         {row.name}
@@ -670,13 +670,13 @@ export default function BenchmarkPage({
                           ◀
                         </span>
                       )}
-                      <span className="font-semibold text-[#111]">
+                      <span className="font-semibold text-[#111] dark:text-white">
                         {row.p50}
                       </span>
                     </td>
-                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9]">
+                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9] dark:bg-[#181818]">
                       <div className="flex flex-col">
-                        <span className="text-[#111]">
+                        <span className="text-[#111] dark:text-white">
                           {row.p90.split(" ")[0]}
                         </span>
                         <span className="text-[#888] text-[9px] uppercase">
@@ -684,9 +684,9 @@ export default function BenchmarkPage({
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9]">
+                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9] dark:bg-[#181818]">
                       <div className="flex flex-col">
-                        <span className="text-[#111]">
+                        <span className="text-[#111] dark:text-white">
                           {row.p99.split(" ")[0]}
                         </span>
                         <span className="text-[#888] text-[9px] uppercase">
@@ -694,9 +694,9 @@ export default function BenchmarkPage({
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9]">
+                    <td className="py-4 px-2 text-center align-top bg-[#F9F9F9] dark:bg-[#181818]">
                       <div className="flex flex-col">
-                        <span className="text-[#111]">
+                        <span className="text-[#111] dark:text-white">
                           {row.mean.split(" ")[0]}
                         </span>
                         <span className="text-[#888] text-[9px] uppercase">
@@ -706,7 +706,7 @@ export default function BenchmarkPage({
                     </td>
                     <td className="py-4 px-2 text-center align-top">
                       <div className="flex flex-col">
-                        <span className="text-[#111]">
+                        <span className="text-[#111] dark:text-white">
                           {row.min.split(" ")[0]}
                         </span>
                         <span className="text-[#888] text-[9px] uppercase">
@@ -716,7 +716,7 @@ export default function BenchmarkPage({
                     </td>
                     <td className="py-4 px-2 text-center align-top">
                       <div className="flex flex-col">
-                        <span className="text-[#111]">
+                        <span className="text-[#111] dark:text-white">
                           {row.max.split(" ")[0]}
                         </span>
                         <span className="text-[#888] text-[9px] uppercase">
@@ -749,14 +749,14 @@ export default function BenchmarkPage({
 
       {/* Regional Table */}
       {!data.coverage && data.regions && (
-        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+        <div className="mb-16 bg-white dark:bg-[#0a0a0a] p-6 md:p-8 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
             By Region
           </h3>
           <div className="w-full overflow-x-auto">
-            <table className="w-full text-left border-t border-[#E5E5E5]">
+            <table className="w-full text-left border-t border-[#E5E5E5] dark:border-[#333]">
               <thead>
-                <tr className="border-b border-[#E5E5E5]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#333]">
                   <th className="py-2 px-0 font-mono text-[10px] font-normal tracking-widest uppercase text-[#888] w-[25%] p-4">
                     Provider
                   </th>
@@ -771,7 +771,7 @@ export default function BenchmarkPage({
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E5E5E5] text-[13px] font-mono tracking-tight text-[#444]">
+              <tbody className="divide-y divide-[#E5E5E5] text-[13px] font-mono tracking-tight text-[#444] dark:text-[#CCC]">
                 {data.regions.map((region: any) => (
                   <tr
                     key={region.provider}
@@ -786,7 +786,7 @@ export default function BenchmarkPage({
                         }}
                       >
                         <div
-                          className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] shrink-0 mr-2"
+                          className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white shrink-0 mr-2"
                           style={{ color: "#111" }}
                         >
                           {region.provider.charAt(0)}
@@ -876,20 +876,20 @@ export default function BenchmarkPage({
 
       {/* Conclusion */}
       {data.conclusion && (
-        <div className="mb-16 bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+        <div className="mb-16 bg-white dark:bg-[#0a0a0a] p-6 md:p-8 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-4 flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#FF5C00] rounded-full inline-block"></span>
             CONCLUSION & TAKEAWAYS
           </h3>
-          <p className="text-[14px] leading-relaxed text-[#555]">
+          <p className="text-[14px] leading-relaxed text-[#555] dark:text-[#AAA]">
             {data.conclusion}
           </p>
         </div>
       )}
 
       {/* Share / Export */}
-      <div className="bg-white p-6 md:p-8 rounded-sm border border-[#E5E5E5] shadow-[0_4px_24px_rgba(0,0,0,0.02)] pb-12">
-        <details className="group border-b border-[#E5E5E5]">
+      <div className="bg-white dark:bg-[#0a0a0a] p-6 md:p-8 rounded-sm border border-[#E5E5E5] dark:border-[#333] shadow-[0_4px_24px_rgba(0,0,0,0.02)] pb-12">
+        <details className="group border-b border-[#E5E5E5] dark:border-[#333]">
           <summary className="flex justify-between items-center font-mono text-[10px] uppercase tracking-widest py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
             Share · Embed
             <span className="transition group-open:rotate-180">
@@ -910,7 +910,7 @@ export default function BenchmarkPage({
           </summary>
           <div className="pb-8">
             <ShareableCards data={data} />
-            <div className="mt-12 pt-8 border-t border-[#F0F0F0]">
+            <div className="mt-12 pt-8 border-t border-[#F0F0F0] dark:border-[#222]">
               <span className="text-[#888] font-mono text-[10px] uppercase tracking-widest flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                 <span className="shrink-0">SOURCE CODE</span>
                 <a
@@ -939,15 +939,15 @@ export default function BenchmarkPage({
                 <Link
                   key={item.id}
                   href={`/benchmarks/${item.id}`}
-                  className="block border border-[#E5E5E5] rounded-[4px] p-6 hover:bg-[#F9F9F9] transition-colors bg-white/80 backdrop-blur-sm hover:border-[#111]/20 group flex flex-col justify-between h-full"
+                  className="block border border-[#E5E5E5] dark:border-[#333] rounded-[4px] p-6 hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm hover:border-[#111]/20 group flex flex-col justify-between h-full"
                 >
                   <div>
                     <div className="flex gap-2 font-mono text-[9px] uppercase tracking-widest items-center mb-4">
-                      <span className="bg-[#F5F5F5] border border-[#E5E5E5] px-2 py-0.5 rounded-sm text-[#666]">
+                      <span className="bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-2 py-0.5 rounded-sm text-[#666] dark:text-[#AAA]">
                         {item.category}
                       </span>
                     </div>
-                    <h4 className="text-[15px] font-semibold text-[#111] font-sans mb-3 tracking-tight group-hover:text-[#FF5C00] transition-colors leading-snug">
+                    <h4 className="text-[15px] font-semibold text-[#111] dark:text-white font-sans mb-3 tracking-tight group-hover:text-[#FF5C00] transition-colors leading-snug">
                       {item.title}
                     </h4>
                     <p className="text-[13px] text-[#777] font-sans leading-snug mb-8 line-clamp-3">
@@ -960,7 +960,7 @@ export default function BenchmarkPage({
                       {item.lines?.slice(0, 4).map((line) => (
                         <div
                           key={line.name}
-                          className="w-5 h-5 rounded-full bg-white border border-[#E5E5E5] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111]"
+                          className="w-5 h-5 rounded-full bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] flex items-center justify-center text-[8px] font-bold overflow-hidden text-[#111] dark:text-white"
                         >
                           {line.name.charAt(0)}
                         </div>

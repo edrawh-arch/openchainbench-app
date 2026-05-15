@@ -13,7 +13,7 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-black/10 shadow-lg rounded-sm p-3 text-xs min-w-[120px] font-mono tracking-tight z-50">
         <p className="text-[#888] mb-2 pb-2 border-b border-black/5 uppercase tracking-widest text-[9px]">
           {label}
         </p>
@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             <span className="font-sans font-medium text-black">
               {entry.dataKey}
             </span>
-            <span className="text-[#555]">{entry.value.toFixed(1)}s</span>
+            <span className="text-[#555] dark:text-[#AAA]">{entry.value.toFixed(1)}s</span>
           </div>
         ))}
       </div>

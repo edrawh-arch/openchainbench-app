@@ -30,7 +30,7 @@ export default function EcosystemPage() {
       <div className="w-full max-w-[1400px] px-6">
         {/* Header Section */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
+          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] dark:text-white mb-4 font-sans">
             {selectedChain === "all"
               ? "Network Ecosystem"
               : `${selectedName} Ecosystem`}
@@ -55,7 +55,7 @@ export default function EcosystemPage() {
                 className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${
                   selectedChain === chain.id
                     ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]"
-                    : "bg-white text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
+                    : "bg-white dark:bg-[#0a0a0a] text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
                 }`}
               >
                 {chain.name.toUpperCase()}

@@ -46,7 +46,7 @@ export function Header() {
           </button>
         </div>
       )}
-      <header className="border-b border-[#F0F0F0] py-4 md:py-5 px-6 shrink-0 text-sm bg-white relative">
+      <header className="border-b border-[#F0F0F0] dark:border-[#222] py-4 md:py-5 px-6 shrink-0 text-sm bg-white dark:bg-[#0a0a0a] relative">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <svg
@@ -115,7 +115,7 @@ export function Header() {
           </nav>
 
           <button
-            className="md:hidden text-[#111] hover:text-[#FF5C00] transition-colors p-1"
+            className="md:hidden text-[#111] dark:text-white hover:text-[#FF5C00] transition-colors p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -129,7 +129,7 @@ export function Header() {
 
         {/* Mobile menu dropdown */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white border-b border-[#F0F0F0] shadow-lg md:hidden flex flex-col py-2 px-6">
+          <div className="absolute top-full left-0 w-full bg-white dark:bg-[#0a0a0a] border-b border-[#F0F0F0] dark:border-[#222] shadow-lg md:hidden flex flex-col py-2 px-6">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"

@@ -302,7 +302,7 @@ export function LiveEcosystem({
 
   if (!mounted)
     return (
-      <div className="mb-24 w-full h-[600px] bg-[#fafafa] rounded-sm animate-pulse border border-[#E5E5E5]"></div>
+      <div className="mb-24 w-full h-[600px] bg-[#fafafa] rounded-sm animate-pulse border border-[#E5E5E5] dark:border-[#333]"></div>
     );
 
   return (
@@ -311,7 +311,7 @@ export function LiveEcosystem({
       <div className="flex items-center justify-between mb-4 font-mono text-[10px] uppercase tracking-widest text-[#888]">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-[#FF5C00] animate-pulse"></div>
-          <span className="text-[#111] font-semibold">STREAMING</span>
+          <span className="text-[#111] dark:text-white font-semibold">STREAMING</span>
           <span>&middot;</span>
           <span>MOBULA FAST-TRADE</span>
         </div>
@@ -319,58 +319,58 @@ export function LiveEcosystem({
       </div>
 
       {/* Top Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 bg-white border border-[#E5E5E5] rounded-sm mb-4">
-        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] group cursor-pointer hover:bg-[#F9F9F9] transition-colors flex flex-col justify-between">
+      <div className="grid grid-cols-2 lg:grid-cols-4 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm mb-4">
+        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
               VOL 24H
             </div>
-            <div className="text-xl font-mono tracking-tight text-[#111] mb-2 group-hover:text-[#FF5C00] transition-colors">
+            <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
               <span className="text-[14px] text-[#888]">$</span>
               {(25.01 * statsMultiplier).toFixed(2)}
               <span className="text-[14px] text-[#888]">B</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
             {globalFilter === "all"
               ? "All chains"
               : CHAINS.find((c) => c.id === globalFilter)?.name}{" "}
             &middot; DEX trades
           </div>
         </div>
-        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] group cursor-pointer hover:bg-[#F9F9F9] transition-colors flex flex-col justify-between">
+        <div className="p-4 md:p-5 border-b lg:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
               TXS 24H
             </div>
-            <div className="text-xl font-mono tracking-tight text-[#111] mb-2 group-hover:text-[#FF5C00] transition-colors">
+            <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
               {(50.98 * statsMultiplier).toFixed(2)}
               <span className="text-[14px] text-[#888]">M</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
             {(26.2 * statsMultiplier).toFixed(1)}M buys &middot;{" "}
             {(24.6 * statsMultiplier).toFixed(1)}M sells
           </div>
         </div>
-        <div className="p-4 md:p-5 border-b md:border-b-0 lg:border-r border-[#E5E5E5] group cursor-pointer hover:bg-[#F9F9F9] transition-colors flex flex-col justify-between">
+        <div className="p-4 md:p-5 border-b md:border-b-0 lg:border-r border-[#E5E5E5] dark:border-[#333] group cursor-pointer hover:bg-[#F9F9F9] dark:hover:bg-[#1A1A1A] transition-colors flex flex-col justify-between">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
               MARKET CAP
             </div>
-            <div className="text-xl font-mono tracking-tight text-[#111] mb-2 group-hover:text-[#FF5C00] transition-colors">
+            <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2 group-hover:text-[#FF5C00] transition-colors">
               <span className="text-[14px] text-[#888]">$</span>
               {(7.4 * statsMultiplier).toFixed(2)}
               <span className="text-[14px] text-[#888]">T</span>
             </div>
           </div>
-          <div className="text-[10px] font-sans text-[#666]">
+          <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA]">
             {globalFilter === "all"
               ? "All tracked assets"
               : `${CHAINS.find((c) => c.id === globalFilter)?.name} ecosystem assets`}
           </div>
         </div>
-        <div className="p-4 md:p-5 bg-[#FAFAFA] flex flex-col justify-between relative">
+        <div className="p-4 md:p-5 bg-[#FAFAFA] dark:bg-[#111] flex flex-col justify-between relative">
           <div className="absolute right-4 top-4 text-[9px] font-mono text-[#FF5C00] animate-pulse">
             +24
           </div>
@@ -378,11 +378,11 @@ export function LiveEcosystem({
             <div className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-1">
               STREAMED LIVE
             </div>
-            <div className="text-xl font-mono tracking-tight text-[#111] mb-2">
+            <div className="text-xl font-mono tracking-tight text-[#111] dark:text-white mb-2">
               {Math.floor(12312 * statsMultiplier).toLocaleString()}
             </div>
           </div>
-          <div className="flex items-center justify-between text-[10px] font-sans text-[#666]">
+          <div className="flex items-center justify-between text-[10px] font-sans text-[#666] dark:text-[#AAA]">
             <span>
               ${(20.02 * statsMultiplier).toFixed(2)}M updates since load
             </span>
@@ -400,12 +400,12 @@ export function LiveEcosystem({
       </div>
 
       {/* Main Chart Panel */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm flex flex-col">
         {/* Panel Header */}
-        <div className="border-b border-[#E5E5E5] p-3 md:p-4 flex flex-col md:flex-row md:items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888] gap-3">
+        <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex flex-col md:flex-row md:items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888] gap-3">
           <div className="flex flex-wrap items-center gap-3">
             <div className="relative group">
-              <span className="text-[#111] font-semibold flex items-center cursor-help border-b border-dashed border-[#888] hover:text-[#FF5C00] transition-colors relative z-10">
+              <span className="text-[#111] dark:text-white font-semibold flex items-center cursor-help border-b border-dashed border-[#888] hover:text-[#FF5C00] transition-colors relative z-10">
                 STREAMED VOLUME
               </span>
               {/* Tooltip Content */}
@@ -420,7 +420,7 @@ export function LiveEcosystem({
             <span>LAST 10 MIN</span>
             <div className="w-1.5 h-1.5 rounded-full bg-[#111]"></div>
             <span className="hidden md:inline">&middot;</span>
-            <span className="text-[#111] normal-case tracking-normal font-sans italic text-[11px]">
+            <span className="text-[#111] dark:text-white normal-case tracking-normal font-sans italic text-[11px]">
               ${(11.15 * statsMultiplier).toFixed(2)}M total
             </span>
             <span className="hidden md:inline text-[#E5E5E5] mx-1">|</span>
@@ -481,7 +481,7 @@ export function LiveEcosystem({
                       style={{ backgroundColor: chain.color }}
                     ></div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="font-sans text-[12px] font-medium text-[#111]">
+                      <span className="font-sans text-[12px] font-medium text-[#111] dark:text-white">
                         {chain.name}
                       </span>
                       <span className="font-mono text-[10px] text-[#888]">
@@ -499,7 +499,7 @@ export function LiveEcosystem({
               <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute left-0 right-12 top-[6px] h-px border-t border-dashed border-[#E5E5E5]/60 z-0"></div>
                 <div className="absolute left-0 right-12 top-[calc(50%-12px)] h-px border-t border-dashed border-[#E5E5E5]/60 z-0"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-12 border-l border-dashed border-[#E5E5E5]/50 flex flex-col justify-between items-end pb-8 z-10 bg-white/50 backdrop-blur-[1px]">
+                <div className="absolute right-0 top-0 bottom-0 w-12 border-l border-dashed border-[#E5E5E5]/50 flex flex-col justify-between items-end pb-8 z-10 bg-white/50 dark:bg-[#0a0a0a]/50 backdrop-blur-[1px]">
                   <span className="text-[#888] font-mono text-[9px]">
                     5.00M
                   </span>
@@ -664,7 +664,7 @@ export function LiveEcosystem({
                             transition: { duration: 0.15 },
                           }}
                           transition={{ duration: 0.4, ease: "easeOut" }}
-                          className="absolute right-0 bg-white border shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-[2px] py-1 pl-1.5 pr-2.5 flex items-center justify-between pointer-events-auto whitespace-nowrap min-w-0 overflow-hidden"
+                          className="absolute right-0 bg-white dark:bg-[#0a0a0a] border shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-[2px] py-1 pl-1.5 pr-2.5 flex items-center justify-between pointer-events-auto whitespace-nowrap min-w-0 overflow-hidden"
                           style={{
                             top: `calc(${relativeY}% - 14px)`,
                             borderColor: tag.color,
@@ -678,7 +678,7 @@ export function LiveEcosystem({
                             >
                               {tag.chain.charAt(0).toUpperCase()}
                             </div>
-                            <span className="font-mono text-[9px] text-[#111] font-medium">
+                            <span className="font-mono text-[9px] text-[#111] dark:text-white font-medium">
                               {tag.pair}
                             </span>
                           </div>
@@ -698,10 +698,10 @@ export function LiveEcosystem({
 
           {/* Live Feed Sidebar */}
           {showFeed && (
-            <div className="w-full md:w-[320px] lg:w-[360px] border-t md:border-t-0 md:border-l border-[#E5E5E5] flex flex-col bg-[#FAFAFA]">
-              <div className="border-b border-[#E5E5E5] p-3 md:p-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888]">
+            <div className="w-full md:w-[320px] lg:w-[360px] border-t md:border-t-0 md:border-l border-[#E5E5E5] dark:border-[#333] flex flex-col bg-[#FAFAFA] dark:bg-[#111]">
+              <div className="border-b border-[#E5E5E5] dark:border-[#333] p-3 md:p-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#888]">
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-[#111]">LIVE FEED</span>
+                  <span className="font-semibold text-[#111] dark:text-white">LIVE FEED</span>
                   <div
                     className={`w-1.5 h-1.5 rounded-full bg-[#111] ${isPlaying ? "animate-pulse" : "opacity-30"}`}
                   ></div>
@@ -725,7 +725,7 @@ export function LiveEcosystem({
                           <div className="text-[#888] shrink-0">
                             <Box className="w-4 h-4" />
                           </div>
-                          <span className="font-mono text-[11px] text-[#222] truncate">
+                          <span className="font-mono text-[11px] text-[#222] dark:text-[#E0E0E0] truncate">
                             {item.pair}
                           </span>
                         </div>
@@ -739,7 +739,7 @@ export function LiveEcosystem({
                           >
                             {item.direction === "down" ? "▼" : "▲"}
                           </span>
-                          <span className="font-mono text-[11px] text-[#111] text-right w-10">
+                          <span className="font-mono text-[11px] text-[#111] dark:text-white text-right w-10">
                             {item.amount}
                           </span>
                           <span className="font-mono text-[11px] text-[#FF5C00] text-right w-[40px] truncate">

@@ -93,18 +93,18 @@ export function NetworkMetrics({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
       {/* Network Health */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 flex flex-col">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
           Network Performance
         </h3>
 
         <div className="flex-1 flex flex-col justify-center gap-8">
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4">
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] dark:border-[#333] pb-4">
             <div>
-              <div className="text-[10px] font-sans text-[#666] mb-1">
+              <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] mb-1">
                 Current TPS (Transactions/sec)
               </div>
-              <div className="font-mono text-3xl font-medium tracking-tight text-[#111]">
+              <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
                 {tps.toLocaleString("en-US", { maximumFractionDigits: 0 })}
               </div>
             </div>
@@ -129,12 +129,12 @@ export function NetworkMetrics({
             </div>
           </div>
 
-          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] pb-4">
+          <div className="flex items-end justify-between border-b border-dashed border-[#E5E5E5] dark:border-[#333] pb-4">
             <div>
-              <div className="text-[10px] font-sans text-[#666] mb-1">
+              <div className="text-[10px] font-sans text-[#666] dark:text-[#AAA] mb-1">
                 Avg Gas / Transact Fee
               </div>
-              <div className="font-mono text-3xl font-medium tracking-tight text-[#111]">
+              <div className="font-mono text-3xl font-medium tracking-tight text-[#111] dark:text-white">
                 {globalFilter === "all" ? (
                   <span className="text-xl text-[#888] italic">
                     Varies by chain
@@ -154,7 +154,7 @@ export function NetworkMetrics({
       </div>
 
       {/* Protocol Dominance */}
-      <div className="bg-white border border-[#E5E5E5] rounded-sm p-4 md:p-6 flex flex-col">
+      <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm p-4 md:p-6 flex flex-col">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
           Protocol Dominance (24h Vol)
         </h3>
@@ -163,7 +163,7 @@ export function NetworkMetrics({
           {protocols.map((protocol, i) => (
             <div key={protocol.name} className="flex flex-col gap-1.5 group">
               <div className="flex justify-between items-center text-xs font-mono">
-                <span className="text-[#111]">{protocol.name}</span>
+                <span className="text-[#111] dark:text-white">{protocol.name}</span>
                 <span className="text-[#888]">{protocol.volume}%</span>
               </div>
               <div className="w-full h-1.5 bg-[#F0F0F0] rounded-full overflow-hidden">

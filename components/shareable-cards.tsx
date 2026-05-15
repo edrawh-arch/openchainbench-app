@@ -49,7 +49,7 @@ export function ShareableCards({ data }: { data: any }) {
   return (
     <div className="pb-8">
       {/* Description */}
-      <p className="text-[#444] text-sm mb-6 max-w-2xl font-sans">
+      <p className="text-[#444] dark:text-[#CCC] text-sm mb-6 max-w-2xl font-sans">
         Pick a layout and download a 1200×630 PNG ready for Twitter, Reddit,
         LinkedIn or any OG-card embed. Same data, same colors as this dashboard.
       </p>
@@ -75,14 +75,14 @@ export function ShareableCards({ data }: { data: any }) {
 
       {/* Sub-menus based on Active Tab */}
       {activeTab === "RANKING" && (
-        <p className="text-[12px] text-[#666] mb-8 font-sans">
+        <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-8 font-sans">
           Vertical bars sorted ascending by p50, with provider names and p99
           tails.
         </p>
       )}
 
       {activeTab === "LEADERBOARD" && (
-        <p className="text-[12px] text-[#666] mb-8 font-sans">
+        <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-8 font-sans">
           Ranked rows with horizontal mini-bars in each provider&apos;s
           signature color.
         </p>
@@ -90,7 +90,7 @@ export function ShareableCards({ data }: { data: any }) {
 
       {activeTab === "SNAPSHOT" && (
         <div className="mb-8">
-          <p className="text-[12px] text-[#666] mb-4 font-sans">
+          <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-4 font-sans">
             Full 24-hour multi-line chart. Toggle providers in or out of the
             plot.
           </p>
@@ -145,7 +145,7 @@ export function ShareableCards({ data }: { data: any }) {
 
       {activeTab === "HEADLINE" && (
         <div className="mb-8">
-          <p className="text-[12px] text-[#666] mb-4 font-sans">
+          <p className="text-[12px] text-[#666] dark:text-[#AAA] mb-4 font-sans">
             Big-number poster of one provider&apos;s p50. Pick which provider to
             feature.
           </p>
@@ -171,7 +171,7 @@ export function ShareableCards({ data }: { data: any }) {
       )}
 
       {activeTab === "COMPARE" && (
-        <div className="mb-8 bg-[#FAF9F5] p-5 rounded-sm border border-[#E5E5E5]">
+        <div className="mb-8 bg-[#FAF9F5] p-5 rounded-sm border border-[#E5E5E5] dark:border-[#333]">
           <div className="flex items-center justify-between font-sans text-[10px] uppercase tracking-widest text-[#888] mb-4">
             <span>PICK 2 PROVIDERS TO COMPARE</span>
             <button
@@ -236,7 +236,7 @@ export function ShareableCards({ data }: { data: any }) {
       {/* OG Image Generator Output Mock */}
       <div
         ref={containerRef}
-        className="border border-[#E5E5E5] rounded-[4px] mb-6 w-full max-w-4xl shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden"
+        className="border border-[#E5E5E5] dark:border-[#333] rounded-[4px] mb-6 w-full max-w-4xl shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden"
         style={{ height: `${630 * scale}px` }}
       >
         <div
@@ -247,7 +247,7 @@ export function ShareableCards({ data }: { data: any }) {
           {activeTab !== "COMPARE" && (
             <div className="pt-8 px-10 pb-0 flex-shrink-0">
               <div className="flex items-center justify-between mb-8 shrink-0">
-                <div className="flex items-center gap-3 text-[#111]">
+                <div className="flex items-center gap-3 text-[#111] dark:text-white">
                   <svg
                     width="22"
                     height="22"
@@ -279,7 +279,7 @@ export function ShareableCards({ data }: { data: any }) {
                     <div className="w-1.5 h-1.5 rounded-full bg-[#3A7E50]"></div>{" "}
                     LIVE · 24H
                   </span>
-                  <span className="bg-transparent border border-[#ccc] px-2.5 py-1 rounded-full text-[#444]">
+                  <span className="bg-transparent border border-[#ccc] px-2.5 py-1 rounded-full text-[#444] dark:text-[#CCC]">
                     {data.tags[0]?.label || "DATA"}
                   </span>
                   <span className="text-[#888] ml-2">
@@ -290,10 +290,10 @@ export function ShareableCards({ data }: { data: any }) {
 
               {activeTab === "RANKING" && (
                 <>
-                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] leading-none">
+                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] dark:text-white leading-none">
                     {data.title}
                   </h2>
-                  <p className="text-[16px] text-[#555] mb-auto font-sans">
+                  <p className="text-[16px] text-[#555] dark:text-[#AAA] mb-auto font-sans">
                     Provider ranking by p50 · ascending. Lower is faster.
                   </p>
                 </>
@@ -301,10 +301,10 @@ export function ShareableCards({ data }: { data: any }) {
 
               {activeTab === "LEADERBOARD" && (
                 <>
-                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] leading-none">
+                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] dark:text-white leading-none">
                     {data.title}
                   </h2>
-                  <p className="text-[16px] text-[#555] mb-auto font-sans">
+                  <p className="text-[16px] text-[#555] dark:text-[#AAA] mb-auto font-sans">
                     Ranked by p50 · ascending. Lower is faster.
                   </p>
                 </>
@@ -312,10 +312,10 @@ export function ShareableCards({ data }: { data: any }) {
 
               {activeTab === "SNAPSHOT" && (
                 <>
-                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] leading-none">
+                  <h2 className="text-[44px] font-semibold tracking-tight font-sans mb-3 text-[#111] dark:text-white leading-none">
                     {data.title}
                   </h2>
-                  <p className="text-[16px] text-[#555] mb-auto font-sans">
+                  <p className="text-[16px] text-[#555] dark:text-[#AAA] mb-auto font-sans">
                     {data.description}
                   </p>
                 </>
@@ -327,16 +327,16 @@ export function ShareableCards({ data }: { data: any }) {
                     FASTEST CROSS-CHAIN BRIDGE · FIELD MIN P50
                   </p>
                   <div className="flex items-baseline gap-2 mb-8">
-                    <span className="text-[160px] font-sans font-medium text-[#111] leading-none tracking-tighter">
+                    <span className="text-[160px] font-sans font-medium text-[#111] dark:text-white leading-none tracking-tighter">
                       {getProviderResult(headlineProvider)?.p50.split(" ")[0] ||
                         "166"}
                     </span>
-                    <span className="text-[40px] font-sans text-[#444]">
+                    <span className="text-[40px] font-sans text-[#444] dark:text-[#CCC]">
                       {getProviderResult(headlineProvider)?.p50.split(" ")[1] ||
                         "ms"}
                     </span>
                   </div>
-                  <p className="text-3xl font-sans text-[#111] mb-6">
+                  <p className="text-3xl font-sans text-[#111] dark:text-white mb-6">
                     by <span className="font-medium">{headlineProvider}</span>
                   </p>
                   <p className="text-[13px] font-sans font-medium text-[#888]">
@@ -364,9 +364,9 @@ export function ShareableCards({ data }: { data: any }) {
                       key={r.name}
                       className="flex flex-col items-center w-[140px] relative"
                     >
-                      <span className="font-sans font-medium text-[#111] text-[36px] mb-3 flex items-baseline gap-1 relative z-10">
+                      <span className="font-sans font-medium text-[#111] dark:text-white text-[36px] mb-3 flex items-baseline gap-1 relative z-10">
                         {val}{" "}
-                        <span className="text-[14px] text-[#444] font-sans italic">
+                        <span className="text-[14px] text-[#444] dark:text-[#CCC] font-sans italic">
                           {r.p50.split(" ")[1]}
                         </span>
                       </span>
@@ -382,7 +382,7 @@ export function ShareableCards({ data }: { data: any }) {
                         className="absolute top-full left-0 w-full flex flex-col items-center"
                         style={{ paddingTop: "16px" }}
                       >
-                        <span className="font-sans font-semibold text-[#111] text-[16px] leading-none mb-1">
+                        <span className="font-sans font-semibold text-[#111] dark:text-white text-[16px] leading-none mb-1">
                           {r.name}
                         </span>
                       </div>
@@ -404,7 +404,7 @@ export function ShareableCards({ data }: { data: any }) {
                         {(idx + 1).toString().padStart(2, "0")}
                       </span>
                       <div className="flex-1 flex flex-col pl-4 gap-2">
-                        <span className="font-sans text-[22px] text-[#111]">
+                        <span className="font-sans text-[22px] text-[#111] dark:text-white">
                           {r.name}
                         </span>
                         <div className="w-full h-2 bg-[#EBEBEB] rounded-full overflow-hidden flex relative">
@@ -418,10 +418,10 @@ export function ShareableCards({ data }: { data: any }) {
                         </div>
                       </div>
                       <div className="w-32 shrink-0 flex items-baseline justify-end gap-1">
-                        <span className="font-sans font-medium text-[28px] text-[#111] leading-none">
+                        <span className="font-sans font-medium text-[28px] text-[#111] dark:text-white leading-none">
                           {val}
                         </span>
-                        <span className="text-[13px] text-[#444]">
+                        <span className="text-[13px] text-[#444] dark:text-[#CCC]">
                           {r.p50.split(" ")[1]}
                         </span>
                       </div>
@@ -474,7 +474,7 @@ export function ShareableCards({ data }: { data: any }) {
                           className="w-4 h-0.5"
                           style={{ backgroundColor: getProviderColor(p) }}
                         ></div>
-                        <span className="font-sans text-[13px] text-[#111] font-medium">
+                        <span className="font-sans text-[13px] text-[#111] dark:text-white font-medium">
                           {p}
                         </span>
                         <span className="font-sans text-[13px] text-[#aaa]">
@@ -491,7 +491,7 @@ export function ShareableCards({ data }: { data: any }) {
               <div className="w-full h-[630px] flex absolute inset-0 -mx-10 mt-0">
                 <div className="w-[50%] h-full bg-[#E5E5E5] px-10 pt-10 pb-[90px] flex flex-col relative shrink-0">
                   <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-3 text-[#111]">
+                    <div className="flex items-center gap-3 text-[#111] dark:text-white">
                       <svg
                         width="22"
                         height="22"
@@ -535,7 +535,7 @@ export function ShareableCards({ data }: { data: any }) {
                     </div>
                   </div>
 
-                  <h2 className="text-[36px] font-semibold tracking-tight font-sans mb-12 text-[#111] leading-none">
+                  <h2 className="text-[36px] font-semibold tracking-tight font-sans mb-12 text-[#111] dark:text-white leading-none">
                     {data.title} · top 2
                   </h2>
 
@@ -543,15 +543,15 @@ export function ShareableCards({ data }: { data: any }) {
                     <p className="font-mono text-[10px] text-[#888] tracking-widest uppercase mb-4">
                       RANK 01
                     </p>
-                    <p className="text-[54px] font-medium font-sans text-[#111] leading-none mb-4">
+                    <p className="text-[54px] font-medium font-sans text-[#111] dark:text-white leading-none mb-4">
                       {compareA}
                     </p>
 
                     <div className="flex items-baseline gap-2 mb-4 relative ml-[-4px]">
-                      <span className="text-[120px] font-sans font-medium text-[#111] leading-none tracking-tighter">
+                      <span className="text-[120px] font-sans font-medium text-[#111] dark:text-white leading-none tracking-tighter">
                         {getProviderResult(compareA)?.p50.split(" ")[0]}
                       </span>
-                      <span className="text-[32px] font-sans text-[#444]">
+                      <span className="text-[32px] font-sans text-[#444] dark:text-[#CCC]">
                         {getProviderResult(compareA)?.p50.split(" ")[1]}
                       </span>
                     </div>
@@ -562,13 +562,13 @@ export function ShareableCards({ data }: { data: any }) {
                     <div className="flex gap-10 font-mono text-[10px] uppercase tracking-widest text-[#888]">
                       <div className="flex flex-col gap-1">
                         <span>P99</span>
-                        <span className="font-sans font-semibold text-[13px] text-[#111] tracking-normal">
+                        <span className="font-sans font-semibold text-[13px] text-[#111] dark:text-white tracking-normal">
                           {getProviderResult(compareA)?.p99}
                         </span>
                       </div>
                       <div className="flex flex-col gap-1">
                         <span>N · 24H</span>
-                        <span className="font-sans font-semibold text-[13px] text-[#111] tracking-normal">
+                        <span className="font-sans font-semibold text-[13px] text-[#111] dark:text-white tracking-normal">
                           {getProviderResult(compareA)?.n?.toLocaleString()}
                         </span>
                       </div>
@@ -583,14 +583,14 @@ export function ShareableCards({ data }: { data: any }) {
                   <p className="text-[10px] font-mono text-[#888] tracking-widest uppercase">
                     SLOWER BY
                   </p>
-                  <p className="text-[26px] font-sans font-medium text-[#111] mt-1 mb-1 tracking-tight">
+                  <p className="text-[26px] font-sans font-medium text-[#111] dark:text-white mt-1 mb-1 tracking-tight">
                     {Math.abs(
                       parseFloat(getProviderResult(compareB)?.p50 || "0") -
                         parseFloat(getProviderResult(compareA)?.p50 || "0"),
                     ).toFixed(
                       getProviderResult(compareA)?.p50.includes("s") ? 1 : 0,
                     )}
-                    <span className="text-[16px] text-[#444] ml-1">
+                    <span className="text-[16px] text-[#444] dark:text-[#CCC] ml-1">
                       {getProviderResult(compareA)?.p50.split(" ")[1]}
                     </span>
                   </p>
@@ -614,7 +614,7 @@ export function ShareableCards({ data }: { data: any }) {
                       <div className="w-1.5 h-1.5 rounded-full bg-[#3A7E50]"></div>{" "}
                       LIVE · 24H
                     </span>
-                    <span className="bg-transparent border border-[#ccc] px-2.5 py-1 rounded-full text-[#444]">
+                    <span className="bg-transparent border border-[#ccc] px-2.5 py-1 rounded-full text-[#444] dark:text-[#CCC]">
                       {data.tags[0]?.label || "DATA"}
                     </span>
                     <span className="ml-2">MAY 6, 2026 · 12:17 UTC</span>
@@ -629,10 +629,10 @@ export function ShareableCards({ data }: { data: any }) {
                     </p>
 
                     <div className="flex items-baseline gap-2 mb-4 relative ml-[-4px]">
-                      <span className="text-[120px] font-sans font-medium text-[#111] leading-none tracking-tighter">
+                      <span className="text-[120px] font-sans font-medium text-[#111] dark:text-white leading-none tracking-tighter">
                         {getProviderResult(compareB)?.p50.split(" ")[0]}
                       </span>
-                      <span className="text-[32px] font-sans text-[#444]">
+                      <span className="text-[32px] font-sans text-[#444] dark:text-[#CCC]">
                         {getProviderResult(compareB)?.p50.split(" ")[1]}
                       </span>
                     </div>
@@ -643,13 +643,13 @@ export function ShareableCards({ data }: { data: any }) {
                     <div className="flex gap-10 font-mono text-[10px] uppercase tracking-widest text-[#888]">
                       <div className="flex flex-col gap-1">
                         <span>P99</span>
-                        <span className="font-sans font-semibold text-[13px] text-[#111] tracking-normal">
+                        <span className="font-sans font-semibold text-[13px] text-[#111] dark:text-white tracking-normal">
                           {getProviderResult(compareB)?.p99}
                         </span>
                       </div>
                       <div className="flex flex-col gap-1">
                         <span>N · 24H</span>
-                        <span className="font-sans font-semibold text-[13px] text-[#111] tracking-normal">
+                        <span className="font-sans font-semibold text-[13px] text-[#111] dark:text-white tracking-normal">
                           {getProviderResult(compareB)?.n?.toLocaleString()}
                         </span>
                       </div>
@@ -680,7 +680,7 @@ export function ShareableCards({ data }: { data: any }) {
         <button className="bg-[#151515] text-white px-5 py-2.5 font-sans font-medium text-[13px] rounded-sm hover:bg-[#111] flex items-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-[#111]/20">
           <Download className="w-4 h-4" /> Download PNG
         </button>
-        <button className="bg-transparent text-[#666] px-2 py-2.5 font-sans font-semibold text-[12px] uppercase tracking-widest hover:text-[#111] flex items-center gap-1 transition-colors">
+        <button className="bg-transparent text-[#666] dark:text-[#AAA] px-2 py-2.5 font-sans font-semibold text-[12px] uppercase tracking-widest hover:text-[#111] flex items-center gap-1 transition-colors">
           OPEN RAW <span className="text-[14px]">↗</span>
         </button>
       </div>

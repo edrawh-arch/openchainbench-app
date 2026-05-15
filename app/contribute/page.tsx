@@ -13,20 +13,20 @@ export default function Contribute() {
         <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-4">
           Tutorial
         </h4>
-        <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-6 font-sans">
+        <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] dark:text-white mb-6 font-sans">
           Submit a benchmark.
         </h1>
         <p className="text-[20px] text-[#777] font-sans leading-relaxed mb-16 tracking-tight">
           Anyone can publish on OpenChainBench. You write the harness, you host
           it, you keep your secrets. The project shares one Prometheus that
           scrapes your public{" "}
-          <code className="font-mono bg-[#F5F5F5] px-1.5 py-0.5 rounded text-[16px] text-[#111]">
+          <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] px-1.5 py-0.5 rounded text-[16px] text-[#111] dark:text-white">
             /metrics
           </code>{" "}
           endpoint. that is the only piece of common infrastructure.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-6 mb-20 font-sans border-b border-[#F0F0F0] pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-6 mb-20 font-sans border-b border-[#F0F0F0] dark:border-[#222] pb-16">
           <Link
             href="#step-1"
             className="flex flex-col group cursor-pointer block"
@@ -34,10 +34,10 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#FF5C00] border-b border-[#FF5C00] pb-2 mb-3">
               01
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Open an issue
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               Align on the metric.
             </span>
           </Link>
@@ -48,10 +48,10 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#888] group-hover:text-[#FF5C00] border-b border-[#ccc] group-hover:border-[#FF5C00] transition-colors pb-2 mb-3">
               02
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Write the spec
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               One YAML file.
             </span>
           </Link>
@@ -62,10 +62,10 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#888] group-hover:text-[#FF5C00] border-b border-[#ccc] group-hover:border-[#FF5C00] transition-colors pb-2 mb-3">
               03
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Build the harness
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               Expose /metrics.
             </span>
           </Link>
@@ -76,10 +76,10 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#888] group-hover:text-[#FF5C00] border-b border-[#ccc] group-hover:border-[#FF5C00] transition-colors pb-2 mb-3">
               04
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Host it
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               Anywhere with HTTPS.
             </span>
           </Link>
@@ -90,10 +90,10 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#888] group-hover:text-[#FF5C00] border-b border-[#ccc] group-hover:border-[#FF5C00] transition-colors pb-2 mb-3">
               05
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Wire the scrape
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               One block in prometheus.yml.
             </span>
           </Link>
@@ -104,28 +104,28 @@ export default function Contribute() {
             <span className="font-mono text-[10px] text-[#888] group-hover:text-[#FF5C00] border-b border-[#ccc] group-hover:border-[#FF5C00] transition-colors pb-2 mb-3">
               06
             </span>
-            <span className="font-bold text-[13px] text-[#111] leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
+            <span className="font-bold text-[13px] text-[#111] dark:text-white leading-snug mb-1 group-hover:text-[#FF5C00] transition-colors">
               Open a PR
             </span>
-            <span className="text-[12px] text-[#666] leading-snug">
+            <span className="text-[12px] text-[#666] dark:text-[#AAA] leading-snug">
               The page renders itself.
             </span>
           </Link>
         </div>
 
-        <div className="bg-white border border-[#E5E5E5] rounded-[4px] mb-20 flex flex-col md:flex-row overflow-hidden shadow-sm">
-          <div className="p-8 md:w-2/3 border-b md:border-b-0 md:border-r border-[#E5E5E5]">
+        <div className="bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-[4px] mb-20 flex flex-col md:flex-row overflow-hidden shadow-sm">
+          <div className="p-8 md:w-2/3 border-b md:border-b-0 md:border-r border-[#E5E5E5] dark:border-[#333]">
             <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-4">
               How it actually works
             </h4>
-            <h3 className="font-semibold text-[#111] text-lg font-sans mb-4">
+            <h3 className="font-semibold text-[#111] dark:text-white text-lg font-sans mb-4">
               A federation,{" "}
               <span className="text-[#FF5C00]">not a platform.</span>
             </h3>
-            <p className="text-[14px] text-[#444] font-sans leading-relaxed mb-4">
+            <p className="text-[14px] text-[#444] dark:text-[#CCC] font-sans leading-relaxed mb-4">
               Every benchmark on this site is run by whoever wrote it. You host
               your harness wherever you like, expose{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 /metrics
               </code>{" "}
               over HTTPS, and the project&apos;s shared Prometheus scrapes that
@@ -133,31 +133,31 @@ export default function Contribute() {
               budget. Maintainers only see the metric values your harness
               chooses to publish.
             </p>
-            <p className="text-[14px] text-[#444] font-sans leading-relaxed mb-4">
+            <p className="text-[14px] text-[#444] dark:text-[#CCC] font-sans leading-relaxed mb-4">
               The only piece of infrastructure shared by the project is one
               Prometheus instance. That is the URL every YAML spec points at.
               Adding a new harness is one extra{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 scrape_configs
               </code>{" "}
               block in{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 infrastructure/prometheus/prometheus.yml
               </code>
               . No new credentials, no new services, no privileged access to
               share.
             </p>
-            <p className="text-[14px] text-[#444] font-sans leading-relaxed">
+            <p className="text-[14px] text-[#444] dark:text-[#CCC] font-sans leading-relaxed">
               For a concrete end-to-end example with a fictional contributor,
               the spec, the Go harness, deploying to Fly.io, opening the PR, see
               the walkthrough doc.
             </p>
           </div>
-          <div className="p-8 md:w-1/3 bg-[#FAFAFA]">
+          <div className="p-8 md:w-1/3 bg-[#FAFAFA] dark:bg-[#111]">
             <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6">
               Realistic timeline
             </h4>
-            <div className="space-y-4 text-[13px] font-sans mb-6 text-[#111]">
+            <div className="space-y-4 text-[13px] font-sans mb-6 text-[#111] dark:text-white">
               <p>
                 <strong className="font-semibold">Day 0 · ~30 min.</strong> open
                 issue, align on methodology with a maintainer.
@@ -169,7 +169,7 @@ export default function Contribute() {
               <p>
                 <strong className="font-semibold">Day 2 · ~30 min.</strong>{" "}
                 deploy your harness on Fly / Railway / your VPS, verify{" "}
-                <code className="font-mono bg-[#EFEFEF] px-1 py-0.5 rounded border border-[#E5E5E5] text-[11px]">
+                <code className="font-mono bg-[#EFEFEF] px-1 py-0.5 rounded border border-[#E5E5E5] dark:border-[#333] text-[11px]">
                   /metrics
                 </code>{" "}
                 publicly reachable.
@@ -191,10 +191,10 @@ export default function Contribute() {
         </div>
 
         <section id="step-1" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 1.</span> Open an issue
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-6">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-6">
             Use the Propose a benchmark template to describe what you want to
             measure, which providers, and where the harness will run.
             Maintainers respond with feedback before any code is written. Want
@@ -203,18 +203,18 @@ export default function Contribute() {
         </section>
 
         <section id="step-2" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 2.</span> Write the spec
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-6">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-6">
             Drop a file at{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               benchmarks/&lt;your-slug&gt;.yml
             </code>
             . It is the source of truth for the report, title, abstract,
             methodology, providers and the PromQL that fills in the numbers.
           </p>
-          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222]">
+          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222] dark:text-[#E0E0E0]">
             <button
               className="absolute top-4 right-4 text-[#888] hover:text-[#FF5C00] transition-colors opacity-0 group-hover:opacity-100"
               aria-label="Copy code"
@@ -266,13 +266,13 @@ providers:
       series: histogram_quantile(0.5, sum by (le) (rate(ocb_portfolio_ms_bucket{provider="provider-a", success="true"}[$__rate_interval])))`}</code>
             </pre>
           </div>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed">
             That is the entire wire format. The Zod schema in{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               src/lib/spec-schema.ts
             </code>{" "}
             is the single source of truth;{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               pnpm validate
             </code>{" "}
             lints every spec in CI.
@@ -280,25 +280,25 @@ providers:
         </section>
 
         <section id="step-3" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 3.</span> Build the harness
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-4">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-4">
             The harness is a long-running data producer. Whatever fits the
             providers: Bun, Node, Python, Go, Rust. The contract is small:
           </p>
-          <ul className="list-disc pl-5 space-y-3 text-[14px] text-[#444] font-sans mb-6">
+          <ul className="list-disc pl-5 space-y-3 text-[14px] text-[#444] dark:text-[#CCC] font-sans mb-6">
             <li className="pl-2">
               Run continuously, expose{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 /metrics
               </code>{" "}
               over HTTP on a documented port (e.g.{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 :2112
               </code>{" "}
               or{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 :9090
               </code>
               ).
@@ -309,7 +309,7 @@ providers:
             </li>
             <li className="pl-2">
               Document inputs, regions, timeouts and the metrics port in{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 harnesses/&lt;slug&gt;/README.md
               </code>
               .
@@ -317,7 +317,7 @@ providers:
             <li className="pl-2">
               Don&apos;t commit API keys. Read them from environment variables
               and document them in a{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 .env.example
               </code>
               .
@@ -325,7 +325,7 @@ providers:
             <li className="pl-2">
               Don&apos;t bundle Prometheus, Grafana or Alertmanager. They live
               in{" "}
-              <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[12px] text-[#111]">
+              <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[12px] text-[#111] dark:text-white">
                 infrastructure/
               </code>{" "}
               and are shared across every harness.
@@ -334,19 +334,19 @@ providers:
         </section>
 
         <section id="step-4" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 4.</span> Host it
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-4">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-4">
             OpenChainBench is a federation: each harness is hosted by whoever
             wrote it. Pick whatever fits: Railway, Fly, Cloud Run, a VPS, a home
             server with a static IP. The only requirement is that{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               /metrics
             </code>{" "}
             is reachable over HTTPS at a stable URL.
           </p>
-          <ul className="list-disc pl-5 space-y-3 text-[14px] text-[#444] font-sans mb-6">
+          <ul className="list-disc pl-5 space-y-3 text-[14px] text-[#444] dark:text-[#CCC] font-sans mb-6">
             <li className="pl-2">
               You own the runtime, the secrets and the budget. Maintainers never
               see your API keys or wallet keys.
@@ -364,18 +364,18 @@ providers:
         </section>
 
         <section id="step-5" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 5.</span> Wire the scrape
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-6">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-6">
             Append a job to{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               infrastructure/prometheus/prometheus.yml
             </code>{" "}
             pointing at your public URL so the shared Prometheus picks up your
             harness:
           </p>
-          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222]">
+          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222] dark:text-[#E0E0E0]">
             <button
               className="absolute top-4 right-4 text-[#888] hover:text-[#FF5C00] transition-colors opacity-0 group-hover:opacity-100"
               aria-label="Copy code"
@@ -397,14 +397,14 @@ providers:
         </section>
 
         <section id="step-6" className="mb-16 scroll-mt-24">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] pb-3">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#888] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             <span className="text-[#FF5C00]">Step 6.</span> Dry-run + open the
             PR
           </h2>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-6">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-6">
             Test the queries locally before opening the PR:
           </p>
-          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222]">
+          <div className="relative group bg-[#FAF9F5] border border-[#EBE8DF] rounded-[4px] p-6 mb-6 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#222] dark:text-[#E0E0E0]">
             <button
               className="absolute top-4 right-4 text-[#888] hover:text-[#FF5C00] transition-colors opacity-0 group-hover:opacity-100"
               aria-label="Copy code"
@@ -417,13 +417,13 @@ pnpm spec:dry-run wallet-portfolio-latency   # hit Prometheus, print resolved nu
 pnpm dev                             # render the page locally`}</code>
             </pre>
           </div>
-          <p className="text-[15px] font-sans text-[#444] leading-relaxed mb-6">
+          <p className="text-[15px] font-sans text-[#444] dark:text-[#CCC] leading-relaxed mb-6">
             Open the PR. CI runs{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               pnpm validate
             </code>
             ,{" "}
-            <code className="font-mono bg-[#F5F5F5] border border-[#E5E5E5] px-1 py-0.5 rounded text-[13px] text-[#111]">
+            <code className="font-mono bg-[#F5F5F5] dark:bg-[#111] border border-[#E5E5E5] dark:border-[#333] px-1 py-0.5 rounded text-[13px] text-[#111] dark:text-white">
               pnpm typecheck
             </code>{" "}
             and the build. Once merged, a maintainer redeploys the central
@@ -432,11 +432,11 @@ pnpm dev                             # render the page locally`}</code>
           </p>
         </section>
 
-        <section className="mb-16 pb-8 border-b border-[#F0F0F0]">
-          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#FF5C00] mb-6 border-b border-[#E5E5E5] pb-3">
+        <section className="mb-16 pb-8 border-b border-[#F0F0F0] dark:border-[#222]">
+          <h2 className="font-mono text-[10px] uppercase tracking-widest text-[#FF5C00] mb-6 border-b border-[#E5E5E5] dark:border-[#333] pb-3">
             Reference
           </h2>
-          <ul className="space-y-4 text-[14px] text-[#222] font-sans">
+          <ul className="space-y-4 text-[14px] text-[#222] dark:text-[#E0E0E0] font-sans">
             <li>
               <a
                 href="#"
@@ -495,19 +495,19 @@ pnpm dev                             # render the page locally`}</code>
           <div className="flex gap-4">
             <a
               href="#"
-              className="text-[#444] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
+              className="text-[#444] dark:text-[#CCC] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
             >
               Open a benchmark issue →
             </a>
             <a
               href="#"
-              className="text-[#444] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
+              className="text-[#444] dark:text-[#CCC] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
             >
               Brainstorm in Discussions ↗
             </a>
             <a
               href="#"
-              className="text-[#444] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
+              className="text-[#444] dark:text-[#CCC] border-b border-[#ccc] hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors"
             >
               GitHub repository ↗
             </a>

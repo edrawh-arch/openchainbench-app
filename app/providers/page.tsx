@@ -46,7 +46,7 @@ export default function ProvidersIndex() {
       <div className="w-full max-w-[1000px] px-6">
         {/* Header Section */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] mb-4 font-sans">
+          <h1 className="text-4xl md:text-[42px] font-semibold tracking-tight text-[#111] dark:text-white mb-4 font-sans">
             Providers
           </h1>
           <p className="text-[20px] text-[#777] font-sans leading-relaxed max-w-2xl tracking-tight">
@@ -65,7 +65,7 @@ export default function ProvidersIndex() {
                 className={`px-3 py-1.5 rounded-sm font-mono text-[10px] uppercase tracking-widest transition-colors ${
                   selectedCategory === cat
                     ? "bg-[#FF5C00] text-white border border-[#FF5C00] shadow-[0_2px_8px_rgba(255,92,0,0.25)]"
-                    : "bg-white text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
+                    : "bg-white dark:bg-[#0a0a0a] text-[#666] border border-[#E5E5E5] hover:border-[#111] hover:text-[#111]"
                 }`}
               >
                 {cat}
@@ -84,11 +84,11 @@ export default function ProvidersIndex() {
                 placeholder="Search providers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full h-[38px] pl-10 pr-12 bg-white border border-[#E5E5E5] rounded-sm font-sans tracking-tight text-[14px] text-[#111] focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] placeholder:text-[#888] shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors"
+                className="block w-full h-[38px] pl-10 pr-12 bg-white dark:bg-[#0a0a0a] border border-[#E5E5E5] dark:border-[#333] rounded-sm font-sans tracking-tight text-[14px] text-[#111] dark:text-white focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] placeholder:text-[#888] dark:placeholder:text-[#555] shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors"
                 spellCheck={false}
               />
               <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none h-full">
-                <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] bg-[#FAFAFA] px-1.5 py-0.5 rounded-[2px]">
+                <span className="text-[10px] font-mono text-[#AAA] border border-[#E5E5E5] dark:border-[#333] bg-[#FAFAFA] dark:bg-[#111] px-1.5 py-0.5 rounded-[2px]">
                   ⌘K
                 </span>
               </div>
@@ -97,7 +97,7 @@ export default function ProvidersIndex() {
         </div>
 
         {/* Providers List */}
-        <div className="flex flex-col border border-[#E5E5E5] rounded-sm bg-white shadow-sm">
+        <div className="flex flex-col border border-[#E5E5E5] dark:border-[#333] rounded-sm bg-white dark:bg-[#0a0a0a] shadow-sm">
           {filteredProviders.map((provider, i) => (
             <Link
               key={provider.id}
@@ -116,11 +116,11 @@ export default function ProvidersIndex() {
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="font-semibold text-[17px] text-[#111] group-hover:text-[#FF5C00] transition-colors tracking-tight">
+                    <span className="font-semibold text-[17px] text-[#111] dark:text-white group-hover:text-[#FF5C00] transition-colors tracking-tight">
                       {provider.name}
                     </span>
                     {provider.category && (
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#AAA] bg-[#F5F5F5] px-1.5 py-0.5 rounded-[2px] border border-[#E5E5E5]">
+                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#AAA] bg-[#F5F5F5] dark:bg-[#111] px-1.5 py-0.5 rounded-[2px] border border-[#E5E5E5] dark:border-[#333]">
                         {provider.category}
                       </span>
                     )}
@@ -152,7 +152,7 @@ export default function ProvidersIndex() {
                   <div className="font-mono text-[10px] text-[#AAA] uppercase tracking-widest">
                     Benchmarks
                   </div>
-                  <div className="font-mono text-[16px] text-[#111] font-medium">
+                  <div className="font-mono text-[16px] text-[#111] dark:text-white font-medium">
                     {provider.benches}
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function ProvidersIndex() {
           {filteredProviders.length === 0 && (
             <div className="py-16 flex flex-col items-center justify-center text-center">
               <Search className="w-8 h-8 text-[#E5E5E5] mb-3" />
-              <div className="text-[14px] text-[#111] font-medium tracking-tight mb-1">
+              <div className="text-[14px] text-[#111] dark:text-white font-medium tracking-tight mb-1">
                 No providers found
               </div>
               <div className="text-[13px] text-[#888] font-sans">
